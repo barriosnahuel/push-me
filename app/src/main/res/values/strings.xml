@@ -1,4 +1,41 @@
 <resources>
     <string name="app_name">Sos Un Boton</string>
-    <string name="la_botonera">La botonera!!</string>
+
+    <!-- BUTTONS -->
+    <string name="activar">Activar</string>
+    <string name="ambulancia">Ambulancia</string>
+    <string name="banfield">Banfield</string>
+    <string name="campito">Campito</string>
+    <string name="careta">Careta</string>
+    <string name="chimichimi">Chimi Chimi</string>
+    <string name="corrientes">Corrientes</string>
+    <string name="crosscountry">Cross Country</string>
+    <string name="derecha">Derecha</string>
+    <string name="dondeestan">Donde Estan</string>
+    <string name="dondeestan2">Donde Estan 2</string>
+    <string name="dondeestas">Donde Estas</string>
+    <string name="estamosyendo">Estamos Yendo</string>
+    <string name="guardaconcramer">Guarda Cramer</string>
+    <string name="guardaeltaxi">Guarda El Taxi</string>
+    <string name="izquierda">Izquierda</string>
+    <string name="izquierdaizquierda">Izquierda Izquierda</string>
+    <string name="lacamionetaimposible">Imposible No Ver</string>
+    <string name="meseguis">Me Seguis</string>
+    <string name="nahu">Nahu</string>
+    <string name="otrotema">Otro Tema</string>
+    <string name="pampayvinedos">Pampa Y Viñedos</string>
+    <string name="parademandarmsjs">Para De Mandar Msjs</string>
+    <string name="pasaloenverdeoamarillo">Pasalo Verde O Amarillo</string>
+    <string name="pelotudomarchaatras">Pelotudo Marcha Atras</string>
+    <string name="pepa">Pepa</string>
+    <string name="pickypicky">Picky Picky</string>
+    <string name="pistera">Pistera</string>
+    <string name="poracahastaelsemaforo">Por Aca Hasta El Semaforo</string>
+    <string name="poronga">Poronga</string>
+    <string name="quepasaconnahu">Que Pasa Con Nahu</string>
+    <string name="radio">Radio</string>
+    <string name="todosimulado">Todo Simulado</string>
+    <string name="trescientosocholacon">308 La Con</string>
+    <string name="unahorahaciendoluces">1 Hora Haciendo Luces</string>
+    <string name="verdeoamarillo">Verde O Amarillo</string>
 </resources>

@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:id="@+id/add_button_main_layout"
+    style="@style/MyCustomTheme.DefaultLayout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
+        android:id="@+id/addbutton_subtitle"
+        style="@style/MyCustomTheme.Subtitle"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/addbutton_subtitle" />
+
+    <TextView
         android:id="@+id/addbutton_file_path_label"
         style="@style/MyCustomTheme.Form.Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
+        android:layout_below="@id/addbutton_subtitle"
         android:text="@string/addbutton_path" />
 
     <HorizontalScrollView

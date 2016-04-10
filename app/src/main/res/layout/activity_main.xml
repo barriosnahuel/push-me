@@ -6,11 +6,16 @@
     android:layout_centerHorizontal="true"
     tools:context=".feature.home.HomeActivity">
 
-    <GridLayout
-        android:id="@+id/grid"
+    <LinearLayout
+        android:id="@+id/buttons_container"
+        style="@style/MyCustomTheme.DefaultLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:alignmentMode="alignMargins"
-        android:columnCount="2" />
+        android:orientation="vertical">
+
+        <TextView
+            style="@style/MyCustomTheme.Subtitle"
+            android:text="@string/home_subtitle" />
+    </LinearLayout>
 
 </ScrollView>

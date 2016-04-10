@@ -13,4 +13,15 @@
         <item name="android:textSize">@dimen/font_size_small</item>
     </style>
 
+    <style name="MyCustomTheme.DefaultLayout">
+        <item name="android:paddingStart">@dimen/material_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/material_horizontal_padding</item>
+    </style>
+
+    <style name="MyCustomTheme.Subtitle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">@dimen/material_subtitle_height</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
+
 </resources>

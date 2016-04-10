@@ -12,7 +12,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.GridLayout;
+import android.widget.LinearLayout;
 import android.widget.ToggleButton;
 
 import com.github.barriosnahuel.vossosunboton.AbstractActivity;
@@ -29,7 +29,7 @@ import java.util.Set;
  */
 public class HomeActivity extends AbstractActivity {
 
-    private GridLayout grid;
+    private LinearLayout buttonsContainer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,7 +49,7 @@ public class HomeActivity extends AbstractActivity {
     }
 
     private void populateGrid() {
-        grid = (GridLayout) findViewById(R.id.grid);
+        buttonsContainer = (LinearLayout) findViewById(R.id.buttons_container);
 
 //        addCustomButtons();
         addDefaultButtons();
@@ -100,10 +100,10 @@ public class HomeActivity extends AbstractActivity {
         button.setTextOff(buttonName);
         button.setOnClickListener(clickListener);
 
-        grid.addView(button);
+        buttonsContainer.addView(button);
 
-        GridLayout.LayoutParams layoutParams = (GridLayout.LayoutParams) button.getLayoutParams();
-        layoutParams.setGravity(Gravity.CENTER_HORIZONTAL);
+        LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) button.getLayoutParams();
+        layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         button.setLayoutParams(layoutParams);
     }
 

@@ -48,4 +48,6 @@
     <string name="general_error_contact_support">Ocurrio un error, contacta con soporte</string>
     <string name="addbutton_name_is_required_error">El nombre es obligatorio</string>
     <string name="addbutton_feedback_saved_ok">Guardado</string>
+    <string name="home_subtitle">Botones disponibles</string>
+    <string name="addbutton_subtitle">Crea un nuevo botón</string>
 </resources>

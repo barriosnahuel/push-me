@@ -11,14 +11,24 @@
         android:theme="@style/MyCustomTheme">
 
         <activity
-            android:name=".MainActivity"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/app_name">
+            android:name=".feature.home.HomeActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".feature.addbutton.AddButtonActivity"
+            android:parentActivityName=".feature.home.HomeActivity"
+            android:windowSoftInputMode="adjustResize">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="audio/*" />
             </intent-filter>
         </activity>
 

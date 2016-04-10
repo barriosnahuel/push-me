@@ -38,4 +38,14 @@
     <string name="trescientosocholacon">308 La Con</string>
     <string name="unahorahaciendoluces">1 Hora Haciendo Luces</string>
     <string name="verdeoamarillo">Verde O Amarillo</string>
+    <!-- END-Buttons -->
+
+    <string name="addbutton_name">Nombre</string>
+    <string name="addbutton_path">Archivo</string>
+    <string name="addbutton_save">Guardar</string>
+    <string name="addbutton_placeholder">Pepa</string>
+    <string name="addbutton_missing_parameter_error">Falta indicar el audio</string>
+    <string name="general_error_contact_support">Ocurrio un error, contacta con soporte</string>
+    <string name="addbutton_name_is_required_error">El nombre es obligatorio</string>
+    <string name="addbutton_feedback_saved_ok">Guardado</string>
 </resources>

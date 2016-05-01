@@ -2,6 +2,9 @@ package com.github.barriosnahuel.vossosunboton.feature.home;
 
 import android.content.Context;
 import android.database.Cursor;
+import android.media.MediaCodec;
+import android.media.MediaCodecList;
+import android.media.MediaFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,8 +14,10 @@ import android.support.annotation.StringRes;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.Surface;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.github.barriosnahuel.vossosunboton.AbstractActivity;
@@ -22,6 +27,7 @@ import com.github.barriosnahuel.vossosunboton.feature.addbutton.SoundDao;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Set;
 
 /**
@@ -51,8 +57,28 @@ public class HomeActivity extends AbstractActivity {
     private void populateGrid() {
         buttonsContainer = (LinearLayout) findViewById(R.id.buttons_container);
 
-//        addCustomButtons();
-        addDefaultButtons();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            MediaCodecList mediaCodecList = new MediaCodecList(MediaCodecList.ALL_CODECS);
+            String decoder = mediaCodecList.findDecoderForFormat(MediaFormat.createAudioFormat("audio/opus", 1, 2));
+            try {
+                MediaCodec mediaCodec = MediaCodec.createByCodecName(decoder);
+                Surface inputSurface = mediaCodec.createInputSurface();
+
+
+                FileInputStream open = (FileInputStream) getAssets().open("opus.opus");
+//                MediaPlayer mediaPlayer=MediaPlayer.create(HomeActivity.this, R.raw.opus);
+                MediaPlayer mediaPlayer = new MediaPlayer();
+                mediaPlayer.setDataSource(open.getFD());
+                mediaPlayer.setSurface(inputSurface);
+                mediaPlayer.prepare();
+                mediaPlayer.start();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+        addCustomButtons();
+//        addDefaultButtons();
     }
 
     private void addCustomButtons() {
@@ -78,15 +104,6 @@ public class HomeActivity extends AbstractActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
-//                File fileStreamPath = getFileStreamPath(eachSound.getFile());
-//                FileInputStream fileInputStream = new FileInputStream(fileStreamPath);
-//                mediaPlayer.setDataSource(fileInputStream.getFD());
-
-//                Uri uri = Uri.fromFile();
-//                mediaPlayer.setDataSource(this, Uri.parse(Uri.encode(uri.toString())));
-
-
         }
     }
 
@@ -157,6 +174,7 @@ public class HomeActivity extends AbstractActivity {
 
             if (this.mediaPlayer == null) {
                 Log.e(TAG, "Can't create media player for the specified resource");
+                Toast.makeText(HomeActivity.this, "No lo pude crear!!!", Toast.LENGTH_SHORT).show();
             } else {
                 this.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override

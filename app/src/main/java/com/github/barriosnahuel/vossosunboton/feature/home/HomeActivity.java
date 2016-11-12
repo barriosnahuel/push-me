@@ -94,9 +94,12 @@ public class HomeActivity extends AbstractActivity {
 
         private MediaPlayer mediaPlayer;
 
-        private ToggleButton button;
+        /**
+         * Package-protected because method is used from an inner/anonymous class.
+         */
+        /* default */ ToggleButton button;
 
-        public MyClickListener(MediaPlayer mediaPlayer) {
+        /* default */ MyClickListener(final MediaPlayer mediaPlayer) {
             this.mediaPlayer = mediaPlayer;
 
             if (this.mediaPlayer == null) {
@@ -105,8 +108,14 @@ public class HomeActivity extends AbstractActivity {
             } else {
                 this.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override
-                    public void onCompletion(MediaPlayer mp) {
-                        MyClickListener.this.button.toggle();
+                    public void onCompletion(final MediaPlayer mp) {
+                        button.toggle();
+                    }
+                });
+                mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
+                    @Override
+                    public void onSeekComplete(final MediaPlayer mp) {
+                        mp.pause();
                     }
                 });
             }
@@ -124,7 +133,7 @@ public class HomeActivity extends AbstractActivity {
             }
 
             if (mediaPlayer.isPlaying()) {
-                button.toggle();
+                mediaPlayer.seekTo(0);
             } else {
                 mediaPlayer.start();
             }

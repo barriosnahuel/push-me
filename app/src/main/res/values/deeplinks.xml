@@ -1,0 +1,5 @@
+<resources>
+    <string name="deeplink_app_scheme" translatable="false">sosunboton</string>
+    <string name="deeplink_home_host" translatable="false">home</string>
+    <string name="deeplink_home_path" translatable="false">/</string>
+</resources>

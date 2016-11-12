@@ -18,6 +18,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.github.barriosnahuel.vossosunboton.AbstractActivity;
+import com.github.barriosnahuel.vossosunboton.DeepLinks;
 import com.github.barriosnahuel.vossosunboton.Feedback;
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.feature.PermissionsRequest;
@@ -167,5 +168,9 @@ public class AddButtonActivity extends AbstractActivity {
         }
 
         Feedback.send(this, feedbackMessage);
+
+        final Intent intent = DeepLinks.HOME.getIntent(this);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
     }
 }

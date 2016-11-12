@@ -2,9 +2,6 @@ package com.github.barriosnahuel.vossosunboton.feature.home;
 
 import android.content.Context;
 import android.database.Cursor;
-import android.media.MediaCodec;
-import android.media.MediaCodecList;
-import android.media.MediaFormat;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -14,31 +11,28 @@ import android.support.annotation.StringRes;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
-import android.view.Surface;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 import android.widget.ToggleButton;
-
 import com.github.barriosnahuel.vossosunboton.AbstractActivity;
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.feature.addbutton.Sound;
 import com.github.barriosnahuel.vossosunboton.feature.addbutton.SoundDao;
-
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.IOException;
 import java.util.Set;
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with user interaction.
+ * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with
+ * user interaction.
  */
 public class HomeActivity extends AbstractActivity {
 
     private LinearLayout buttonsContainer;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_main);
@@ -47,38 +41,19 @@ public class HomeActivity extends AbstractActivity {
     }
 
     /**
-     * We don't want to open this activity again (default behavior at {@link AbstractActivity}) when the user taps on the home icon.
+     * We don't want to open this activity again (default behavior at {@link AbstractActivity}) when the user taps on
+     * the home icon.
      */
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(final MenuItem item) {
         return true;
     }
 
     private void populateGrid() {
         buttonsContainer = (LinearLayout) findViewById(R.id.buttons_container);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            MediaCodecList mediaCodecList = new MediaCodecList(MediaCodecList.ALL_CODECS);
-            String decoder = mediaCodecList.findDecoderForFormat(MediaFormat.createAudioFormat("audio/opus", 1, 2));
-            try {
-                MediaCodec mediaCodec = MediaCodec.createByCodecName(decoder);
-                Surface inputSurface = mediaCodec.createInputSurface();
-
-
-                FileInputStream open = (FileInputStream) getAssets().open("opus.opus");
-//                MediaPlayer mediaPlayer=MediaPlayer.create(HomeActivity.this, R.raw.opus);
-                MediaPlayer mediaPlayer = new MediaPlayer();
-                mediaPlayer.setDataSource(open.getFD());
-                mediaPlayer.setSurface(inputSurface);
-                mediaPlayer.prepare();
-                mediaPlayer.start();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
         addCustomButtons();
-//        addDefaultButtons();
+        addDefaultButtons();
     }
 
     private void addCustomButtons() {
@@ -88,15 +63,6 @@ public class HomeActivity extends AbstractActivity {
         for (Sound eachSound : sounds) {
             MediaPlayer mediaPlayer = new MediaPlayer();
 
-            File file = getFileStreamPath(eachSound.getFile());
-            boolean appliedForAll = file.setExecutable(true, false);
-
-            if (!file.canExecute()) {
-                boolean applied = file.setExecutable(true, true);
-                if (!applied) {
-                    Log.e(TAG, "Fallo!!!");
-                }
-            }
             try {
                 setMediaPlayerDataSource(this, mediaPlayer, eachSound.getFile());
                 mediaPlayer.prepare();
@@ -122,45 +88,6 @@ public class HomeActivity extends AbstractActivity {
         LinearLayout.LayoutParams layoutParams = (LinearLayout.LayoutParams) button.getLayoutParams();
         layoutParams.gravity = Gravity.CENTER_HORIZONTAL;
         button.setLayoutParams(layoutParams);
-    }
-
-    private void addDefaultButtons() {
-        addButton(R.string.activar, R.raw.activar);
-        addButton(R.string.ambulancia, R.raw.ambulancia);
-        addButton(R.string.banfield, R.raw.banfield);
-        addButton(R.string.campito, R.raw.campito);
-        addButton(R.string.careta, R.raw.careta);
-        addButton(R.string.chimichimi, R.raw.chimichimi);
-        addButton(R.string.corrientes, R.raw.corrientes);
-        addButton(R.string.crosscountry, R.raw.crosscountry);
-        addButton(R.string.derecha, R.raw.derecha);
-        addButton(R.string.dondeestan, R.raw.dondeestan);
-        addButton(R.string.dondeestan2, R.raw.dondeestan2);
-        addButton(R.string.dondeestas, R.raw.dondeestas);
-        addButton(R.string.estamosyendo, R.raw.estamosyendo);
-        addButton(R.string.guardaconcramer, R.raw.guardaconcramer);
-        addButton(R.string.guardaeltaxi, R.raw.guardaeltaxi);
-        addButton(R.string.izquierda, R.raw.izquierda);
-        addButton(R.string.izquierdaizquierda, R.raw.izquierdaizquierda);
-        addButton(R.string.lacamionetaimposible, R.raw.lacamionetaimposible);
-        addButton(R.string.meseguis, R.raw.meseguis);
-        addButton(R.string.nahu, R.raw.nahuuu);
-        addButton(R.string.otrotema, R.raw.otrotema);
-        addButton(R.string.pampayvinedos, R.raw.pampayvinedos);
-        addButton(R.string.parademandarmsjs, R.raw.parademandarmsjs);
-        addButton(R.string.pasaloenverdeoamarillo, R.raw.pasaloenverdeoamarillo);
-        addButton(R.string.pelotudomarchaatras, R.raw.pelotudomarchaatras);
-        addButton(R.string.pepa, R.raw.pepa);
-        addButton(R.string.pickypicky, R.raw.pickypicky);
-        addButton(R.string.pistera, R.raw.pistera);
-        addButton(R.string.poracahastaelsemaforo, R.raw.poracahastaelsemaforo);
-        addButton(R.string.poronga, R.raw.poronga);
-        addButton(R.string.quepasaconnahu, R.raw.quepasaconnahu);
-        addButton(R.string.radio, R.raw.radio);
-        addButton(R.string.todosimulado, R.raw.todosimulado);
-        addButton(R.string.trescientosocholacon, R.raw.trecientosocholacon);
-        addButton(R.string.unahorahaciendoluces, R.raw.unahorahaciendoluces);
-        addButton(R.string.verdeoamarillo, R.raw.verdeoamarillo);
     }
 
     private class MyClickListener implements View.OnClickListener {
@@ -281,5 +208,44 @@ public class HomeActivity extends AbstractActivity {
 
         ringtoneCursor.close();
         return path;
+    }
+
+    private void addDefaultButtons() {
+        addButton(R.string.activar, R.raw.activar);
+        addButton(R.string.ambulancia, R.raw.ambulancia);
+        addButton(R.string.banfield, R.raw.banfield);
+        addButton(R.string.campito, R.raw.campito);
+        addButton(R.string.careta, R.raw.careta);
+        addButton(R.string.chimichimi, R.raw.chimichimi);
+        addButton(R.string.corrientes, R.raw.corrientes);
+        addButton(R.string.crosscountry, R.raw.crosscountry);
+        addButton(R.string.derecha, R.raw.derecha);
+        addButton(R.string.dondeestan, R.raw.dondeestan);
+        addButton(R.string.dondeestan2, R.raw.dondeestan2);
+        addButton(R.string.dondeestas, R.raw.dondeestas);
+        addButton(R.string.estamosyendo, R.raw.estamosyendo);
+        addButton(R.string.guardaconcramer, R.raw.guardaconcramer);
+        addButton(R.string.guardaeltaxi, R.raw.guardaeltaxi);
+        addButton(R.string.izquierda, R.raw.izquierda);
+        addButton(R.string.izquierdaizquierda, R.raw.izquierdaizquierda);
+        addButton(R.string.lacamionetaimposible, R.raw.lacamionetaimposible);
+        addButton(R.string.meseguis, R.raw.meseguis);
+        addButton(R.string.nahu, R.raw.nahuuu);
+        addButton(R.string.otrotema, R.raw.otrotema);
+        addButton(R.string.pampayvinedos, R.raw.pampayvinedos);
+        addButton(R.string.parademandarmsjs, R.raw.parademandarmsjs);
+        addButton(R.string.pasaloenverdeoamarillo, R.raw.pasaloenverdeoamarillo);
+        addButton(R.string.pelotudomarchaatras, R.raw.pelotudomarchaatras);
+        addButton(R.string.pepa, R.raw.pepa);
+        addButton(R.string.pickypicky, R.raw.pickypicky);
+        addButton(R.string.pistera, R.raw.pistera);
+        addButton(R.string.poracahastaelsemaforo, R.raw.poracahastaelsemaforo);
+        addButton(R.string.poronga, R.raw.poronga);
+        addButton(R.string.quepasaconnahu, R.raw.quepasaconnahu);
+        addButton(R.string.radio, R.raw.radio);
+        addButton(R.string.todosimulado, R.raw.todosimulado);
+        addButton(R.string.trescientosocholacon, R.raw.trecientosocholacon);
+        addButton(R.string.unahorahaciendoluces, R.raw.unahorahaciendoluces);
+        addButton(R.string.verdeoamarillo, R.raw.verdeoamarillo);
     }
 }

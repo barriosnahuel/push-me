@@ -50,4 +50,6 @@
     <string name="addbutton_feedback_saved_ok">Guardado</string>
     <string name="home_subtitle">Botones disponibles</string>
     <string name="addbutton_subtitle">Crea un nuevo botón</string>
+    <string name="addbutton_activity_label">Crear nuevo botón</string>
+    <string name="addbutton_activity_title">Nuevo botón</string>
 </resources>

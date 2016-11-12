@@ -1,10 +1,15 @@
 package com.github.barriosnahuel.vossosunboton.feature.addbutton;
 
-import android.content.Context;
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -12,17 +17,17 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-
 import com.github.barriosnahuel.vossosunboton.AbstractActivity;
 import com.github.barriosnahuel.vossosunboton.Feedback;
 import com.github.barriosnahuel.vossosunboton.R;
+import com.github.barriosnahuel.vossosunboton.feature.PermissionsRequest;
 import com.github.barriosnahuel.vossosunboton.util.file.FileUtils;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URI;
+import timber.log.Timber;
 
 /**
  * @author Nahuel Barrios, on 9/4/16.
@@ -39,15 +44,17 @@ public class AddButtonActivity extends AbstractActivity {
     private SoundDao soundsDao;
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
+    protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_button);
+
+        getSupportActionBar().setTitle(R.string.addbutton_activity_title);
 
         uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
         if (uri == null) {
             Feedback.send(this, R.string.addbutton_missing_parameter_error);
         } else {
-            TextView path = (TextView) findViewById(R.id.addbutton_file_path);
+            final TextView path = (TextView) findViewById(R.id.addbutton_file_path);
             path.setText(uri.toString());
         }
 
@@ -57,8 +64,8 @@ public class AddButtonActivity extends AbstractActivity {
         } else {
             name.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
-                public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                    boolean consumedHere;
+                public boolean onEditorAction(final TextView v, final int actionId, final KeyEvent event) {
+                    final boolean consumedHere;
 
                     if (actionId == EditorInfo.IME_ACTION_DONE) {
                         saveButton(null);
@@ -75,33 +82,90 @@ public class AddButtonActivity extends AbstractActivity {
         soundsDao = new SoundDao();
     }
 
+    @Override
+    public void onRequestPermissionsResult(
+        final int requestCode
+        , @NonNull final String[] permissions
+        , @NonNull final int[] grantResults) {
+
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        switch (requestCode) {
+            case PermissionsRequest.SAVE_NEW_AUDIO_FILE:
+                if (grantResults.length > 0
+                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                    saveNewButton();
+                } else {
+                    Feedback.send(this, R.string.general_error_contact_support);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     public void saveButton(View view) {
         Log.v(TAG, "==> saveButton");
 
         if (TextUtils.isEmpty(name.getText())) {
             name.setError(getString(R.string.addbutton_name_is_required_error));
         } else {
-
-            File sourceFile = new File(URI.create(uri.toString()));
-
-            FileOutputStream fos = null;
-            try {
-                fos = openFileOutput(sourceFile.getName(), Context.MODE_PRIVATE);
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
-            }
-
-            try {
-                FileUtils.copy(sourceFile, fos);
-                File file = getFileStreamPath(sourceFile.getName());
-                file.setReadable(true, false);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            soundsDao.save(this, new Sound(name.getText().toString(), sourceFile.getName()));
-
-            Feedback.send(this, R.string.addbutton_feedback_saved_ok);
+            checkRequiredPermissions();
         }
+    }
+
+    private void checkRequiredPermissions() {
+        if (PackageManager.PERMISSION_GRANTED ==
+            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+            saveNewButton();
+        } else {
+            // Should we show an explanation?
+            if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+
+                // TODO: 11/12/16 Read Android's docs
+                // Show an explanation to the user *asynchronously* -- don't block
+                // this thread waiting for the user's response! After the user
+                // sees the explanation, try again to request the permission.
+
+            } else {
+                // No explanation needed, we can request the permission.
+
+                ActivityCompat.requestPermissions(
+                    this
+                    , new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE }
+                    , PermissionsRequest.SAVE_NEW_AUDIO_FILE);
+            }
+        }
+    }
+
+    private void saveNewButton() {
+        final String targetPath =
+            getExternalFilesDir(Environment.DIRECTORY_MUSIC) + "Button-" + System.currentTimeMillis();
+
+        FileOutputStream fileOutputStream;
+        try {
+            fileOutputStream = new FileOutputStream(targetPath);
+        } catch (final FileNotFoundException e) {
+            Timber.e("Can't create new button's path");
+            fileOutputStream = null;
+        }
+
+        int feedbackMessage = R.string.general_error_contact_support;
+        if (fileOutputStream != null) {
+            try {
+                // TODO: 11/12/16 Run it on another thread
+                FileUtils.copy(new File(URI.create(uri.toString())), fileOutputStream);
+
+                soundsDao.save(this, new Sound(name.getText().toString(), targetPath));
+
+                feedbackMessage = R.string.addbutton_feedback_saved_ok;
+            } catch (final IOException e) {
+                Timber.e("Can't copy original audio");
+            }
+        }
+
+        Feedback.send(this, feedbackMessage);
     }
 }

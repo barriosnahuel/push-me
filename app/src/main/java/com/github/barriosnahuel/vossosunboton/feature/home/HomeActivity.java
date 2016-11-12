@@ -38,6 +38,8 @@ public class HomeActivity extends AbstractActivity {
 
         setContentView(R.layout.activity_main);
 
+        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
+
         populateGrid();
     }
 

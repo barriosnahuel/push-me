@@ -16,6 +16,8 @@
     <style name="MyCustomTheme.DefaultLayout">
         <item name="android:paddingStart">@dimen/material_horizontal_padding</item>
         <item name="android:paddingEnd">@dimen/material_horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/material_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/material_horizontal_padding</item>
     </style>
 
     <style name="MyCustomTheme.Subtitle">

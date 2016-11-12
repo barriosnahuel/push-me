@@ -6,9 +6,9 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,6 +22,7 @@ import com.github.barriosnahuel.vossosunboton.feature.addbutton.SoundDao;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.Set;
+import timber.log.Timber;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with
@@ -67,8 +68,8 @@ public class HomeActivity extends AbstractActivity {
                 setMediaPlayerDataSource(this, mediaPlayer, eachSound.getFile());
                 mediaPlayer.prepare();
                 addButton(eachSound.getName(), new MyClickListener(mediaPlayer));
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (final Exception e) {
+                Timber.e("Oops, you did it again... xD: %s", e.getMessage());
             }
         }
     }
@@ -77,7 +78,7 @@ public class HomeActivity extends AbstractActivity {
         addButton(getString(buttonName), new MyClickListener(audioRes));
     }
 
-    private void addButton(String buttonName, MyClickListener clickListener) {
+    private void addButton(@NonNull final String buttonName, final MyClickListener clickListener) {
         final ToggleButton button = new ToggleButton(this);
         button.setText(buttonName);
         button.setTextOff(buttonName);
@@ -92,7 +93,7 @@ public class HomeActivity extends AbstractActivity {
 
     private class MyClickListener implements View.OnClickListener {
 
-        private MediaPlayer mediaPlayer;
+        private final MediaPlayer mediaPlayer;
 
         /**
          * Package-protected because method is used from an inner/anonymous class.
@@ -103,7 +104,7 @@ public class HomeActivity extends AbstractActivity {
             this.mediaPlayer = mediaPlayer;
 
             if (this.mediaPlayer == null) {
-                Log.e(TAG, "Can't create media player for the specified resource");
+                Timber.e("Can't create media player for the specified resource");
                 Toast.makeText(HomeActivity.this, "No lo pude crear!!!", Toast.LENGTH_SHORT).show();
             } else {
                 this.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
@@ -112,7 +113,7 @@ public class HomeActivity extends AbstractActivity {
                         button.toggle();
                     }
                 });
-                mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
+                this.mediaPlayer.setOnSeekCompleteListener(new MediaPlayer.OnSeekCompleteListener() {
                     @Override
                     public void onSeekComplete(final MediaPlayer mp) {
                         mp.pause();
@@ -121,7 +122,7 @@ public class HomeActivity extends AbstractActivity {
             }
         }
 
-        public MyClickListener(@RawRes int audioRes) {
+        /* default */ MyClickListener(@RawRes final int audioRes) {
             this(MediaPlayer.create(HomeActivity.this, audioRes));
         }
 
@@ -141,12 +142,14 @@ public class HomeActivity extends AbstractActivity {
         }
     }
 
-    public static void setMediaPlayerDataSource(Context context,
-                                                MediaPlayer mp, String fileInfo) throws Exception {
+    public static void setMediaPlayerDataSource(
+        final Context context
+        , final MediaPlayer mediaPlayer
+        , String fileInfo) throws Exception {
 
         if (fileInfo.startsWith("content://")) {
             try {
-                Uri uri = Uri.parse(fileInfo);
+                final Uri uri = Uri.parse(fileInfo);
                 fileInfo = getRingtonePathFromContentUri(context, uri);
             } catch (Exception e) {
             }
@@ -155,38 +158,43 @@ public class HomeActivity extends AbstractActivity {
         try {
             if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
                 try {
-                    setMediaPlayerDataSourcePreHoneyComb(context, mp, fileInfo);
+                    setMediaPlayerDataSourcePreHoneyComb(mediaPlayer, fileInfo);
                 } catch (Exception e) {
-                    setMediaPlayerDataSourcePostHoneyComb(context, mp, fileInfo);
+                    setMediaPlayerDataSourcePostHoneyComb(context, mediaPlayer, fileInfo);
                 }
             } else {
-                setMediaPlayerDataSourcePostHoneyComb(context, mp, fileInfo);
+                setMediaPlayerDataSourcePostHoneyComb(context, mediaPlayer, fileInfo);
             }
 
         } catch (Exception e) {
             try {
-                setMediaPlayerDataSourceUsingFileDescriptor(context, mp, fileInfo);
+                setMediaPlayerDataSourceUsingFileDescriptor(mediaPlayer, fileInfo);
             } catch (Exception ee) {
                 String uri = getRingtoneUriFromPath(context, fileInfo);
-                mp.reset();
-                mp.setDataSource(uri);
+                mediaPlayer.reset();
+                mediaPlayer.setDataSource(uri);
             }
         }
     }
 
-    private static void setMediaPlayerDataSourcePreHoneyComb(Context context, MediaPlayer mp, String fileInfo) throws Exception {
+    private static void setMediaPlayerDataSourcePreHoneyComb(final MediaPlayer mp, final String fileInfo)
+        throws Exception {
+
         mp.reset();
         mp.setDataSource(fileInfo);
     }
 
-    private static void setMediaPlayerDataSourcePostHoneyComb(Context context, MediaPlayer mp, String fileInfo) throws Exception {
+    private static void setMediaPlayerDataSourcePostHoneyComb(final Context context, final MediaPlayer mp,
+        final String fileInfo) throws Exception {
+
         mp.reset();
         mp.setDataSource(context, Uri.parse(Uri.encode(fileInfo)));
     }
 
-    private static void setMediaPlayerDataSourceUsingFileDescriptor(
-            Context context, MediaPlayer mp, String fileInfo) throws Exception {
-        File file = new File(fileInfo);
+    private static void setMediaPlayerDataSourceUsingFileDescriptor(final MediaPlayer mp, final String fileInfo)
+        throws Exception {
+
+        final File file = new File(fileInfo);
         FileInputStream inputStream = new FileInputStream(file);
         mp.reset();
         mp.setDataSource(inputStream.getFD());

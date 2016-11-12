@@ -11,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -107,8 +106,6 @@ public class AddButtonActivity extends AbstractActivity {
     }
 
     public void saveButton(View view) {
-        Log.v(TAG, "==> saveButton");
-
         if (TextUtils.isEmpty(name.getText())) {
             name.setError(getString(R.string.addbutton_name_is_required_error));
         } else {

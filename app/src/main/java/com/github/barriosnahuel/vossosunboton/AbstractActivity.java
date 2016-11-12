@@ -7,18 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
-
 import com.github.barriosnahuel.vossosunboton.feature.home.HomeActivity;
 
 /**
  * @author Nahuel Barrios, on 9/4/16.
  */
 public abstract class AbstractActivity extends AppCompatActivity {
-
-    /**
-     * Used for log messages.
-     */
-    protected final String TAG = getClass().getSimpleName();
 
     @Override
     public void setContentView(@LayoutRes int layoutResID) {

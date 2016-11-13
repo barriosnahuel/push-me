@@ -14,7 +14,6 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
-import android.widget.Toast;
 import android.widget.ToggleButton;
 import com.github.barriosnahuel.vossosunboton.AbstractActivity;
 import com.github.barriosnahuel.vossosunboton.R;
@@ -109,7 +108,6 @@ public class HomeActivity extends AbstractActivity {
 
             if (this.mediaPlayer == null) {
                 Timber.e("Can't create media player for the specified resource");
-                Toast.makeText(HomeActivity.this, "No lo pude crear!!!", Toast.LENGTH_SHORT).show();
             } else {
                 this.mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                     @Override

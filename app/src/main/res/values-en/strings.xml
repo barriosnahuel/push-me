@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Sos Un Boton</string>
 
-    <string name="addbutton_name">Name</string>
+    <string name="addbutton_name">Choose a funny name for your new button</string>
     <string name="addbutton_path">File</string>
     <string name="addbutton_save">Save</string>
     <string name="addbutton_placeholder">I\'m f**k!ng druuunk</string>

@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Sos Un Boton</string>
 
-    <string name="addbutton_name">Nombre</string>
+    <string name="addbutton_name">Elegí un nombre para el botón</string>
     <string name="addbutton_path">Archivo</string>
     <string name="addbutton_save">Guardar</string>
-    <string name="addbutton_placeholder">Estoy borrachooo</string>
+    <string name="addbutton_placeholder">Vos, yo, champagne… all the night</string>
     <string name="addbutton_missing_parameter_error">Falta indicar el audio</string>
     <string name="general_error_contact_support">Ocurrio un error, contacta con soporte</string>
     <string name="addbutton_name_is_required_error">El nombre es obligatorio</string>

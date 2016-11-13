@@ -55,9 +55,6 @@ public class AddButtonActivity extends AbstractActivity {
         uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
         if (uri == null) {
             Feedback.send(this, R.string.addbutton_missing_parameter_error);
-        } else {
-            final TextView path = (TextView) findViewById(R.id.addbutton_file_path);
-            path.setText(uri.toString());
         }
 
         name = (EditText) findViewById(R.id.addbutton_name);

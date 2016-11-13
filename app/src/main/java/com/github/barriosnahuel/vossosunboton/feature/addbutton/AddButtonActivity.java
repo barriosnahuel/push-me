@@ -1,6 +1,7 @@
 package com.github.barriosnahuel.vossosunboton.feature.addbutton;
 
 import android.Manifest;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -97,7 +99,7 @@ public class AddButtonActivity extends AbstractActivity {
 
                     saveNewButton();
                 } else {
-                    Feedback.send(this, R.string.general_error_contact_support);
+                    showPermissionExplanation();
                 }
                 break;
             default:
@@ -105,7 +107,7 @@ public class AddButtonActivity extends AbstractActivity {
         }
     }
 
-    public void saveButton(View view) {
+    public void saveButton(final View view) {
         if (TextUtils.isEmpty(name.getText())) {
             name.setError(getString(R.string.addbutton_name_is_required_error));
         } else {
@@ -122,7 +124,7 @@ public class AddButtonActivity extends AbstractActivity {
             // Should we show an explanation?
             if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
-                // TODO: 11/12/16 Read Android's docs
+                showPermissionExplanation();
                 // Show an explanation to the user *asynchronously* -- don't block
                 // this thread waiting for the user's response! After the user
                 // sees the explanation, try again to request the permission.
@@ -130,12 +132,37 @@ public class AddButtonActivity extends AbstractActivity {
             } else {
                 // No explanation needed, we can request the permission.
 
-                ActivityCompat.requestPermissions(
-                    this
-                    , new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE }
-                    , PermissionsRequest.SAVE_NEW_AUDIO_FILE);
+                requestStoragePermission();
             }
         }
+    }
+
+    private void showPermissionExplanation() {
+        new AlertDialog.Builder(this)
+            .setTitle(R.string.permission_required)
+            .setMessage(R.string.addbutton_permission_required_error)
+            .setPositiveButton(R.string.addbutton_permission_positive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(final DialogInterface dialog, final int which) {
+                    requestStoragePermission();
+                }
+            })
+            .setNegativeButton(R.string.addbutton_permission_negative, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(final DialogInterface dialog, final int which) {
+                    Feedback.send(AddButtonActivity.this, R.string.youre_an_idiot_error);
+                }
+            }).show();
+    }
+
+    /**
+     * Package-protected because method is used from an inner/anonymous class.
+     */
+    /* default */  void requestStoragePermission() {
+        ActivityCompat.requestPermissions(
+            this
+            , new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE }
+            , PermissionsRequest.SAVE_NEW_AUDIO_FILE);
     }
 
     private void saveNewButton() {

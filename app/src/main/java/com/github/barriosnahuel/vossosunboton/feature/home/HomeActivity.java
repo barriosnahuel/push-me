@@ -10,6 +10,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.RawRes;
 import android.support.annotation.StringRes;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -81,7 +82,8 @@ public class HomeActivity extends AbstractActivity {
     }
 
     private void addButton(@NonNull final String buttonName, final MyClickListener clickListener) {
-        final ToggleButton button = new ToggleButton(this);
+        final ToggleButton button =
+            (ToggleButton) LayoutInflater.from(this).inflate(R.layout.layout_button, null, false);
         button.setText(buttonName);
         button.setTextOff(buttonName);
         button.setOnClickListener(clickListener);
@@ -236,6 +238,7 @@ public class HomeActivity extends AbstractActivity {
         addButton(R.string.campito, R.raw.campito);
         addButton(R.string.careta, R.raw.careta);
         addButton(R.string.chimichimi, R.raw.chimichimi);
+        addButton(R.string.chiquichiqui, R.raw.chiquichiqui);
         addButton(R.string.corrientes, R.raw.corrientes);
         addButton(R.string.crosscountry, R.raw.crosscountry);
         addButton(R.string.derecha, R.raw.derecha);
@@ -250,6 +253,8 @@ public class HomeActivity extends AbstractActivity {
         addButton(R.string.lacamionetaimposible, R.raw.lacamionetaimposible);
         addButton(R.string.meseguis, R.raw.meseguis);
         addButton(R.string.nahu, R.raw.nahuuu);
+        addButton(R.string.nochedesexo, R.raw.nochedesexo);
+        addButton(R.string.ochominutos, R.raw.llegamosenochominutos);
         addButton(R.string.otrotema, R.raw.otrotema);
         addButton(R.string.pampayvinedos, R.raw.pampayvinedos);
         addButton(R.string.parademandarmsjs, R.raw.parademandarmsjs);
@@ -261,7 +266,9 @@ public class HomeActivity extends AbstractActivity {
         addButton(R.string.poracahastaelsemaforo, R.raw.poracahastaelsemaforo);
         addButton(R.string.poronga, R.raw.poronga);
         addButton(R.string.quepasaconnahu, R.raw.quepasaconnahu);
+        addButton(R.string.quierofiesta, R.raw.quierofiesta);
         addButton(R.string.radio, R.raw.radio);
+        addButton(R.string.tresminutos, R.raw.tresminutos);
         addButton(R.string.todosimulado, R.raw.todosimulado);
         addButton(R.string.trescientosocholacon, R.raw.trecientosocholacon);
         addButton(R.string.unahorahaciendoluces, R.raw.unahorahaciendoluces);

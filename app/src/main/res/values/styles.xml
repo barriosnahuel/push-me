@@ -25,5 +25,8 @@
         <item name="android:layout_height">@dimen/material_subtitle_height</item>
         <item name="android:gravity">center_vertical</item>
     </style>
+    <style name="MyCustomTheme.Button">
+        <!--<item name="android:capitalize">words</item>-->
+    </style>
 
 </resources>

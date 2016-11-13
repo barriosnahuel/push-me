@@ -10,7 +10,11 @@ import android.widget.Toast;
  */
 public final class Feedback {
 
-    public static void send(@NonNull Context context, @StringRes int stringRes) {
+    private Feedback() {
+        // Do nothing.
+    }
+
+    public static void send(@NonNull final Context context, @StringRes final int stringRes) {
         Toast.makeText(context, stringRes, Toast.LENGTH_SHORT).show();
     }
 }

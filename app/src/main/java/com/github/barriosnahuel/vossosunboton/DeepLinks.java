@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.StringRes;
+import com.github.barriosnahuel.vossosunboton.util.intent.SafeIntent;
 
 /**
  * Created by Nahuel Barrios on 11/12/16.
@@ -36,8 +37,6 @@ public enum DeepLinks {
 
     @NonNull
     public Intent getIntent(final Context context) {
-        final Intent intent = new Intent();
-        intent.setData(Uri.parse(get(context)));
-        return intent;
+        return new SafeIntent(context, Uri.parse(get(context)));
     }
 }

@@ -40,7 +40,7 @@ public class HomeActivity extends AbstractActivity {
 
         getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
 
-        populateGrid();
+        setupView();
     }
 
     /**
@@ -52,7 +52,7 @@ public class HomeActivity extends AbstractActivity {
         return true;
     }
 
-    private void populateGrid() {
+    private void setupView() {
         buttonsContainer = (LinearLayout) findViewById(R.id.buttons_container);
 
         addCustomButtons();

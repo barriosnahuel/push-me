@@ -2,14 +2,12 @@
     <string name="app_name">Sos Un Boton</string>
 
     <string name="addbutton_name">Choose a funny name for your new button</string>
-    <string name="addbutton_path">File</string>
     <string name="addbutton_save">Save</string>
     <string name="addbutton_placeholder">I\'m f**k!ng druuunk</string>
     <string name="addbutton_missing_parameter_error">Missing audio file</string>
     <string name="general_error_contact_support">Oops! Please contact support</string>
     <string name="addbutton_name_is_required_error">Name is required</string>
     <string name="addbutton_feedback_saved_ok">Saved!</string>
-    <string name="addbutton_subtitle">Create new button</string>
     <string name="addbutton_activity_label">Save as button</string>
     <string name="addbutton_activity_title">New button</string>
     <string name="addbutton_permission_required_error">Permission is required to prevent missing these funny audio

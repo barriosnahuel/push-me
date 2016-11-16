@@ -194,4 +194,12 @@ public class AddButtonActivity extends AbstractActivity {
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
     }
+
+    @Override
+    public String toString() {
+        return "AddButtonActivity{" +
+            "uri=" + uri +
+            ", name=" + name +
+            '}';
+    }
 }

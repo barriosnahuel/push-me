@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="activar" translatable="false">Activar</string>
     <string name="ambulancia" translatable="false">Ambulancia</string>
     <string name="banfield" translatable="false">Banfield</string>
@@ -40,4 +40,5 @@
     <string name="quierofiesta" translatable="false">Quiero Fiesta</string>
     <string name="ochominutos" translatable="false">8 Minutos</string>
     <string name="tresminutos" translatable="false">3 Minutos</string>
+    <string name="jajaja" translatable="false" tools:ignore="Typos">Ja Ja Ja</string>
 </resources>

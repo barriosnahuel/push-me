@@ -130,20 +130,33 @@ public class HomeActivity extends AbstractActivity {
 
         @Override
         public void onClick(final View v) {
-            button = (ToggleButton) v;
-            if (mediaPlayer == null) {
-                return;
-            }
 
-            if (mediaPlayer.isPlaying()) {
-                mediaPlayer.seekTo(0);
+            if (v instanceof ToggleButton) {
+                button = (ToggleButton) v;
+                if (mediaPlayer == null) {
+                    return;
+                }
+
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.seekTo(0);
+                } else {
+                    mediaPlayer.start();
+                }
             } else {
-                mediaPlayer.start();
+                Timber.e("Layout has changed... wrong!");
             }
-
         }
     }
 
+    /**
+     * // TODO: 11/16/16 Resolve this PMD warning!
+     *
+     * @param context
+     * @param mediaPlayer
+     * @param fileInfo
+     * @throws Exception
+     */
+    @SuppressWarnings("PMD.AvoidReassigningParameters")
     public static void setMediaPlayerDataSource(
         final Context context
         , final MediaPlayer mediaPlayer
@@ -154,6 +167,7 @@ public class HomeActivity extends AbstractActivity {
                 final Uri uri = Uri.parse(fileInfo);
                 fileInfo = getRingtonePathFromContentUri(context, uri);
             } catch (Exception e) {
+                Timber.e("Can't set MediaPlayer datasource: %s", e.getMessage());
             }
         }
 
@@ -229,6 +243,7 @@ public class HomeActivity extends AbstractActivity {
         return path;
     }
 
+    @SuppressWarnings("CPD-START")
     private void addDefaultButtons() {
         addButton(R.string.activar, R.raw.activar);
         addButton(R.string.ambulancia, R.raw.ambulancia);
@@ -249,6 +264,7 @@ public class HomeActivity extends AbstractActivity {
         addButton(R.string.izquierda, R.raw.izquierda);
         addButton(R.string.izquierdaizquierda, R.raw.izquierdaizquierda);
         addButton(R.string.lacamionetaimposible, R.raw.lacamionetaimposible);
+        addButton(R.string.jajaja, R.raw.jajajaja);
         addButton(R.string.meseguis, R.raw.meseguis);
         addButton(R.string.nahu, R.raw.nahuuu);
         addButton(R.string.nochedesexo, R.raw.nochedesexo);

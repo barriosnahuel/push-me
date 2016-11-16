@@ -5,10 +5,10 @@ package com.github.barriosnahuel.vossosunboton.feature.addbutton;
  */
 public class Sound {
 
-    private String name;
-    private String file;
+    private final String name;
+    private final String file;
 
-    public Sound(String name, String file) {
+    public Sound(final String name, final String file) {
         this.name = name;
         this.file = file;
     }
@@ -19,5 +19,13 @@ public class Sound {
 
     public String getFile() {
         return file;
+    }
+
+    @Override
+    public String toString() {
+        return "Sound{" +
+            "name='" + name + '\'' +
+            ", file='" + file + '\'' +
+            '}';
     }
 }

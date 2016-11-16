@@ -1,4 +1,5 @@
 apply plugin: 'com.android.application'
+apply plugin:'com.monits.staticCodeAnalysis'
 
 android {
     compileSdkVersion 24
@@ -22,6 +23,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+}
+
+staticCodeAnalysis {
+    findbugs = false
+    checkstyle = true
+    pmd = true
+    cpd = true
+    androidLint = true
+
+    ignoreErrors = false
+
+    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
 }
 
 dependencies {

@@ -9,7 +9,11 @@ import java.io.InputStream;
 /**
  * @author Nahuel Barrios, on 9/4/16.
  */
-public class FileUtils {
+public final class FileUtils {
+
+    private FileUtils() {
+        // Do nothing.
+    }
 
     public static void copy(File src, FileOutputStream fileOutputStream) throws IOException {
         InputStream in = new FileInputStream(src);

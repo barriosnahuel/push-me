@@ -17,8 +17,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
         setSupportActionBar((Toolbar) findViewById(R.id.base_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        final FrameLayout container = (FrameLayout) findViewById(R.id.base_container);
-        LayoutInflater.from(this).inflate(layoutResID, container);
+        LayoutInflater.from(this).inflate(layoutResID, (FrameLayout) findViewById(R.id.base_container));
     }
 
 }

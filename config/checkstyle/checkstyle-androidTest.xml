@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN"
-    "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.3//EN" "http://www.puppycrawl.com/dtds/configuration_1_3.dtd">
 <module name="Checker">
     <property name="severity" value="warning"/>
     <module name="TreeWalker">
         <property name="tabWidth" value="4"/>
         <module name="JavadocMethod">
-            <property name="scope" value="public"/>
-            <property name="allowMissingPropertyJavadoc" value="true"/>
+            <property name="scope" value="public" />
+            <property name="allowMissingPropertyJavadoc" value="true" />
         </module>
         <module name="CommentsIndentation"/>
         <module name="EmptyLineSeparator">
-            <property name="allowNoEmptyLineBetweenFields" value="true"/>
+            <property name="allowNoEmptyLineBetweenFields" value="true" />
             <property name="allowMultipleEmptyLines" value="false"/>
             <property name="allowMultipleEmptyLinesInsideClassMembers" value="false"/>
         </module>
@@ -43,7 +42,7 @@
         <module name="IllegalImport"/>
         <module name="RedundantImport"/>
         <module name="UnusedImports">
-            <property name="processJavadoc" value="true"/>
+            <property name="processJavadoc" value="true" />
         </module>
         <module name="AnonInnerLength">
             <property name="max" value="25"/>
@@ -62,15 +61,15 @@
         <module name="NeedBraces"/>
         <module name="RightCurly"/>
         <module name="CovariantEquals"/>
-        <!--        <module name="DoubleCheckedLocking"/>-->
+<!--        <module name="DoubleCheckedLocking"/>-->
         <module name="EmptyStatement"/>
-        <module name="EqualsAvoidNull"/>
-        <module name="EqualsHashCode"/>
+	<module name="EqualsAvoidNull"/>
+	<module name="EqualsHashCode"/>
         <module name="FallThrough"/>
-        <module name="MagicNumber">
+	<module name="MagicNumber">
             <property name="ignoreAnnotation" value="true"/>
         </module>
-        <module name="InterfaceIsType"/>
+	<module name="InterfaceIsType"/>
         <module name="PackageDeclaration"/>
         <module name="StringLiteralEquality"/>
         <module name="SuperClone"/>
@@ -108,8 +107,8 @@
         <!-- Allow comments to be accessible for checks -->
         <module name="FileContentsHolder"/>
         <module name="FinalLocalVariable">
-            <!-- The new better way, not usable until we fully migrate (and then, remove FOR_EACH_CLAUSE from FinalParameters) -->
-            <!--            <property name="validateEnhancedForLoopVariable" value="true"/>-->
+<!-- The new better way, not usable until we fully migrate (and then, remove FOR_EACH_CLAUSE from FinalParameters) -->
+<!--            <property name="validateEnhancedForLoopVariable" value="true"/>-->
         </module>
         <module name="FinalParameters">
             <property name="tokens" value="METHOD_DEF,CTOR_DEF,LITERAL_CATCH,FOR_EACH_CLAUSE"/>
@@ -130,16 +129,16 @@
         <!-- Avoid multiple spaces within code -->
         <module name="RegexpSinglelineJava">
             <property name="id" value="ExtraWhitespace"/>
-            <property name="format" value='\S(\s{2,}|\t)(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)'/>
+            <property name="format" value='\S(\s{2,}|\t)(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)' />
             <property name="message" value="There are some extra whitespaces in this line."/>
             <property name="ignoreComments" value="true"/>
         </module>
-        <module name="SuppressWarningsHolder"/>
+        <module name="SuppressWarningsHolder" />
     </module>
     <!-- Allow to disable checks with comments -->
     <module name="SuppressionCommentFilter"/>
     <!-- Allow to disable checks with @SuppressWarnings -->
-    <module name="SuppressWarningsFilter"/>
+    <module name="SuppressWarningsFilter" />
     <module name="SuppressionFilter">
         <property name="file" value="http://static.monits.com/checkstyle-suppressions.xml"/>
     </module>

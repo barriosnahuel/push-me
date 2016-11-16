@@ -1,7 +1,14 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'com.jakewharton.hugo'
 apply plugin:'com.monits.staticCodeAnalysis'
 
 android {
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
     compileSdkVersion 24
     buildToolsVersion "24.0.3"
 
@@ -43,6 +50,23 @@ dependencies {
     compile "com.android.support:support-v4:$supportLibrariesVersion"
 
     compile 'com.jakewharton.timber:timber:4.3.1'
+
+    androidLint 'com.monits:android-linters:1.3.0'
+
+    def stethoVersion = '1.4.1'
+    debugCompile("com.facebook.stetho:stetho:$stethoVersion") {
+        // Excluded because we couldn't apply dex-count plugin. ClassNotFoundException can be thrown when using Stetho
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+    // stetho-js-rhino lets you make things like https://github.com/facebook/stetho/tree/master/stetho-js-rhino#example
+    debugCompile("com.facebook.stetho:stetho-js-rhino:$stethoVersion") {
+        // Excluded because we couldn't apply dex-count plugin. ClassNotFoundException can be thrown when using Stetho
+        exclude group: 'com.google.code.findbugs', module: 'jsr305'
+    }
+
+    debugCompile 'com.squareup.leakcanary:leakcanary-android:1.5'
+
+    debugCompile 'com.nshmura:strictmode-notifier:0.9.3'
 
     testCompile 'junit:junit:4.12'
 }

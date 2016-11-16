@@ -1,18 +1,22 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 24
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "com.github.barriosnahuel.vossosunboton"
         minSdkVersion 18
-        targetSdkVersion 23
+        targetSdkVersion 24
         versionCode 1
         versionName '1.0.0'
     }
 
     buildTypes {
+        debug {
+            applicationIdSuffix ".debug"
+        }
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -21,9 +25,9 @@ android {
 }
 
 dependencies {
-    def playServicesVersion = '23.3.0'
-    compile "com.android.support:appcompat-v7:$playServicesVersion"
-    compile "com.android.support:support-v4:$playServicesVersion"
+    def supportLibrariesVersion = '24.2.1'
+    compile "com.android.support:appcompat-v7:$supportLibrariesVersion"
+    compile "com.android.support:support-v4:$supportLibrariesVersion"
 
     compile 'com.jakewharton.timber:timber:4.3.1'
 

@@ -47,7 +47,7 @@ public class HomeActivity extends AbstractActivity {
         final SoundDao soundsDao = new SoundDao();
 
         // specify an adapter (see also next example)
-        buttonsContainer.setAdapter(new SoundsAdapter(soundsDao.find(this)));
+        buttonsContainer.setAdapter(new SoundsAdapter(getResources(), soundsDao.find(this)));
     }
 
 }

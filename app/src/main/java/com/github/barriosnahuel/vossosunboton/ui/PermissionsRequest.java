@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.feature;
+package com.github.barriosnahuel.vossosunboton.ui;
 
 /**
  * Created by Nahuel Barrios on 11/12/16.

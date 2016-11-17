@@ -1,9 +1,9 @@
-package com.github.barriosnahuel.vossosunboton.feature.defaultaudios;
+package com.github.barriosnahuel.vossosunboton.data.local.defaultaudios;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.model.Sound;
+import com.github.barriosnahuel.vossosunboton.data.model.Sound;
 import java.util.ArrayList;
 import java.util.List;
 

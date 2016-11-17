@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.feature.home;
+package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.content.Context;
 import android.media.MediaPlayer;

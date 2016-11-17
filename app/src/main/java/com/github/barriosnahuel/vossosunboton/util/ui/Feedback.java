@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton;
+package com.github.barriosnahuel.vossosunboton.util.ui;
 
 import android.content.Context;
 import android.support.annotation.NonNull;

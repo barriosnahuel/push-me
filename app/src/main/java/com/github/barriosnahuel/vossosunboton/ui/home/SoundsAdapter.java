@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.feature.home;
+package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -11,7 +11,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.ToggleButton;
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.model.Sound;
+import com.github.barriosnahuel.vossosunboton.data.model.Sound;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
@@ -20,7 +20,7 @@ import timber.log.Timber;
 /**
  * Created by Nahuel Barrios on 11/16/16.
  */
-public class SoundsAdapter extends RecyclerView.Adapter<SoundViewHolder> {
+/* default */ class SoundsAdapter extends RecyclerView.Adapter<SoundViewHolder> {
 
     @NonNull
     private final List<Sound> sounds;

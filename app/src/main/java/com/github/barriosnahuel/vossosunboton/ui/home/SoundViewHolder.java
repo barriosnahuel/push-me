@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.feature.home;
+package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.support.v7.widget.RecyclerView;
 import android.widget.ToggleButton;

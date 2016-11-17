@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.model;
+package com.github.barriosnahuel.vossosunboton.data.model;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

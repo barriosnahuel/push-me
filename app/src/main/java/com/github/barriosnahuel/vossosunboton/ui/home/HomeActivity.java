@@ -1,16 +1,12 @@
-package com.github.barriosnahuel.vossosunboton.feature.home;
+package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import com.github.barriosnahuel.vossosunboton.AbstractActivity;
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.feature.addbutton.SoundDao;
-import com.github.barriosnahuel.vossosunboton.feature.defaultaudios.PackagedAudios;
-import com.github.barriosnahuel.vossosunboton.model.Sound;
-import java.util.List;
-import java.util.Set;
+import com.github.barriosnahuel.vossosunboton.data.manager.SoundDao;
+import com.github.barriosnahuel.vossosunboton.ui.AbstractActivity;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with
@@ -49,15 +45,9 @@ public class HomeActivity extends AbstractActivity {
         buttonsContainer.setLayoutManager(new LinearLayoutManager(this));
 
         final SoundDao soundsDao = new SoundDao();
-        final Set<Sound> localSounds = soundsDao.find(this);
-
-        final List<Sound> buttons = PackagedAudios.get(this);
-        for (final Sound sound : localSounds) {
-            buttons.add(0, sound);
-        }
 
         // specify an adapter (see also next example)
-        buttonsContainer.setAdapter(new SoundsAdapter(buttons));
+        buttonsContainer.setAdapter(new SoundsAdapter(soundsDao.find(this)));
     }
 
 }

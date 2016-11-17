@@ -1,8 +1,7 @@
-package com.github.barriosnahuel.vossosunboton.storage;
+package com.github.barriosnahuel.vossosunboton.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-
 import java.util.HashSet;
 import java.util.Set;
 

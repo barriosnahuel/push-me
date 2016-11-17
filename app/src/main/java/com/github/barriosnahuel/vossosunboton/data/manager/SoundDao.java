@@ -1,9 +1,11 @@
-package com.github.barriosnahuel.vossosunboton.feature.addbutton;
+package com.github.barriosnahuel.vossosunboton.data.manager;
 
 import android.content.Context;
-import com.github.barriosnahuel.vossosunboton.model.Sound;
-import com.github.barriosnahuel.vossosunboton.storage.Storage;
-import java.util.HashSet;
+import com.github.barriosnahuel.vossosunboton.data.local.Storage;
+import com.github.barriosnahuel.vossosunboton.data.local.defaultaudios.PackagedAudios;
+import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 /**
@@ -22,15 +24,15 @@ public class SoundDao {
         storage = new Storage();
     }
 
-    /* default */ void save(final Context context, final Sound sound) {
+    public void save(final Context context, final Sound sound) {
         final Set<String> names = storage.getAll(context, Keys.SOUNDS_NAME);
         names.add(sound.getName());
         storage.save(context, Keys.SOUNDS_NAME, names);
         storage.save(context, Keys.SOUNDS_FILE_NAME_PREFFIX_ + sound.getName(), sound.getFile());
     }
 
-    public Set<Sound> find(final Context context) {
-        final Set<Sound> sounds = new HashSet<>();
+    public List<Sound> find(final Context context) {
+        final List<Sound> sounds = new ArrayList<>();
 
         final Set<String> names = storage.getAll(context, Keys.SOUNDS_NAME);
 
@@ -38,6 +40,8 @@ public class SoundDao {
             final String fileName = storage.get(context, Keys.SOUNDS_FILE_NAME_PREFFIX_ + eachSoundName);
             sounds.add(new Sound(eachSoundName, fileName));
         }
+
+        sounds.addAll(PackagedAudios.get(context));
 
         return sounds;
     }

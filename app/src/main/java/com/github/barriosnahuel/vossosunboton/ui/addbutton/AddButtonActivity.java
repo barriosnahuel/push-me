@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.feature.addbutton;
+package com.github.barriosnahuel.vossosunboton.ui.addbutton;
 
 import android.Manifest;
 import android.content.DialogInterface;
@@ -18,13 +18,14 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-import com.github.barriosnahuel.vossosunboton.AbstractActivity;
-import com.github.barriosnahuel.vossosunboton.DeepLinks;
-import com.github.barriosnahuel.vossosunboton.Feedback;
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.feature.PermissionsRequest;
-import com.github.barriosnahuel.vossosunboton.model.Sound;
+import com.github.barriosnahuel.vossosunboton.data.manager.SoundDao;
+import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import com.github.barriosnahuel.vossosunboton.ui.AbstractActivity;
+import com.github.barriosnahuel.vossosunboton.ui.DeepLinks;
+import com.github.barriosnahuel.vossosunboton.ui.PermissionsRequest;
 import com.github.barriosnahuel.vossosunboton.util.file.FileUtils;
+import com.github.barriosnahuel.vossosunboton.util.ui.Feedback;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;

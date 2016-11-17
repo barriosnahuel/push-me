@@ -46,8 +46,9 @@ staticCodeAnalysis {
 
 dependencies {
     def supportLibrariesVersion = '24.2.1'
-    compile "com.android.support:appcompat-v7:$supportLibrariesVersion"
     compile "com.android.support:support-v4:$supportLibrariesVersion"
+    compile "com.android.support:appcompat-v7:$supportLibrariesVersion"
+    compile "com.android.support:recyclerview-v7:$supportLibrariesVersion"
 
     compile 'com.jakewharton.timber:timber:4.3.1'
 

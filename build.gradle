@@ -10,7 +10,7 @@ buildscript {
         //   > Could not find com.monits:java-pom:2.0-SNAPSHOT.
         // 1.3.0 (release) depends on 2.0-SNAPSHOT (snapshot :P)
         maven {
-            url 'http://nexus.monits.com/content/repositories/oss-releases'
+            url 'http://nexus.monits.com/content/repositories/oss-snapshots'
         }
     }
     dependencies {

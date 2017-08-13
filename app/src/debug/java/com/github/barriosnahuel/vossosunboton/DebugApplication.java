@@ -6,7 +6,6 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import com.facebook.stetho.Stetho;
 import com.nshmura.strictmodenotifier.StrictModeNotifier;
-import com.squareup.leakcanary.LeakCanary;
 import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
@@ -25,7 +24,6 @@ public class DebugApplication extends MainApplication {
         Timber.d("Creating DEBUG application...");
 
         Stetho.initializeWithDefaults(this);
-        LeakCanary.install(this);
         setupStrictModeNotifier();
     }
 
@@ -91,13 +89,10 @@ public class DebugApplication extends MainApplication {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             builder.detectAll();
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            builder.detectLeakedRegistrationObjects();
 
-                builder.detectLeakedRegistrationObjects();
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-                    builder.detectFileUriExposure();
-                }
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+                builder.detectFileUriExposure();
             }
 
             builder.detectLeakedSqlLiteObjects()

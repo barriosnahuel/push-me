@@ -91,18 +91,14 @@ public class AddButtonActivity extends AbstractActivity {
 
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
 
-        switch (requestCode) {
-            case PermissionsRequest.SAVE_NEW_AUDIO_FILE:
-                if (grantResults.length > 0
-                    && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+        if (requestCode == PermissionsRequest.SAVE_NEW_AUDIO_FILE) {
+            if (grantResults.length > 0
+                && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    saveNewButton();
-                } else {
-                    showPermissionExplanation();
-                }
-                break;
-            default:
-                break;
+                saveNewButton();
+            } else {
+                showPermissionExplanation();
+            }
         }
     }
 

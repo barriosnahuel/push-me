@@ -20,11 +20,6 @@
         <item name="android:paddingBottom">@dimen/material_horizontal_padding</item>
     </style>
 
-    <style name="MyCustomTheme.Subtitle">
-        <item name="android:layout_width">wrap_content</item>
-        <item name="android:layout_height">@dimen/material_subtitle_height</item>
-        <item name="android:gravity">center_vertical</item>
-    </style>
     <style name="MyCustomTheme.ButtonListItem">
         <!--<item name="android:capitalize">words</item>-->
     </style>

@@ -17,4 +17,5 @@
     <string name="addbutton_permission_positive">OK, save it!</string>
     <string name="addbutton_permission_negative">No, thanks</string>
     <string name="youre_an_idiot_error">Mmm I see, so you\'re hiding something…</string>
+    <string name="share_chooser_title">Share vía</string>
 </resources>

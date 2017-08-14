@@ -16,4 +16,5 @@
     <string name="addbutton_permission_positive">OK, guardalo!</string>
     <string name="addbutton_permission_negative">No, gracias</string>
     <string name="youre_an_idiot_error">Ah, veo que estas perseguido…</string>
+    <string name="share_chooser_title">Compartir vía</string>
 </resources>

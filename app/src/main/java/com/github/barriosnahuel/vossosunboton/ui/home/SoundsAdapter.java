@@ -1,6 +1,7 @@
 package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.database.Cursor;
 import android.media.MediaPlayer;
@@ -86,6 +87,22 @@ import timber.log.Timber;
 
         // TODO: 11/16/16 What if listener is still null?
         toggleButton.setOnClickListener(playbackClickListener);
+
+        toggleButton.setOnLongClickListener(view -> {
+            // TODO: 8/14/17 Decouple this!
+
+            Timber.d("Sharing... %s: %s", sound.getName(), sound.getFile());
+
+            final Intent shareIntent = new Intent();
+            shareIntent.setAction(Intent.ACTION_SEND);
+            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(sound.getFile()));
+            shareIntent.setType("audio/*");
+            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+            view.getContext().startActivity(
+                Intent.createChooser(shareIntent, view.getContext().getString(R.string.share_chooser_title)));
+
+            return true;
+        });
     }
 
     @Override

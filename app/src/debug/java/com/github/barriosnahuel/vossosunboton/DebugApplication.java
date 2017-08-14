@@ -33,12 +33,7 @@ public class DebugApplication extends MainApplication {
     protected void setupStrictModeNotifier() {
         StrictModeNotifier.install(this);
 
-        new Handler().post(new Runnable() {
-            @Override
-            public void run() {
-                setupStrictMode();
-            }
-        });
+        new Handler().post(this::setupStrictMode);
     }
 
     /**

@@ -1,6 +1,7 @@
 package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -20,7 +21,10 @@ public class HomeActivity extends AbstractActivity {
 
         setContentView(R.layout.activity_main);
 
-        getSupportActionBar().setHomeAsUpIndicator(R.mipmap.ic_launcher);
+        final ActionBar supportActionBar = getSupportActionBar();
+        if (supportActionBar != null) {
+            supportActionBar.setHomeAsUpIndicator(R.mipmap.ic_launcher);
+        }
 
         setupView();
     }
@@ -35,7 +39,7 @@ public class HomeActivity extends AbstractActivity {
     }
 
     private void setupView() {
-        final RecyclerView buttonsContainer = (RecyclerView) findViewById(R.id.buttons_container);
+        final RecyclerView buttonsContainer = findViewById(R.id.buttons_container);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView

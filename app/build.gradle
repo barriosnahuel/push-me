@@ -28,7 +28,7 @@ android {
             if (keystoreFile.exists() && propertiesFile.exists()) {
                 logger.warn('#### INFO: Release keystore will be used ####')
                 Properties properties = new Properties()
-                properties.load(new FileInputStream())
+                properties.load(new FileInputStream(propertiesFile))
 
                 keyAlias properties.getProperty('key.alias')
                 keyPassword properties.getProperty('key.password')

@@ -24,11 +24,10 @@ import com.github.barriosnahuel.vossosunboton.Feedback;
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.feature.PermissionsRequest;
 import com.github.barriosnahuel.vossosunboton.util.file.FileUtils;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.URI;
+import java.io.InputStream;
 import timber.log.Timber;
 
 /**
@@ -178,11 +177,14 @@ public class AddButtonActivity extends AbstractActivity {
         if (fileOutputStream != null) {
             try {
                 // TODO: 11/12/16 Run it on another thread
-                FileUtils.copy(new File(URI.create(uri.toString())), fileOutputStream);
-
-                soundsDao.save(this, new Sound(name.getText().toString(), targetPath));
-
-                feedbackMessage = R.string.addbutton_feedback_saved_ok;
+                final InputStream inputStream = getContentResolver().openInputStream(Uri.parse(uri.toString()));
+                if (inputStream == null) {
+                    Timber.e("Input stream obtained from the specified content URI is null: %s", uri.toString());
+                } else {
+                    FileUtils.copy(inputStream, fileOutputStream);
+                    soundsDao.save(this, new Sound(name.getText().toString(), targetPath));
+                    feedbackMessage = R.string.addbutton_feedback_saved_ok;
+                }
             } catch (final IOException e) {
                 Timber.e("Can't copy original audio");
             }

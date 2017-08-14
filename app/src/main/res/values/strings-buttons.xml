@@ -1,4 +1,5 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
+    <string name="activar_edited" translatable="false">Activar (edit)</string>
     <string name="activar" translatable="false">Activar</string>
     <string name="ambulancia" translatable="false">Ambulancia</string>
     <string name="banfield" translatable="false">Banfield</string>

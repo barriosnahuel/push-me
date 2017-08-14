@@ -20,8 +20,8 @@ public final class PackagedAudios {
     public static List<Sound> get(@NonNull final Context context) {
         final List<Sound> files = new ArrayList<>();
 
+        files.add(new Sound(context.getString(R.string.activar_edited), R.raw.podemosactivar));
         files.add(new Sound(context.getString(R.string.activar), R.raw.activar));
-        files.add(new Sound(context.getString(R.string.activar), R.raw.podemosactivar));
         files.add(new Sound(context.getString(R.string.ambulancia), R.raw.ambulancia));
         files.add(new Sound(context.getString(R.string.banfield), R.raw.banfield));
         files.add(new Sound(context.getString(R.string.campito), R.raw.campito));

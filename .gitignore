@@ -1,3 +1,7 @@
+# Signing certificates
+nahuelbarrios.keystore
+secure.properties
+
 # Built application files
 *.apk
 *.ap_

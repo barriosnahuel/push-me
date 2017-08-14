@@ -8,6 +8,7 @@
 - Static code checks using: SCA.
 - Test tools for the debug version: Stetho, different applicatonId and icon.
 - Share saved audios after long press.
+- Setup release signing certificate.
 
 ### Removed
 - Predefined audio messages.

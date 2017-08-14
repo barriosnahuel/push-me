@@ -4,6 +4,9 @@
 - Migrated to Gradle wrapper v4.1 as well as Android build tools.
 - Refactor
 
+### Removed
+- Predefined audio messages.
+
 ### New
 - Static code checks using: SCA.
 - Test tools for the debug version: Stetho, different applicatonId and icon.

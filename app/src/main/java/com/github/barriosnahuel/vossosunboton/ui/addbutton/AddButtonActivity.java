@@ -161,7 +161,7 @@ public class AddButtonActivity extends AbstractActivity {
 
     private void saveNewButton() {
         final String targetPath =
-            getExternalFilesDir(Environment.DIRECTORY_MUSIC) + "Button-" + System.currentTimeMillis();
+            getExternalFilesDir(Environment.DIRECTORY_MUSIC) + "Button-" + System.currentTimeMillis() + ".mp3";
 
         FileOutputStream fileOutputStream;
         try {

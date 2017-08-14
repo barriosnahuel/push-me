@@ -1,3 +1,13 @@
+## v1.1.0
+### Changed
+- Target API level and Support Library: 26 (Android O).
+- Migrated to Gradle wrapper v4.1 as well as Android build tools.
+- Refactor
+
+### New
+- Static code checks using: SCA.
+- Test tools for the debug version: Stetho, different applicatonId and icon.
+
 ## v1.0.1
 
 ### Fixed

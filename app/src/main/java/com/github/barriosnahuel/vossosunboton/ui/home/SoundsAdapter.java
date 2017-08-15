@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.ToggleButton;
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import hugo.weaving.DebugLog;
 import java.io.File;
 import java.io.FileInputStream;
 import java.util.List;
@@ -47,6 +48,7 @@ import timber.log.Timber;
         return new SoundViewHolder(button);
     }
 
+    @DebugLog
     @Override
     public void onBindViewHolder(final SoundViewHolder holder, final int position) {
         final ToggleButton toggleButton = holder.toggleButton;
@@ -142,15 +144,7 @@ import timber.log.Timber;
         }
 
         try {
-            if (android.os.Build.VERSION.SDK_INT < android.os.Build.VERSION_CODES.HONEYCOMB) {
-                try {
-                    setMediaPlayerDataSourcePreHoneyComb(mediaPlayer, fileInfo);
-                } catch (final Exception e) {
-                    setMediaPlayerDataSourcePostHoneyComb(context, mediaPlayer, fileInfo);
-                }
-            } else {
-                setMediaPlayerDataSourcePostHoneyComb(context, mediaPlayer, fileInfo);
-            }
+            setMediaPlayerDataSourcePostHoneyComb(context, mediaPlayer, fileInfo);
         } catch (final Exception e) {
             try {
                 setMediaPlayerDataSourceUsingFileDescriptor(mediaPlayer, fileInfo);
@@ -162,30 +156,26 @@ import timber.log.Timber;
         }
     }
 
-    private static void setMediaPlayerDataSourcePreHoneyComb(final MediaPlayer mp, final String fileInfo)
-        throws Exception {
-
-        mp.reset();
-        mp.setDataSource(fileInfo);
-    }
-
-    private static void setMediaPlayerDataSourcePostHoneyComb(final Context context, final MediaPlayer mp,
+    @DebugLog
+    private static void setMediaPlayerDataSourcePostHoneyComb(final Context context, final MediaPlayer mediaPlayer,
         final String fileInfo) throws Exception {
 
-        mp.reset();
-        mp.setDataSource(context, Uri.parse(Uri.encode(fileInfo)));
+        mediaPlayer.reset();
+        mediaPlayer.setDataSource(context, Uri.parse(Uri.encode(fileInfo)));
     }
 
-    private static void setMediaPlayerDataSourceUsingFileDescriptor(final MediaPlayer mp, final String fileInfo)
+    @DebugLog
+    private static void setMediaPlayerDataSourceUsingFileDescriptor(final MediaPlayer mediaPlayer, final String fileInfo)
         throws Exception {
 
         final File file = new File(fileInfo);
         final FileInputStream inputStream = new FileInputStream(file);
-        mp.reset();
-        mp.setDataSource(inputStream.getFD());
+        mediaPlayer.reset();
+        mediaPlayer.setDataSource(inputStream.getFD());
         inputStream.close();
     }
 
+    @DebugLog
     private static String getRingtoneUriFromPath(final Context context, final String path) {
         final Uri ringtonesUri = MediaStore.Audio.Media.getContentUriForPath(path);
         final Cursor ringtoneCursor = context.getContentResolver()
@@ -201,9 +191,10 @@ import timber.log.Timber;
         return ringtonesUri.toString();
     }
 
+    @DebugLog
     private static String getRingtonePathFromContentUri(final Context context, final Uri contentUri) {
-        final String[] proj = { MediaStore.Audio.Media.DATA };
-        final Cursor ringtoneCursor = context.getContentResolver().query(contentUri, proj, null, null, null);
+        final String[] projection = { MediaStore.Audio.Media.DATA };
+        final Cursor ringtoneCursor = context.getContentResolver().query(contentUri, projection, null, null, null);
         ringtoneCursor.moveToFirst();
 
         final String path = ringtoneCursor.getString(ringtoneCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));

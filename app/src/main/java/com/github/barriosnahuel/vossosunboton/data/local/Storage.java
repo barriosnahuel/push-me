@@ -2,6 +2,7 @@ package com.github.barriosnahuel.vossosunboton.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.support.annotation.NonNull;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -12,23 +13,23 @@ public class Storage {
 
     private static final String INTERNAL_STORAGE = "my-prefs";
 
-    public String get(Context context, String key) {
+    public String get(@NonNull final Context context, final String key) {
         return getSharedPreferences(context).getString(key, null);
     }
 
-    public Set<String> getAll(Context context, String key) {
-        return getSharedPreferences(context).getStringSet(key, new HashSet<String>());
+    public Set<String> getAll(@NonNull final Context context, final String key) {
+        return getSharedPreferences(context).getStringSet(key, new HashSet<>());
     }
 
-    private SharedPreferences getSharedPreferences(Context context) {
+    private SharedPreferences getSharedPreferences(@NonNull final Context context) {
         return context.getSharedPreferences(INTERNAL_STORAGE, Context.MODE_PRIVATE);
     }
 
-    public void save(Context context, String key, Set<String> strings) {
-        getSharedPreferences(context).edit().putStringSet(key, strings).commit();
+    public void save(@NonNull final Context context, final String key, final Set<String> strings) {
+        getSharedPreferences(context).edit().putStringSet(key, strings).apply();
     }
 
-    public void save(Context context, String key, String strings) {
-        getSharedPreferences(context).edit().putString(key, strings).commit();
+    public void save(@NonNull final Context context, final String key, final String strings) {
+        getSharedPreferences(context).edit().putString(key, strings).apply();
     }
 }

@@ -6,6 +6,7 @@ import android.os.StrictMode;
 import android.support.annotation.NonNull;
 import com.facebook.stetho.Stetho;
 import com.nshmura.strictmodenotifier.StrictModeNotifier;
+import com.squareup.leakcanary.LeakCanary;
 import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
@@ -23,6 +24,7 @@ public class DebugApplication extends MainApplication {
 
         Timber.d("Creating DEBUG application...");
 
+        LeakCanary.install(this);
         Stetho.initializeWithDefaults(this);
         setupStrictModeNotifier();
     }

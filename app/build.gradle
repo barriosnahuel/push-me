@@ -79,6 +79,8 @@ dependencies {
 
     //androidLint 'com.monits:android-linters:1.3.0'
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+
     def stethoVersion = '1.5.0'
     debugImplementation("com.facebook.stetho:stetho:$stethoVersion") {
         // Excluded because we couldn't apply dex-count plugin. ClassNotFoundException can be thrown when using Stetho

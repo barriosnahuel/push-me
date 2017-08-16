@@ -1,17 +1,19 @@
 ## v1.1.0
-### Changed
-- Target API level and Support Library: 26 (Android O).
-- Migrated to Gradle wrapper v4.1 as well as Android build tools.
-- Refactor
+
+### New
+- **Share saved audios after long press.**
+![bitmoji](https://render.bitstrips.com/v2/cpanel/8363918-196115675_6-s4-v1.png?transparent=1&palette=1&width=246)
+- Support for Android O (API level 26).
+- Static code checks to improve code quality using SCA.
+- Setup release signing certificate.
+- Test tools for the debug version: Stetho, different applicatonId and icon, Leak Canary.
 
 ### Fixed
 - Performance when scrolling.
 
-### New
-- Static code checks using: SCA.
-- Test tools for the debug version: Stetho, different applicatonId and icon, LeakCanary.
-- Share saved audios after long press.
-- Setup release signing certificate.
+### Changed
+- Migrated to Gradle wrapper v4.1 as well as Android build tools.
+- Refactor.
 
 ## v1.0.1
 

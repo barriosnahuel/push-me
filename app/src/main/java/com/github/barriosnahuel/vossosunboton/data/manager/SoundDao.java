@@ -2,6 +2,7 @@ package com.github.barriosnahuel.vossosunboton.data.manager;
 
 import android.content.Context;
 import com.github.barriosnahuel.vossosunboton.data.local.Storage;
+import com.github.barriosnahuel.vossosunboton.data.local.defaultaudios.PackagedAudios;
 import com.github.barriosnahuel.vossosunboton.data.model.Sound;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +41,7 @@ public class SoundDao {
             sounds.add(new Sound(eachSoundName, fileName));
         }
 
-//        Before adding this take into account that these Sounds doesn't have a path and it's used for the Share Intent.
-//        sounds.addAll(PackagedAudios.get(context));
+        sounds.addAll(PackagedAudios.get(context));
 
         return sounds;
     }

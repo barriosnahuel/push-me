@@ -16,7 +16,7 @@ android {
         applicationId "com.github.barriosnahuel.vossosunboton"
         minSdkVersion 18
         targetSdkVersion 26
-        versionCode 3
+        versionCode 4
         versionName '1.1.0'
     }
 

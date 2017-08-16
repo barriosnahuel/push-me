@@ -17,4 +17,5 @@
     <string name="addbutton_permission_negative">No, gracias</string>
     <string name="youre_an_idiot_error">Ah, veo que estas perseguido…</string>
     <string name="share_chooser_title">Compartir vía</string>
+    <string name="not_yet_implemented_error">Todavía no se puede compartir este audio</string>
 </resources>

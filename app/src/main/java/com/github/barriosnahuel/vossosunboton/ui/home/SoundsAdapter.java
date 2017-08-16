@@ -20,6 +20,7 @@ import android.widget.Checkable;
 import android.widget.ToggleButton;
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import com.github.barriosnahuel.vossosunboton.util.ui.Feedback;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -91,6 +92,11 @@ import timber.log.Timber;
 
         toggleButton.setOnLongClickListener(view -> {
             // TODO: 8/14/17 Decouple this!
+
+            if (sound.getFile() == null) {
+                Feedback.send(view.getContext(), R.string.not_yet_implemented_error);
+                return true;
+            }
 
             Timber.d("Sharing... %s: %s", sound.getName(), sound.getFile());
 

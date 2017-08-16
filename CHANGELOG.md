@@ -4,6 +4,10 @@
 - Migrated to Gradle wrapper v4.1 as well as Android build tools.
 - Refactor
 
+### Fixed
+- Performance when scrolling.
+- Crash when trying to share a packaged audio.
+
 ### New
 - Static code checks using: SCA.
 - Test tools for the debug version: Stetho, different applicatonId and icon, LeakCanary.

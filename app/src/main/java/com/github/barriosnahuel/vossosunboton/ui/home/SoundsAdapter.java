@@ -18,14 +18,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.ToggleButton;
+
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.model.Sound;
 import com.github.barriosnahuel.vossosunboton.util.ui.Feedback;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
+
 import javax.annotation.Nonnull;
+
 import timber.log.Timber;
 
 /**
@@ -155,7 +159,7 @@ import timber.log.Timber;
                 try {
                     setMediaPlayerDataSource(v.getContext(), mediaPlayer, sound.getFile(), sound.getRawRes());
                     mediaPlayer.prepare();
-                } catch (final Exception e) {
+                } catch (final IllegalStateException | IOException e) {
                     Timber.e("Oops, you did it again... xD: %s", e.getMessage());
                 }
 
@@ -183,73 +187,62 @@ import timber.log.Timber;
          */
         @SuppressWarnings("PMD.AvoidReassigningParameters")
         private void setMediaPlayerDataSource(
-            @NonNull final Context context
+                @NonNull final Context context
             , @NonNull final MediaPlayer mediaPlayer
             , @Nullable String fileInfo
-            , @RawRes final int rawResId) throws Exception {
+                , @RawRes final int rawResId) throws IOException {
 
-            if (rawResId > 0) {
-                setMediaPlayerDataSourceRawRes(context, mediaPlayer, rawResId);
-            } else {
-
+            if (rawResId == 0) {
                 if (fileInfo == null) {
                     throw new IllegalArgumentException("Either the sound Uri or the raw resource ID are required.");
                 }
 
                 if (fileInfo.startsWith(ContentResolver.SCHEME_CONTENT + "://")) {
-                    try {
-                        final Uri uri = Uri.parse(fileInfo);
-                        fileInfo = getRingtonePathFromContentUri(context, uri);
-                    } catch (final Exception e) {
-                        Timber.e("Can't set MediaPlayer datasource: %s", e.getMessage());
-                    }
+                    final Uri uri = Uri.parse(fileInfo);
+                    fileInfo = getRingtonePathFromContentUri(context, uri);
                 }
 
                 try {
                     setMediaPlayerDataSourcePostHoneyComb(context, mediaPlayer, fileInfo);
-                } catch (final Exception e) {
+                } catch (final IllegalStateException | IOException | IllegalArgumentException | SecurityException e) {
                     try {
                         setMediaPlayerDataSourceUsingFileDescriptor(mediaPlayer, fileInfo);
-                    } catch (final Exception ee) {
+                    } catch (final SecurityException | IllegalStateException | IllegalArgumentException | IOException ee) {
                         final String uri = getRingtoneUriFromPath(context, fileInfo);
                         mediaPlayer.reset();
                         mediaPlayer.setDataSource(uri);
                     }
                 }
+            } else {
+                setMediaPlayerDataSourceRawRes(context, mediaPlayer, rawResId);
             }
         }
 
         private void setMediaPlayerDataSourceRawRes(@NonNull final Context context,
-            @NonNull final MediaPlayer mediaPlayer,
-            @RawRes final int rawResId) {
+                                                    @NonNull final MediaPlayer mediaPlayer,
+                                                    @RawRes final int rawResId) {
 
-            final AssetFileDescriptor fileDescriptor = context.getResources().openRawResourceFd(rawResId);
-
-            try {
+            try (AssetFileDescriptor fileDescriptor = context.getResources().openRawResourceFd(rawResId)) {
                 mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(),
-                    fileDescriptor.getLength());
+                        fileDescriptor.getLength());
             } catch (final IOException e) {
                 Timber.e("Can't set data source from raw resource: %s", e.getMessage());
-            } finally {
-                try {
-                    fileDescriptor.close();
-                } catch (final IOException e) {
-                    Timber.e("Can't close raw resource file descriptor: %s", e.getMessage());
-                }
             }
         }
 
         private void setMediaPlayerDataSourcePostHoneyComb(@NonNull final Context context,
-            @NonNull final MediaPlayer mediaPlayer,
-            @Nonnull final String fileInfo) throws Exception {
+                                                           @NonNull final MediaPlayer mediaPlayer,
+                                                           @Nonnull final String fileInfo) throws IOException {
 
             mediaPlayer.reset();
             mediaPlayer.setDataSource(context, Uri.parse(Uri.encode(fileInfo)));
         }
 
-        private void setMediaPlayerDataSourceUsingFileDescriptor(@NonNull final MediaPlayer mediaPlayer,
-            @NonNull final String fileInfo)
-            throws Exception {
+        /**
+         * TODO: Stop ignoring this! Currently ignored because I'm upgrading dependencies version.
+         */
+        @SuppressWarnings("PMD.AvoidFileStream")
+        private void setMediaPlayerDataSourceUsingFileDescriptor(@NonNull final MediaPlayer mediaPlayer, @NonNull final String fileInfo) throws IOException {
 
             final File file = new File(fileInfo);
             final FileInputStream inputStream = new FileInputStream(file);

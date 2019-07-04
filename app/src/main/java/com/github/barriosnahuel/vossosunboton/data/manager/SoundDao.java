@@ -15,29 +15,27 @@ public class SoundDao {
 
     private final Storage storage;
 
-    private static final class Keys {
-        /* default */ static String SOUNDS_NAME = "sounds.name";
-        /* default */ static String SOUNDS_FILE_NAME_PREFFIX_ = "sounds.file.";
-    }
+        private static final String SOUNDS_NAME = "sounds.name";
+        private static final String SOUNDS_FILE_NAME_PREFFIX_ = "sounds.file.";
 
     public SoundDao() {
         storage = new Storage();
     }
 
     public void save(final Context context, final Sound sound) {
-        final Set<String> names = storage.getAll(context, Keys.SOUNDS_NAME);
+        final Set<String> names = storage.getAll(context, SOUNDS_NAME);
         names.add(sound.getName());
-        storage.save(context, Keys.SOUNDS_NAME, names);
-        storage.save(context, Keys.SOUNDS_FILE_NAME_PREFFIX_ + sound.getName(), sound.getFile());
+        storage.save(context, SOUNDS_NAME, names);
+        storage.save(context, SOUNDS_FILE_NAME_PREFFIX_ + sound.getName(), sound.getFile());
     }
 
     public List<Sound> find(final Context context) {
         final List<Sound> sounds = new ArrayList<>();
 
-        final Set<String> names = storage.getAll(context, Keys.SOUNDS_NAME);
+        final Set<String> names = storage.getAll(context, SOUNDS_NAME);
 
         for (final String eachSoundName : names) {
-            final String fileName = storage.get(context, Keys.SOUNDS_FILE_NAME_PREFFIX_ + eachSoundName);
+            final String fileName = storage.get(context, SOUNDS_FILE_NAME_PREFFIX_ + eachSoundName);
             sounds.add(new Sound(eachSoundName, fileName));
         }
 

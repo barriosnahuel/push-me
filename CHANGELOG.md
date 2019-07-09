@@ -1,3 +1,13 @@
+## v2.0.0
+### New
+- Support for Android P (API Level 28).
+
+### Changed
+- Many dependencies to the latest versions including Gradle, Android Build Tools and static code analyzers too.
+
+### Fixed
+- Many SCA suggestions.
+
 ## v1.1.0
 
 ### New

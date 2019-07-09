@@ -9,13 +9,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    compileSdkVersion 26
-    buildToolsVersion '26.0.1'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.github.barriosnahuel.vossosunboton"
         minSdkVersion 18
-        targetSdkVersion 26
+        targetSdkVersion 28
         versionCode 4
         versionName '1.1.0'
     }
@@ -70,18 +70,16 @@ staticCodeAnalysis {
 }
 
 dependencies {
-    def supportLibrariesVersion = '26.0.1'
+    def supportLibrariesVersion = '28.0.0'
     implementation "com.android.support:support-v4:$supportLibrariesVersion"
     implementation "com.android.support:appcompat-v7:$supportLibrariesVersion"
     implementation "com.android.support:recyclerview-v7:$supportLibrariesVersion"
 
     implementation 'com.jakewharton.timber:timber:4.5.1'
 
-    //androidLint 'com.monits:android-linters:1.3.0'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
-
-    def stethoVersion = '1.5.0'
+    def stethoVersion = '1.5.1'
     debugImplementation("com.facebook.stetho:stetho:$stethoVersion") {
         // Excluded because we couldn't apply dex-count plugin. ClassNotFoundException can be thrown when using Stetho
         exclude group:'com.google.code.findbugs', module:'jsr305'

@@ -4,6 +4,7 @@
 
 ### Changed
 - Many dependencies to the latest versions including Gradle, Android Build Tools and static code analyzers too.
+- Migration to Android X.
 
 ### Fixed
 - Many SCA suggestions.

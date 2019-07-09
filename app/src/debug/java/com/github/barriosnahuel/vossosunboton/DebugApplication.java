@@ -3,7 +3,7 @@ package com.github.barriosnahuel.vossosunboton;
 import android.os.Build;
 import android.os.Handler;
 import android.os.StrictMode;
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import com.facebook.stetho.Stetho;
 import com.nshmura.strictmodenotifier.StrictModeNotifier;
 import com.squareup.leakcanary.LeakCanary;

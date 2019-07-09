@@ -59,7 +59,7 @@ android {
 
 staticCodeAnalysis {
     findbugs = false
-    checkstyle = false // Disabled because it throws: "* What went wrong: Could not determine the dependencies of task ':app:checkstyleDebug'.  > Resolving configuration 'debugApk' directly is not allowed"
+    checkstyle = true
     pmd = true
     cpd = true
     androidLint = true
@@ -78,11 +78,7 @@ dependencies {
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
 
-    def stethoVersion = '1.5.1'
-    debugImplementation("com.facebook.stetho:stetho:$stethoVersion") {
-        // Excluded because we couldn't apply dex-count plugin. ClassNotFoundException can be thrown when using Stetho
-        exclude group:'com.google.code.findbugs', module:'jsr305'
-    }
+    debugImplementation 'com.facebook.stetho:stetho:1.5.1'
 
     debugImplementation 'com.nshmura:strictmode-notifier:0.9.3'
 

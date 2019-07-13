@@ -38,4 +38,12 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
+
+    /**
+     * Delete ajcore*.txt files generated from Hugo plugin.
+     */
+    def files = new FileNameFinder().getFileNames('.', 'ajcore*.txt')
+    files.each {
+        new File(it).delete()
+    }
 }

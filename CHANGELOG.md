@@ -1,6 +1,7 @@
 ## v2.0.0
 ### New
 - Support for Android P (API Level 28).
+- A Pull request template for GitHub.
 
 ### Changed
 - Many dependencies to the latest versions including Gradle, Android Build Tools and static code analyzers too.

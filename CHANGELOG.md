@@ -6,6 +6,7 @@
 - Many dependencies to the latest versions including Gradle, Android Build Tools and static code analyzers too.
 - Migration to Android X.
 - Checkstyle turned on again.
+- Circle CI config migrated to v2.1 using Orbs.
 
 ### Fixed
 - Many SCA suggestions.

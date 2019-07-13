@@ -2,17 +2,24 @@ version: 2.1
 orbs:
   android: circleci/android@0.2.0
 jobs:
-  "test":
+  ###
+  # Base job used for all jobs.
+  ##
+  default: &defaultJob
     executor: android/android
     steps:
       - checkout
+  "test":
+    # It will inherit the defaultJob.
+    <<: *defaultJob
+    steps:
       - run:
           name: "Run Tests"
           command: ./gradlew app:test
   "code-analysis":
-    executor: android/android
+    # It will inherit the defaultJob.
+    <<: *defaultJob
     steps:
-      - checkout
       - run:
           name: "Run Code Analyzers"
           command: ./gradlew app:check -x test
@@ -20,9 +27,9 @@ jobs:
           name: "Run Vital Release Checks"
           command: ./gradlew app:lintVitalRelease
   "build":
-    executor: android/android
+    # It will inherit the defaultJob.
+    <<: *defaultJob
     steps:
-      - checkout
       - run:
           name: "Run App Build"
           command: ./gradlew app:build -x check -x lintVitalRelease

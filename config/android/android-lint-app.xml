@@ -4,21 +4,19 @@
     <!-- The following are NOT the only checks that Lint runs, just severity overrides -->
 
     <!-- Correctness -->
-    <issue id="ApplySharedPref" severity="error" />
     <issue id="DefaultLocale" severity="warning" />
     <issue id="DuplicateIncludedIds" severity="error" />
-    <issue id="GradleDependency" severity="warning" />
+    <issue id="GradleDependency" severity="error" />
     <issue id="InflateParams" severity="error" />
     <issue id="InlinedApi" severity="error" />
     <issue id="InvalidPackage" severity="warning" />
     <issue id="MissingId" severity="error" />
-    <issue id="NewerVersionAvailable" severity="warning" />
-    <issue id="OldTargetApi" severity="warning" />
+    <issue id="NewerVersionAvailable" severity="error" />
+    <issue id="OldTargetApi" severity="error" />
     <issue id="PrivateResource" severity="error" />
     <issue id="Registered" severity="error" />
     <issue id="ScrollViewSize" severity="warning" />
-    <issue id="UnusedAttribute" severity="warning" />
-
+    <issue id="UnusedAttribute" severity="error" />
 
     <!-- Correctness:Messages -->
     <issue id="Typos" severity="error" />
@@ -52,7 +50,8 @@
     <issue id="MergeRootFrame" severity="error" />
     <issue id="NestedWeights" severity="error" />
     <issue id="ObsoleteLayoutParam" severity="error" />
-    <issue id="Overdraw" severity="warning" />
+    <issue id="ObsoleteSdkInt" severity="error" />
+    <issue id="Overdraw" severity="error" />
     <issue id="Recycle" severity="error" />
     <issue id="TooDeepLayout" severity="error" />
     <issue id="TooManyViews" severity="error" />
@@ -61,9 +60,9 @@
     <issue id="UnusedResources" severity="error">
         <ignore regexp=".*_dynamic.*" />
     </issue>
-    <issue id="UseCompoundDrawables" severity="warning" />
+    <issue id="UseCompoundDrawables" severity="error" />
     <issue id="UselessLeaf" severity="error" />
-    <issue id="UselessParent" severity="warning" />
+    <issue id="UselessParent" severity="error" />
     <issue id="UseSparseArrays" severity="error" />
     <issue id="UseValueOf" severity="error" />
     <issue id="ViewHolder" severity="error" />
@@ -87,6 +86,7 @@
     <issue id="SelectableText" severity="warning" />
     <issue id="TextFields" severity="error" />
     <issue id="ViewConstructor" severity="error" />
+    <issue id="Autofill" severity="error" />
 
     <!-- Accessibility -->
     <issue id="ClickableViewAccessibility" severity="warning" />

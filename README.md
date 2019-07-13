@@ -2,7 +2,7 @@
 
 ## Project status
 [![version](https://img.shields.io/badge/version-1.1.0-brightgreen.svg)]()
-[![Semver](http://img.shields.io/SemVer/2.0.0.png)](http://semver.org/spec/v2.0.0.html)
+[![Semver](https://img.shields.io/badge/SemVer-v2.0.0-green.svg)](http://semver.org/spec/v2.0.0.html)
 [![stable](https://img.shields.io/badge/stability-experimental-green.svg)](https://nodejs.org/api/documentation.html#documentation_stability_index)
 [![API](https://img.shields.io/badge/API-18%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=18)
 [![CircleCI](https://circleci.com/gh/barriosnahuel/push-me.svg?style=svg)](https://circleci.com/gh/barriosnahuel/push-me)

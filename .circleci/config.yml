@@ -2,6 +2,7 @@ version: 2.1
 orbs:
   android: circleci/android@0.2.0
 workflows:
-  "Build Workflow":
+  version: 2.1
+  "Check, Test & Build Workflow":
     jobs:
       - android/build

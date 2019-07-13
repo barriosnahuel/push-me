@@ -1,6 +1,7 @@
 ## v2.0.0
 ### New
 - Support for Android P (API Level 28).
+- Pull Requests template for contributors.
 - Firebase Analytics. 
 - Firebase Crashlytics.
 - Firebase Performance Monitoring.

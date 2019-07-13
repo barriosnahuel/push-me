@@ -1,7 +1,8 @@
 ## v2.0.0
 ### New
 - Support for Android P (API Level 28).
-- Firebase analytics. 
+- Firebase Analytics. 
+- Firebase Crashlytics. 
 
 ### Changed
 - Circle CI config migrated to v2.1 using Orbs.

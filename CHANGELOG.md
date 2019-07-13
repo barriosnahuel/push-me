@@ -2,6 +2,9 @@
 ### New
 - Support for Android P (API Level 28).
 - Pull Requests template for contributors.
+- Firebase Analytics. 
+- Firebase Crashlytics.
+- Firebase Performance Monitoring.
 
 ### Changed
 - Circle CI config migrated to v2.1 using Orbs.

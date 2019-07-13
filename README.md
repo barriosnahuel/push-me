@@ -17,7 +17,6 @@
 ## What's next?
 - UI redesign.
 - Delete audios.
-- Crash reporting.
 - Store listing.
 - Famous packaged audios.
 - Record new audios.

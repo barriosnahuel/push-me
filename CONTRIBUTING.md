@@ -8,3 +8,9 @@ We use Circle CI, so if you're gonna change the [config.yml](.circle/config.yml)
 - https://circleci.com/docs/2.0/local-cli
 
 > circleci config validate
+
+## Firebase Performance Monitoring
+
+You can filter logcat messages by:
+
+> adb logcat -s FirebasePerformance

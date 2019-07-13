@@ -11,6 +11,7 @@
 - Many dependencies to the latest versions including Gradle, Android Build Tools and static code analyzers too.
 - Migration to Android X.
 - Checkstyle turned on again.
+- New ':model' module in Kotlin.
 
 ### Fixed
 - Many SCA suggestions applied.

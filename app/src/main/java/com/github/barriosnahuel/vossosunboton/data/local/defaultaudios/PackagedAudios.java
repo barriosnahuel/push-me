@@ -5,7 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import com.github.barriosnahuel.vossosunboton.model.Sound;
 
 import java.util.ArrayList;
 import java.util.List;

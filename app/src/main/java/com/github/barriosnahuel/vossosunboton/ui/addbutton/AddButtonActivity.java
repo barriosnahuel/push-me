@@ -22,7 +22,7 @@ import androidx.core.content.ContextCompat;
 
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.manager.SoundDao;
-import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import com.github.barriosnahuel.vossosunboton.model.Sound;
 import com.github.barriosnahuel.vossosunboton.ui.AbstractActivity;
 import com.github.barriosnahuel.vossosunboton.ui.DeepLinks;
 import com.github.barriosnahuel.vossosunboton.ui.PermissionsRequest;

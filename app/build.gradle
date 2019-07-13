@@ -74,6 +74,8 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
 
+    implementation 'com.google.firebase:firebase-core:17.0.0'
+
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
@@ -84,3 +86,5 @@ dependencies {
 
     testImplementation 'junit:junit:4.12'
 }
+
+apply plugin: 'com.google.gms.google-services'

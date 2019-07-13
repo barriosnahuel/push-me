@@ -7,19 +7,17 @@ import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.manager.SoundDao;
 import com.github.barriosnahuel.vossosunboton.data.model.Sound;
@@ -28,12 +26,10 @@ import com.github.barriosnahuel.vossosunboton.ui.DeepLinks;
 import com.github.barriosnahuel.vossosunboton.ui.PermissionsRequest;
 import com.github.barriosnahuel.vossosunboton.util.file.FileUtils;
 import com.github.barriosnahuel.vossosunboton.util.ui.Feedback;
-
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-
 import timber.log.Timber;
 
 /**
@@ -105,11 +101,6 @@ public class AddButtonActivity extends AbstractActivity {
         }
     }
 
-    /**
-     * Check new button required data and saves the new sound for this user.
-     *
-     * @param view The caller view.
-     */
     public void saveButton(final View view) {
         if (TextUtils.isEmpty(name.getText())) {
             name.setError(getString(R.string.addbutton_name_is_required_error));
@@ -168,10 +159,6 @@ public class AddButtonActivity extends AbstractActivity {
             , PermissionsRequest.SAVE_NEW_AUDIO_FILE);
     }
 
-    /**
-     * TODO: Stop ignoring this! Currently ignored because I'm upgrading dependencies version.
-     */
-    @SuppressWarnings("PMD.AvoidFileStream")
     private void saveNewButton() {
         final String targetPath =
             getExternalFilesDir(Environment.DIRECTORY_MUSIC) + "Button-" + System.currentTimeMillis() + ".mp3";

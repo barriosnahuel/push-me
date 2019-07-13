@@ -1,0 +1,18 @@
+machine:
+  java:
+    version: openjdk8
+  environment:
+      ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+  override:
+    - echo y | android update sdk --no-ui --all --filter tools
+    - echo y | android update sdk --no-ui --all --filter platform-tools
+    - echo y | android update sdk --no-ui --all --filter build-tools-26.0.1
+    - echo y | android update sdk --no-ui --all --filter android-26
+    - echo y | android update sdk --no-ui --all --filter extra-android-m2repository
+    - ./gradlew -q dependencies
+
+test:
+  override:
+    - ./gradlew app:build

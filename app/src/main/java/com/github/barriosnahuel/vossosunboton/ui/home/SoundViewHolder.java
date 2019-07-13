@@ -1,6 +1,6 @@
 package com.github.barriosnahuel.vossosunboton.ui.home;
 
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.v7.widget.RecyclerView;
 import android.widget.ToggleButton;
 
 /**

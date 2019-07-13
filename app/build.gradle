@@ -1,8 +1,8 @@
-apply plugin:'com.android.application'
-apply plugin:'com.getkeepsafe.dexcount'
-apply plugin:'com.jakewharton.hugo'
-apply plugin:'com.monits.staticCodeAnalysis'
-apply plugin:'io.fabric'
+apply plugin: 'com.android.application'
+apply plugin: 'com.getkeepsafe.dexcount'
+apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'com.monits.staticCodeAnalysis'
+apply plugin: 'io.fabric'
 apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
@@ -49,6 +49,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
+            versionNameSuffix '-DEBUG'
         }
 
         release {

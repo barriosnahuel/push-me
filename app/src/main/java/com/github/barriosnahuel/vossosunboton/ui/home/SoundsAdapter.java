@@ -9,15 +9,16 @@ import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.provider.MediaStore;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.annotation.RawRes;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Checkable;
 import android.widget.ToggleButton;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.annotation.RawRes;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.model.Sound;
@@ -27,8 +28,6 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.List;
-
-import javax.annotation.Nonnull;
 
 import timber.log.Timber;
 
@@ -232,7 +231,7 @@ import timber.log.Timber;
 
         private void setMediaPlayerDataSourcePostHoneyComb(@NonNull final Context context,
                                                            @NonNull final MediaPlayer mediaPlayer,
-                                                           @Nonnull final String fileInfo) throws IOException {
+                                                           @NonNull final String fileInfo) throws IOException {
 
             mediaPlayer.reset();
             mediaPlayer.setDataSource(context, Uri.parse(Uri.encode(fileInfo)));

@@ -9,7 +9,7 @@
 - Circle CI config migrated to v2.1 using Orbs.
 
 ### Fixed
-- Many SCA suggestions.
+- Many SCA suggestions applied.
 
 ## v1.1.0
 

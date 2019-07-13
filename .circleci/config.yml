@@ -5,21 +5,19 @@ jobs:
   "test":
     executor: android/android
     steps:
-      - run: android/build
+      - checkout
       - run:
           name: "Run Tests"
           command: ./gradlew app:test
   "code-analysis":
     executor: android/android
     steps:
-      - run: android/build
       - run:
           name: "Run Code Analysis"
           command: ./gradlew app:check -x test
   "build":
     executor: android/android
     steps:
-      - run: android/build
       - run:
           name: "Run Code Analysis"
           command: ./gradlew app:build -x check
@@ -28,5 +26,5 @@ workflows:
   "Check, Test & Build Workflow":
     jobs:
       - test
-      - code-analysis
-      - build
+#      - code-analysis
+#      - build

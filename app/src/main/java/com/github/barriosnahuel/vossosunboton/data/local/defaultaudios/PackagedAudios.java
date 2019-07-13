@@ -1,9 +1,12 @@
 package com.github.barriosnahuel.vossosunboton.data.local.defaultaudios;
 
 import android.content.Context;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,6 +20,10 @@ public final class PackagedAudios {
         // Do nothing.
     }
 
+    /**
+     * @param context The execution context.
+     * @return a list of sample audios packaged within the app.
+     */
     public static List<Sound> get(@NonNull final Context context) {
         final List<Sound> files = new ArrayList<>();
 

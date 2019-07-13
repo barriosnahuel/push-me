@@ -2,7 +2,9 @@ package com.github.barriosnahuel.vossosunboton.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -13,10 +15,20 @@ public class Storage {
 
     private static final String INTERNAL_STORAGE = "my-prefs";
 
+    /**
+     * @param context the execution context.
+     * @param key     The key to look for.
+     * @return Current value or <code>null</code> instead.
+     */
     public String get(@NonNull final Context context, final String key) {
         return getSharedPreferences(context).getString(key, null);
     }
 
+    /**
+     * @param context the execution context.
+     * @param key     The key to look for.
+     * @return All values for the given <code>key</code> or an empty set instead.
+     */
     public Set<String> getAll(@NonNull final Context context, final String key) {
         return getSharedPreferences(context).getStringSet(key, new HashSet<>());
     }
@@ -25,11 +37,21 @@ public class Storage {
         return context.getSharedPreferences(INTERNAL_STORAGE, Context.MODE_PRIVATE);
     }
 
+    /**
+     * @param context the execution context.
+     * @param key     The key used to save the <code>strings</code>.
+     * @param strings values to save.
+     */
     public void save(@NonNull final Context context, final String key, final Set<String> strings) {
         getSharedPreferences(context).edit().putStringSet(key, strings).apply();
     }
 
-    public void save(@NonNull final Context context, final String key, final String strings) {
-        getSharedPreferences(context).edit().putString(key, strings).apply();
+    /**
+     * @param context the execution context.
+     * @param key     The key used to save the <code>string</code>.
+     * @param string  the value to save.
+     */
+    public void save(@NonNull final Context context, final String key, final String string) {
+        getSharedPreferences(context).edit().putString(key, string).apply();
     }
 }

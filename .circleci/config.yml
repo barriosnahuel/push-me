@@ -1,0 +1,35 @@
+version: 2.1
+orbs:
+  android: circleci/android@0.2.0
+jobs:
+  "test":
+    executor: android/android
+    steps:
+      - checkout
+      - run:
+          name: "Run Tests"
+          command: ./gradlew app:test
+  "code-analysis":
+    executor: android/android
+    steps:
+      - checkout
+      - run:
+          name: "Run Code Analyzers"
+          command: ./gradlew app:check -x test
+      - run:
+          name: "Run Vital Release Checks"
+          command: ./gradlew app:lintVitalRelease
+  "build":
+    executor: android/android
+    steps:
+      - checkout
+      - run:
+          name: "Run App Build"
+          command: ./gradlew app:build -x check -x lintVitalRelease
+workflows:
+  version: 2.1
+  "Pull Requests Workflow":
+    jobs:
+      - test
+      - code-analysis
+      - build

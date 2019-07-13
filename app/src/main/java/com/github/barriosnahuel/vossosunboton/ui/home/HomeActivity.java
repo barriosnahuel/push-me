@@ -1,9 +1,9 @@
 package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.os.Bundle;
-import android.support.v7.app.ActionBar;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.ActionBar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.MenuItem;
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.data.manager.SoundDao;

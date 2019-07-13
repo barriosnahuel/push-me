@@ -6,7 +6,7 @@
 - Firebase Crashlytics.
 - Firebase Performance Monitoring.
 - `ajcore*.txt` file deleted when running `./gradlew clean`.
-- Added Detekt static code analysis tool.
+- Added Detekt static code analysis tool, as well as Ktlint for code style conventions.
 
 ### Changed
 - Circle CI config migrated to v2.1 using Orbs.

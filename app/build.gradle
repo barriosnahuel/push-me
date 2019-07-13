@@ -9,15 +9,15 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    compileSdkVersion 28
-    buildToolsVersion '28.0.3'
+    compileSdkVersion 26
+    buildToolsVersion '26.0.1'
 
     defaultConfig {
         applicationId "com.github.barriosnahuel.vossosunboton"
         minSdkVersion 18
-        targetSdkVersion 28
+        targetSdkVersion 26
         versionCode 4
-        versionName '2.0.0'
+        versionName '1.1.0'
     }
 
     signingConfigs {
@@ -59,7 +59,7 @@ android {
 
 staticCodeAnalysis {
     findbugs = false
-    checkstyle = true
+    checkstyle = false // Disabled because it throws: "* What went wrong: Could not determine the dependencies of task ':app:checkstyleDebug'.  > Resolving configuration 'debugApk' directly is not allowed"
     pmd = true
     cpd = true
     androidLint = true
@@ -70,15 +70,22 @@ staticCodeAnalysis {
 }
 
 dependencies {
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
+    def supportLibrariesVersion = '26.0.1'
+    implementation "com.android.support:support-v4:$supportLibrariesVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibrariesVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibrariesVersion"
 
     implementation 'com.jakewharton.timber:timber:4.5.1'
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    //androidLint 'com.monits:android-linters:1.3.0'
 
-    debugImplementation 'com.facebook.stetho:stetho:1.5.1'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.5.1'
+
+    def stethoVersion = '1.5.0'
+    debugImplementation("com.facebook.stetho:stetho:$stethoVersion") {
+        // Excluded because we couldn't apply dex-count plugin. ClassNotFoundException can be thrown when using Stetho
+        exclude group:'com.google.code.findbugs', module:'jsr305'
+    }
 
     debugImplementation 'com.nshmura:strictmode-notifier:0.9.3'
 

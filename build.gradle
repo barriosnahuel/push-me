@@ -6,9 +6,9 @@ buildscript {
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.4.2'
-        classpath 'com.monits:static-code-analysis-plugin:2.6.10'
-        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.6'
+        classpath 'com.android.tools.build:gradle:3.0.0-beta2'
+        classpath 'com.monits:static-code-analysis-plugin:2.5.0'
+        classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.7.3'
         classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
@@ -17,8 +17,8 @@ buildscript {
 }
 
 wrapper {
-    gradleVersion = '5.5'
-    distributionType = Wrapper.DistributionType.BIN
+    gradleVersion = '4.1'
+    distributionType = Wrapper.DistributionType.ALL
 }
 
 allprojects {

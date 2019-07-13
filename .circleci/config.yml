@@ -1,8 +1,29 @@
 version: 2.1
 orbs:
   android: circleci/android@0.2.0
+jobs:
+  "test":
+    executor: android/android
+    steps:
+      - run:
+          name: "Run Tests"
+          command: ./gradlew app:test
+  "code-analysis":
+    executor: android/android
+    steps:
+      - run:
+          name: "Run Code Analysis"
+          command: ./gradlew app:check -x test
+  "build":
+    executor: android/android
+    steps:
+      - run:
+          name: "Run Code Analysis"
+          command: ./gradlew app:build -x check
 workflows:
   version: 2.1
   "Check, Test & Build Workflow":
     jobs:
-      - android/build
+      - test
+      - code-analysis
+      - build

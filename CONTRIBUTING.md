@@ -4,7 +4,7 @@
 
 
 ## Continuous Integration
-We use Circle CI, so if you're gonna change the [config.yml](.circle/config.yml) file you can check the config using the local CLI.
+We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.yml) file you can check the config using the local CLI.
 - https://circleci.com/docs/2.0/local-cli
 
 > circleci config validate

@@ -21,7 +21,7 @@ import androidx.annotation.RawRes;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import com.github.barriosnahuel.vossosunboton.model.Sound;
 import com.github.barriosnahuel.vossosunboton.util.ui.Feedback;
 
 import java.io.File;

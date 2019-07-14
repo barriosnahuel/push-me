@@ -1,9 +1,11 @@
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+apply plugin: 'com.google.firebase.firebase-perf'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'com.jakewharton.hugo'
 apply plugin: 'com.monits.staticCodeAnalysis'
-apply plugin: 'io.fabric'
-apply plugin: 'com.google.firebase.firebase-perf'
 
 android {
     compileOptions {
@@ -73,6 +75,8 @@ staticCodeAnalysis {
 }
 
 dependencies {
+    implementation project(':model')
+
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'

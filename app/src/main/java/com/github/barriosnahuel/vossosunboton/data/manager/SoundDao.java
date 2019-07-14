@@ -4,7 +4,7 @@ import android.content.Context;
 
 import com.github.barriosnahuel.vossosunboton.data.local.Storage;
 import com.github.barriosnahuel.vossosunboton.data.local.defaultaudios.PackagedAudios;
-import com.github.barriosnahuel.vossosunboton.data.model.Sound;
+import com.github.barriosnahuel.vossosunboton.model.Sound;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -72,6 +72,7 @@ out/
 ### Static Code Analyzers
 config/*
 !config/android/android-lint-app.xml
+!config/detekt/detekt-config.yml
 
 ### Hugo plugin
 ajcore*.txt

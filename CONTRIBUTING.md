@@ -14,3 +14,6 @@ We use Circle CI, so if you're gonna change the [config.yml](.circle/config.yml)
 You can filter logcat messages by:
 
 > adb logcat -s FirebasePerformance
+
+## Resources
+- Icon generated using: http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html

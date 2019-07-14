@@ -23,8 +23,4 @@
 
 
 ## Contributing
-Please feel free to share any suggestion or directly make a pull request.
-
-
-### Resources
-- Icon generated using: http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html
+Please feel free to share any suggestion or make a pull request. Just check the [contributing cheatsheet](CONTRIBUTING.md) before ;)

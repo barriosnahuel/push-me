@@ -14,6 +14,7 @@
 - Migration to Android X.
 - Checkstyle turned on again.
 - New ':model' module in Kotlin.
+- New ':commons_file' and ':commons_android' modules.
 
 ### Fixed
 - Many SCA suggestions applied.

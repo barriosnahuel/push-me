@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.StringRes;
 
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.util.intent.SafeIntent;
+import com.github.barriosnahuel.vossosunboton.commons.android.intent.SafeIntent;
 
 /**
  * Created by Nahuel Barrios on 11/12/16.

@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.util.ui;
+package com.github.barriosnahuel.vossosunboton.commons.android.ui;
 
 import android.content.Context;
 import android.widget.Toast;

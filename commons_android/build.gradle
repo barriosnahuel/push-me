@@ -1,0 +1,36 @@
+apply plugin: 'com.android.library'
+apply plugin: 'com.monits.staticCodeAnalysis'
+
+android {
+    compileSdkVersion 28
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 28
+    }
+
+    resourcePrefix 'commons_android_'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+staticCodeAnalysis {
+    findbugs = false
+    checkstyle = true
+    pmd = true
+    cpd = true
+    androidLint = true
+
+    ignoreErrors = false
+
+    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
+}
+
+dependencies {
+    implementation 'androidx.annotation:annotation:1.1.0'
+}

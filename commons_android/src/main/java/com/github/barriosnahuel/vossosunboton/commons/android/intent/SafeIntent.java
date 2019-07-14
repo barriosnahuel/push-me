@@ -1,8 +1,9 @@
-package com.github.barriosnahuel.vossosunboton.util.intent;
+package com.github.barriosnahuel.vossosunboton.commons.android.intent;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 

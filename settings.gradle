@@ -1,2 +1,4 @@
 include ':model',
+        ':commons_file',
+        ':commons_android',
         ':app'

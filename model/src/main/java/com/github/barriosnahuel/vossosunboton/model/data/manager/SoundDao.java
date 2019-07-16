@@ -1,10 +1,10 @@
-package com.github.barriosnahuel.vossosunboton.data.manager;
+package com.github.barriosnahuel.vossosunboton.model.data.manager;
 
 import android.content.Context;
 
-import com.github.barriosnahuel.vossosunboton.data.local.Storage;
-import com.github.barriosnahuel.vossosunboton.data.local.defaultaudios.PackagedAudios;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
+import com.github.barriosnahuel.vossosunboton.model.data.local.Storage;
+import com.github.barriosnahuel.vossosunboton.model.data.local.defaultaudios.PackagedAudios;
 
 import java.util.ArrayList;
 import java.util.List;

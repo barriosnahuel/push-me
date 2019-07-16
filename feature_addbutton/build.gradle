@@ -1,8 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.monits.staticCodeAnalysis'
-apply plugin: 'kotlin-android'
-apply plugin: 'io.gitlab.arturbosch.detekt'
-apply from: '../ktlint.gradle'
 
 android {
     compileSdkVersion 28
@@ -12,7 +9,7 @@ android {
         targetSdkVersion 28
     }
 
-    resourcePrefix 'model_'
+    resourcePrefix 'feature_addbutton_'
 
     buildTypes {
         release {
@@ -34,12 +31,14 @@ staticCodeAnalysis {
     androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
 }
 
-detekt {
-    config = files("../config/detekt/detekt-config.yml")
-}
-
 dependencies {
-    implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.41'
+    implementation project(':feature_base')
+    implementation project(':commons_android')
+    implementation project(':commons_file')
+    implementation project(':model')
+
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 
     implementation 'androidx.annotation:annotation:1.1.0'
 }

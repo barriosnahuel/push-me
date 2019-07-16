@@ -77,6 +77,8 @@ staticCodeAnalysis {
 dependencies {
     implementation project(':commons_file')
     implementation project(':commons_android')
+    implementation project(':feature_base')
+    implementation project(':feature_addbutton')
     implementation project(':model')
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'

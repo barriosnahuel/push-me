@@ -1,4 +1,6 @@
 include ':model',
         ':commons_file',
         ':commons_android',
+        ':feature_base',
+        ':feature_addbutton',
         ':app'

@@ -1,13 +1,11 @@
-package com.github.barriosnahuel.vossosunboton.ui;
+package com.github.barriosnahuel.vossosunboton.feature.base;
 
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.StringRes;
 
-import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.commons.android.intent.SafeIntent;
 
 /**
@@ -15,15 +13,13 @@ import com.github.barriosnahuel.vossosunboton.commons.android.intent.SafeIntent;
  */
 public enum DeepLinks {
 
-    HOME(R.string.deeplink_home_host, R.string.deeplink_home_path);
+    HOME("home", "/");
 
-    @StringRes
-    private final int host;
+    private final String host;
 
-    @StringRes
-    private final int path;
+    private final String path;
 
-    DeepLinks(@StringRes final int host, @StringRes final int path) {
+    DeepLinks(final String host, final String path) {
         this.host = host;
         this.path = path;
     }
@@ -36,9 +32,9 @@ public enum DeepLinks {
     public String get(final Context context) {
         return String.format(
                 "%s://%s%s"
-                , context.getString(R.string.deeplink_app_scheme)
-                , context.getString(host)
-                , context.getString(path)
+                , "sosunboton"
+                , host
+                , path
         );
     }
 

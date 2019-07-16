@@ -1,13 +1,15 @@
 package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.os.Bundle;
+import android.view.MenuItem;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import android.view.MenuItem;
+
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.data.manager.SoundDao;
-import com.github.barriosnahuel.vossosunboton.ui.AbstractActivity;
+import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity;
+import com.github.barriosnahuel.vossosunboton.model.data.manager.SoundDao;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with

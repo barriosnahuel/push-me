@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest package="com.github.barriosnahuel.vossosunboton"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.github.barriosnahuel.vossosunboton">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:name=".MainApplication"
@@ -19,33 +19,20 @@
             android:launchMode="singleTask">
 
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
             <intent-filter>
-                <action android:name="android.intent.action.VIEW"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <category android:name="android.intent.category.BROWSABLE"/>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
                 <data
-                    android:host="@string/deeplink_home_host"
-                    android:path="@string/deeplink_home_path"
-                    android:scheme="@string/deeplink_app_scheme"
-                />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".ui.addbutton.AddButtonActivity"
-            android:label="@string/addbutton_activity_label"
-            android:launchMode="singleTask"
-            android:parentActivityName=".ui.home.HomeActivity"
-            android:windowSoftInputMode="adjustResize">
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEND"/>
-                <category android:name="android.intent.category.DEFAULT"/>
-                <data android:mimeType="audio/*"/>
+                    android:host="home"
+                    android:path="/"
+                    android:scheme="sosunboton" />
             </intent-filter>
         </activity>
 

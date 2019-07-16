@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.data.local;
+package com.github.barriosnahuel.vossosunboton.model.data.local;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -30,7 +30,7 @@ public class Storage {
      * @return All values for the given <code>key</code> or an empty set instead.
      */
     public Set<String> getAll(@NonNull final Context context, final String key) {
-        return getSharedPreferences(context).getStringSet(key, new HashSet<>());
+        return getSharedPreferences(context).getStringSet(key, new HashSet<String>());
     }
 
     private SharedPreferences getSharedPreferences(@NonNull final Context context) {

@@ -1,11 +1,11 @@
-package com.github.barriosnahuel.vossosunboton.ui;
+package com.github.barriosnahuel.vossosunboton.feature.base;
+
+import android.view.LayoutInflater;
+import android.widget.FrameLayout;
 
 import androidx.annotation.LayoutRes;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import android.view.LayoutInflater;
-import android.widget.FrameLayout;
-import com.github.barriosnahuel.vossosunboton.R;
 
 /**
  * @author Nahuel Barrios, on 9/4/16.

@@ -1,7 +1,8 @@
 package com.github.barriosnahuel.vossosunboton.ui.home;
 
-import androidx.recyclerview.widget.RecyclerView;
 import android.widget.ToggleButton;
+
+import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * Created by Nahuel Barrios on 11/16/16.
@@ -10,7 +11,7 @@ import android.widget.ToggleButton;
 
     /* default */ ToggleButton toggleButton;
 
-    /* default */ SoundViewHolder(ToggleButton v) {
+    /* default */ SoundViewHolder(final ToggleButton v) {
         super(v);
         toggleButton = v;
     }

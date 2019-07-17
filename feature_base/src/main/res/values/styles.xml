@@ -1,13 +1,13 @@
 <resources>
 
-    <style name="MyCustomTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textSize">@dimen/font_size_default</item>
+    <style name="feature_base_MyCustomTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/feature_base_colorPrimary</item>
+        <item name="colorPrimaryDark">@color/feature_base_colorPrimaryDark</item>
+        <item name="colorAccent">@color/feature_base_colorAccent</item>
+        <item name="android:textSize">@dimen/feature_base_font_size_default</item>
     </style>
 
-    <style name="MyCustomTheme.ButtonListItem">
+    <style name="feature_base_MyCustomTheme.ButtonListItem">
         <!--<item name="android:capitalize">words</item>-->
     </style>
 

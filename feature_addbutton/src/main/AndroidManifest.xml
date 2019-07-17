@@ -4,7 +4,7 @@
     <application>
         <activity
             android:name="com.github.barriosnahuel.vossosunboton.feature.addbutton.AddButtonActivity"
-            android:label="@string/addbutton_activity_label"
+            android:label="@string/feature_addbutton_activity_label"
             android:launchMode="singleTask"
             android:parentActivityName=".ui.home.HomeActivity"
             android:windowSoftInputMode="adjustResize">

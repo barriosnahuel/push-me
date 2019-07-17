@@ -52,18 +52,18 @@ public class AddButtonActivity extends AbstractActivity {
     @Override
     protected void onCreate(@Nullable final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_button);
+        setContentView(R.layout.feature_addbutton_activity_add_button);
 
-        getSupportActionBar().setTitle(R.string.addbutton_activity_title);
+        getSupportActionBar().setTitle(R.string.feature_addbutton_activity_title);
 
         uri = getIntent().getParcelableExtra(Intent.EXTRA_STREAM);
         if (uri == null) {
-            Feedback.send(this, R.string.addbutton_missing_parameter_error);
+            Feedback.send(this, R.string.feature_addbutton_missing_parameter_error);
         }
 
         name = (EditText) findViewById(R.id.addbutton_name);
         if (name == null) {
-            Feedback.send(this, R.string.general_error_contact_support);
+            Feedback.send(this, R.string.feature_base_general_error_contact_support);
         } else {
             name.setOnEditorActionListener(new TextView.OnEditorActionListener() {
                 @Override
@@ -111,15 +111,15 @@ public class AddButtonActivity extends AbstractActivity {
      */
     public void saveButton(final View view) {
         if (TextUtils.isEmpty(name.getText())) {
-            name.setError(getString(R.string.addbutton_name_is_required_error));
+            name.setError(getString(R.string.feature_addbutton_name_is_required_error));
         } else {
             checkRequiredPermissions();
         }
     }
 
     private void checkRequiredPermissions() {
-        if (PackageManager.PERMISSION_GRANTED ==
-            ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+        if (PackageManager.PERMISSION_GRANTED
+                == ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
 
             saveNewButton();
         } else {
@@ -141,18 +141,18 @@ public class AddButtonActivity extends AbstractActivity {
 
     private void showPermissionExplanation() {
         new AlertDialog.Builder(this)
-            .setTitle(R.string.permission_required)
-            .setMessage(R.string.addbutton_permission_required_error)
-            .setPositiveButton(R.string.addbutton_permission_positive, new DialogInterface.OnClickListener() {
+                .setTitle(R.string.feature_addbutton_permission_required)
+                .setMessage(R.string.feature_addbutton_permission_required_error)
+                .setPositiveButton(R.string.feature_addbutton_permission_positive, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(final DialogInterface dialog, final int which) {
                     requestStoragePermission();
                 }
             })
-            .setNegativeButton(R.string.addbutton_permission_negative, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.feature_addbutton_permission_negative, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(final DialogInterface dialog, final int which) {
-                    Feedback.send(AddButtonActivity.this, R.string.youre_an_idiot_error);
+                    Feedback.send(AddButtonActivity.this, R.string.feature_addbutton_youre_an_idiot_error);
                 }
             }).show();
     }
@@ -183,7 +183,7 @@ public class AddButtonActivity extends AbstractActivity {
             fileOutputStream = null;
         }
 
-        int feedbackMessage = R.string.general_error_contact_support;
+        int feedbackMessage = R.string.feature_base_general_error_contact_support;
         if (fileOutputStream != null) {
             try {
                 // TODO: 11/12/16 Run it on another thread
@@ -193,7 +193,7 @@ public class AddButtonActivity extends AbstractActivity {
                 } else {
                     FileUtils.copy(inputStream, fileOutputStream);
                     soundsDao.save(this, new Sound(name.getText().toString(), targetPath));
-                    feedbackMessage = R.string.addbutton_feedback_saved_ok;
+                    feedbackMessage = R.string.feature_addbutton_feedback_saved_ok;
                 }
             } catch (final IOException e) {
                 Timber.e("Can't copy original audio");
@@ -209,9 +209,9 @@ public class AddButtonActivity extends AbstractActivity {
 
     @Override
     public String toString() {
-        return "AddButtonActivity{" +
-            "uri=" + uri +
-            ", name=" + name +
-            '}';
+        return "AddButtonActivity{"
+                + "uri=" + uri
+                + ", name=" + name
+                + '}';
     }
 }

@@ -53,7 +53,7 @@ import timber.log.Timber;
 
     /* default */ SoundsAdapter(@NonNull final Resources resources, @NonNull final List<Sound> sounds) {
         this.sounds = sounds;
-        marginPx = resources.getDimensionPixelSize(R.dimen.material_horizontal_padding);
+        marginPx = resources.getDimensionPixelSize(R.dimen.feature_base_material_horizontal_padding);
         mediaPlayer = new MediaPlayer();
     }
 
@@ -241,7 +241,8 @@ import timber.log.Timber;
          * TODO: Stop ignoring this! Currently ignored because I'm upgrading dependencies version.
          */
         @SuppressWarnings("PMD.AvoidFileStream")
-        private void setMediaPlayerDataSourceUsingFileDescriptor(@NonNull final MediaPlayer mediaPlayer, @NonNull final String fileInfo) throws IOException {
+        private void setMediaPlayerDataSourceUsingFileDescriptor(@NonNull final MediaPlayer mediaPlayer, @NonNull final String fileInfo)
+                throws IOException {
 
             final File file = new File(fileInfo);
             final FileInputStream inputStream = new FileInputStream(file);

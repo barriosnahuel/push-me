@@ -1,45 +1,45 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <string name="activar_edited" translatable="false">Activar (edit)</string>
-    <string name="activar" translatable="false">Activar</string>
-    <string name="ambulancia" translatable="false">Ambulancia</string>
-    <string name="banfield" translatable="false">Banfield</string>
-    <string name="campito" translatable="false">Campito</string>
-    <string name="careta" translatable="false">Careta</string>
-    <string name="chimichimi" translatable="false">Chimi Chimi</string>
-    <string name="corrientes" translatable="false">Corrientes</string>
-    <string name="crosscountry" translatable="false">Cross Country</string>
-    <string name="derecha" translatable="false">Derecha</string>
-    <string name="dondeestan" translatable="false">Donde Estan</string>
-    <string name="dondeestan2" translatable="false">Donde Estan 2</string>
-    <string name="dondeestas" translatable="false">Donde Estas</string>
-    <string name="estamosyendo" translatable="false">Estamos Yendo</string>
-    <string name="guardaconcramer" translatable="false">Guarda Cramer</string>
-    <string name="guardaeltaxi" translatable="false">Guarda El Taxi</string>
-    <string name="izquierda" translatable="false">Izquierda</string>
-    <string name="izquierdaizquierda" translatable="false">Izquierda Izquierda</string>
-    <string name="lacamionetaimposible" translatable="false">Imposible No Ver</string>
-    <string name="meseguis" translatable="false">Me Seguis</string>
-    <string name="nahu" translatable="false">Nahu</string>
-    <string name="otrotema" translatable="false">Otro Tema</string>
-    <string name="pampayvinedos" translatable="false">Pampa Y Viñedos</string>
-    <string name="parademandarmsjs" translatable="false">Para De Mandar Msjs</string>
-    <string name="pasaloenverdeoamarillo" translatable="false">Pasalo Verde O Amarillo</string>
-    <string name="pelotudomarchaatras" translatable="false">Pelotudo Marcha Atras</string>
-    <string name="pepa" translatable="false">Pepa</string>
-    <string name="pickypicky" translatable="false">Picky Picky</string>
-    <string name="pistera" translatable="false">Pistera</string>
-    <string name="poracahastaelsemaforo" translatable="false">Por Aca Hasta El Semaforo</string>
-    <string name="poronga" translatable="false">Poronga</string>
-    <string name="quepasaconnahu" translatable="false">Que Pasa Con Nahu</string>
-    <string name="radio" translatable="false">Radio</string>
-    <string name="todosimulado" translatable="false">Todo Simulado</string>
-    <string name="trescientosocholacon" translatable="false">308 La Con</string>
-    <string name="unahorahaciendoluces" translatable="false">1 Hora Haciendo Luces</string>
-    <string name="verdeoamarillo" translatable="false">Verde O Amarillo</string>
-    <string name="nochedesexo" translatable="false">Noche De Sexo</string>
-    <string name="chiquichiqui" translatable="false">Chiqui Chiqui Chiqui</string>
-    <string name="quierofiesta" translatable="false">Quiero Fiesta</string>
-    <string name="ochominutos" translatable="false">8 Minutos</string>
-    <string name="tresminutos" translatable="false">3 Minutos</string>
-    <string name="jajaja" translatable="false" tools:ignore="Typos">Ja Ja Ja</string>
+    <string name="model_sample_button_activar_edited" translatable="false">Activar (edit)</string>
+    <string name="model_sample_button_activar" translatable="false">Activar</string>
+    <string name="model_sample_button_ambulancia" translatable="false">Ambulancia</string>
+    <string name="model_sample_button_banfield" translatable="false">Banfield</string>
+    <string name="model_sample_button_campito" translatable="false">Campito</string>
+    <string name="model_sample_button_careta" translatable="false">Careta</string>
+    <string name="model_sample_button_chimichimi" translatable="false">Chimi Chimi</string>
+    <string name="model_sample_button_corrientes" translatable="false">Corrientes</string>
+    <string name="model_sample_button_crosscountry" translatable="false">Cross Country</string>
+    <string name="model_sample_button_derecha" translatable="false">Derecha</string>
+    <string name="model_sample_button_dondeestan" translatable="false">Donde Estan</string>
+    <string name="model_sample_button_dondeestan2" translatable="false">Donde Estan 2</string>
+    <string name="model_sample_button_dondeestas" translatable="false">Donde Estas</string>
+    <string name="model_sample_button_estamosyendo" translatable="false">Estamos Yendo</string>
+    <string name="model_sample_button_guardaconcramer" translatable="false">Guarda Cramer</string>
+    <string name="model_sample_button_guardaeltaxi" translatable="false">Guarda El Taxi</string>
+    <string name="model_sample_button_izquierda" translatable="false">Izquierda</string>
+    <string name="model_sample_button_izquierdaizquierda" translatable="false">Izquierda Izquierda</string>
+    <string name="model_sample_button_lacamionetaimposible" translatable="false">Imposible No Ver</string>
+    <string name="model_sample_button_meseguis" translatable="false">Me Seguis</string>
+    <string name="model_sample_button_nahu" translatable="false">Nahu</string>
+    <string name="model_sample_button_otrotema" translatable="false">Otro Tema</string>
+    <string name="model_sample_button_pampayvinedos" translatable="false">Pampa Y Viñedos</string>
+    <string name="model_sample_button_parademandarmsjs" translatable="false">Para De Mandar Msjs</string>
+    <string name="model_sample_button_pasaloenverdeoamarillo" translatable="false">Pasalo Verde O Amarillo</string>
+    <string name="model_sample_button_pelotudomarchaatras" translatable="false">Pelotudo Marcha Atras</string>
+    <string name="model_sample_button_pepa" translatable="false">Pepa</string>
+    <string name="model_sample_button_pickypicky" translatable="false">Picky Picky</string>
+    <string name="model_sample_button_pistera" translatable="false">Pistera</string>
+    <string name="model_sample_button_poracahastaelsemaforo" translatable="false">Por Aca Hasta El Semaforo</string>
+    <string name="model_sample_button_poronga" translatable="false">Poronga</string>
+    <string name="model_sample_button_quepasaconnahu" translatable="false">Que Pasa Con Nahu</string>
+    <string name="model_sample_button_radio" translatable="false">Radio</string>
+    <string name="model_sample_button_todosimulado" translatable="false">Todo Simulado</string>
+    <string name="model_sample_button_trescientosocholacon" translatable="false">308 La Con</string>
+    <string name="model_sample_button_unahorahaciendoluces" translatable="false">1 Hora Haciendo Luces</string>
+    <string name="model_sample_button_verdeoamarillo" translatable="false">Verde O Amarillo</string>
+    <string name="model_sample_button_nochedesexo" translatable="false">Noche De Sexo</string>
+    <string name="model_sample_button_chiquichiqui" translatable="false">Chiqui Chiqui Chiqui</string>
+    <string name="model_sample_button_quierofiesta" translatable="false">Quiero Fiesta</string>
+    <string name="model_sample_button_ochominutos" translatable="false">8 Minutos</string>
+    <string name="model_sample_button_tresminutos" translatable="false">3 Minutos</string>
+    <string name="model_sample_button_jajaja" translatable="false" tools:ignore="Typos">Ja Ja Ja</string>
 </resources>

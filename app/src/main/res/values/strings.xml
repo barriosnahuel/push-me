@@ -1,21 +1,7 @@
 <resources>
     <string name="app_name">Sos Un Boton</string>
 
-    <string name="addbutton_name">Elegí un nombre para el botón</string>
-    <string name="addbutton_save">Guardar</string>
-    <string name="addbutton_placeholder">Vos, yo, champagne… all the night</string>
-    <string name="addbutton_missing_parameter_error">Falta indicar el audio</string>
-    <string name="general_error_contact_support">Ocurrio un error, contacta con soporte</string>
-    <string name="addbutton_name_is_required_error">El nombre es obligatorio</string>
-    <string name="addbutton_feedback_saved_ok">Guardado</string>
-    <string name="addbutton_activity_label">Crear nuevo botón</string>
-    <string name="addbutton_activity_title">Nuevo botón</string>
-    <string name="addbutton_permission_required_error">Necesitamos el permiso para no perder esos divertidos audios
-    </string>
-    <string name="permission_required">Permiso obligatorio</string>
-    <string name="addbutton_permission_positive">OK, guardalo!</string>
-    <string name="addbutton_permission_negative">No, gracias</string>
-    <string name="youre_an_idiot_error">Ah, veo que estas perseguido…</string>
+
     <string name="share_chooser_title">Compartir vía</string>
     <string name="not_yet_implemented_error">Todavía no se puede compartir este audio</string>
 </resources>

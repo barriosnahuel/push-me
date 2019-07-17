@@ -7,6 +7,7 @@
 - Firebase Performance Monitoring.
 - `ajcore*.txt` file deleted when running `./gradlew clean`.
 - Added Detekt static code analysis tool, as well as Ktlint for code style conventions.
+- Setup [Stale GitHub app](https://github.com/apps/stale).
 
 ### Changed
 - Circle CI config migrated to v2.1 using Orbs.

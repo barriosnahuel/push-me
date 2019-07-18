@@ -16,4 +16,4 @@ You can filter logcat messages by:
 > adb logcat -s FirebasePerformance
 
 ## Resources
-- Icon generated using: http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html
+- Icon generated using: [romannurik.github.io/AndroidAssetStudio/icons-launcher](http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)

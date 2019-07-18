@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - `ajcore*.txt` file deleted when running `./gradlew clean`.
   - Added Detekt static code analysis tool, as well as Ktlint for code style conventions.
   - Setup [Stale GitHub app](https://github.com/apps/stale).
+  - Codacy checks integration through GitHub.
 
 ### Changed
   - Circle CI config migrated to v2.1 using Orbs.
@@ -22,6 +23,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
   - Checkstyle turned on again.
   - New ':model' module in Kotlin.
   - New ':commons_file' and ':commons_android' modules.
+  - Changelog formatting.
 
 ### Fixed
   - Many SCA suggestions applied.

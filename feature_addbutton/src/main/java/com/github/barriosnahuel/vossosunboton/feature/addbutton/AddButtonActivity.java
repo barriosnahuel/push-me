@@ -160,9 +160,7 @@ public class AddButtonActivity extends AbstractActivity {
     /**
      * Package-protected because method is used from an inner/anonymous class.
      */
-    package
-
-    void requestStoragePermission() {
+    /* default */ void requestStoragePermission() {
         ActivityCompat.requestPermissions(
             this
             , new String[] { Manifest.permission.WRITE_EXTERNAL_STORAGE }

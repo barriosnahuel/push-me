@@ -3,13 +3,10 @@ package com.github.barriosnahuel.vossosunboton;
 import android.os.Build;
 import android.os.Handler;
 import android.os.StrictMode;
-
 import androidx.annotation.NonNull;
-
 import com.facebook.stetho.Stetho;
 import com.nshmura.strictmodenotifier.StrictModeNotifier;
 import com.squareup.leakcanary.LeakCanary;
-
 import hugo.weaving.DebugLog;
 import timber.log.Timber;
 
@@ -47,9 +44,7 @@ public class DebugApplication extends MainApplication {
      *
      * Package-protected because method is used from an inner/anonymous class.
      */
-    package
-
-    void setupStrictMode() {
+    /* default */ void setupStrictMode() {
         StrictMode.setThreadPolicy(getStrictModeThreadPolicy().build());
 
         StrictMode.setVmPolicy(getStrictModeVmPolicy().build());

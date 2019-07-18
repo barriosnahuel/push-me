@@ -7,16 +7,11 @@ import androidx.recyclerview.widget.RecyclerView;
 /**
  * Created by Nahuel Barrios on 11/16/16.
  */
-package
+/* default */ class SoundViewHolder extends RecyclerView.ViewHolder {
 
-class SoundViewHolder extends RecyclerView.ViewHolder {
+    /* default */ ToggleButton toggleButton;
 
-    package
-    ToggleButton toggleButton;
-
-    package
-
-    SoundViewHolder(final ToggleButton v) {
+    /* default */ SoundViewHolder(final ToggleButton v) {
         super(v);
         toggleButton = v;
     }

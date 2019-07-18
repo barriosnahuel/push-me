@@ -10,16 +10,16 @@
 [![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=barriosnahuel/push-me)](https://dependabot.com)
 
 ## Features
-  - Play packaged audios.
-  - Save audios from WhatsApp.
-  - Share non-packaged audios to other apps.
+- Play packaged audios.
+- Save audios from WhatsApp.
+- Share non-packaged audios to other apps.
 
 ## What's next
-  - UI redesign.
-  - Delete audios.
-  - Store listing.
-  - Famous packaged audios.
-  - Record new audios.
+- UI redesign.
+- Delete audios.
+- Store listing.
+- Famous packaged audios.
+- Record new audios.
 
 ## Contributing
 Please feel free to share any suggestion or make a pull request. Just check the [contributing cheatsheet](CONTRIBUTING.md) before ;)

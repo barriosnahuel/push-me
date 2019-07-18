@@ -34,7 +34,9 @@ import timber.log.Timber;
 /**
  * Created by Nahuel Barrios on 11/16/16.
  */
-/* default */ class SoundsAdapter extends RecyclerView.Adapter<SoundViewHolder> {
+package
+
+class SoundsAdapter extends RecyclerView.Adapter<SoundViewHolder> {
 
     private final int marginPx;
 
@@ -44,14 +46,18 @@ import timber.log.Timber;
     /**
      * The player. We're using just one for all sounds for better performance.
      */
-    /* default */ final MediaPlayer mediaPlayer;
+    package
+    final MediaPlayer mediaPlayer;
 
     /**
      * The view that is currently playing a {@link Sound}.
      */
-    /* default */ Checkable currentlyPlaying;
+    package
+    Checkable currentlyPlaying;
 
-    /* default */ SoundsAdapter(@NonNull final Resources resources, @NonNull final List<Sound> sounds) {
+    package
+
+    SoundsAdapter(@NonNull final Resources resources, @NonNull final List<Sound> sounds) {
         this.sounds = sounds;
         marginPx = resources.getDimensionPixelSize(R.dimen.feature_base_material_horizontal_padding);
         mediaPlayer = new MediaPlayer();
@@ -131,11 +137,15 @@ import timber.log.Timber;
     /**
      * Created by Nahuel Barrios on 11/16/16.
      */
-    /* default */ class PlaybackClickListener implements View.OnClickListener {
+    package
+
+    class PlaybackClickListener implements View.OnClickListener {
 
         private final Sound sound;
 
-        /* default */ PlaybackClickListener(final Sound sound) {
+        package
+
+        PlaybackClickListener(final Sound sound) {
             this.sound = sound;
         }
 

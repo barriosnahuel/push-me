@@ -15,9 +15,9 @@
 - Share non-packaged audios to other apps.
 
 ## What's next
-- UI redesign.
 - Delete audios.
 - Store listing.
+- UI redesign.
 - Famous packaged audios.
 - Record new audios.
 

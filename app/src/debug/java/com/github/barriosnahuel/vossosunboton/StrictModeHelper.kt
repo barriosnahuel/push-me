@@ -47,12 +47,8 @@ private fun setupVirtualMachinePolicy() {
         // where applicable. More info at: https://github.com/mercadolibre/mobile-android_testing/pull/37#discussion_r72981823
 
         vmPolicyBuilder.detectLeakedRegistrationObjects()
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
-            vmPolicyBuilder.detectFileUriExposure()
-        }
-
-        vmPolicyBuilder.detectLeakedSqlLiteObjects()
+                .detectFileUriExposure()
+                .detectLeakedSqlLiteObjects()
                 .detectLeakedClosableObjects()
     }
 

@@ -1,8 +1,7 @@
 package com.github.barriosnahuel.vossosunboton;
 
 import android.annotation.SuppressLint;
-import android.app.Application;
-import hugo.weaving.DebugLog;
+
 import timber.log.Timber;
 
 /**
@@ -13,7 +12,6 @@ import timber.log.Timber;
 @SuppressLint("Registered")
 public class MainApplication extends CustomBuildTypeApplication {
 
-    @DebugLog
     @Override
     public void onCreate() {
         super.onCreate();

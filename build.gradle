@@ -18,7 +18,6 @@ buildscript {
         classpath 'com.monits:static-code-analysis-plugin:2.6.10'
         classpath 'io.gitlab.arturbosch.detekt:detekt-gradle-plugin:1.0.0'
         classpath 'com.getkeepsafe.dexcount:dexcount-gradle-plugin:0.8.6'
-        classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -26,7 +25,7 @@ buildscript {
 }
 
 wrapper {
-    gradleVersion = '5.5'
+    gradleVersion = '5.5.1'
     distributionType = Wrapper.DistributionType.BIN
 }
 
@@ -39,12 +38,4 @@ allprojects {
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-
-    /**
-     * Delete ajcore*.txt files generated from Hugo plugin.
-     */
-    def files = new FileNameFinder().getFileNames('.', 'ajcore*.txt')
-    files.each {
-        new File(it).delete()
-    }
 }

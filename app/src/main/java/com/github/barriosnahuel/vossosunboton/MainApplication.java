@@ -11,12 +11,13 @@ import timber.log.Timber;
  * This suppression is NOT fine, buy I don't understand why it fails!
  */
 @SuppressLint("Registered")
-public class MainApplication extends Application {
+public class MainApplication extends CustomBuildTypeApplication {
 
     @DebugLog
     @Override
     public void onCreate() {
         super.onCreate();
-        Timber.d("Creating MAIN application...");
+
+        Timber.d("Creating %s application...", BuildConfig.BUILD_TYPE);
     }
 }

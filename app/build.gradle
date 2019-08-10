@@ -29,7 +29,7 @@ android {
             File keystoreFile = file('../nahuelbarrios.keystore')
             File propertiesFile = file("../secure.properties")
             if (keystoreFile.exists() && propertiesFile.exists()) {
-                logger.warn('#### INFO: Release keystore will be used ####')
+                logger.warn('WARNING: Release keystore will be used for this build.')
                 Properties properties = new Properties()
                 properties.load(new FileInputStream(propertiesFile))
 
@@ -38,7 +38,7 @@ android {
                 storeFile keystoreFile
                 storePassword properties.getProperty('store.password')
             } else {
-                logger.warn('#### WARNING: Neither release keystore nor the secure properties were found. Debug keystore will be used ####')
+                logger.warn('WARNING: Neither release keystore nor the secure properties were found. Debug keystore will be used for this build.')
                 keyAlias "androiddebugkey"
                 keyPassword "android"
                 storeFile file("../debug_keystore.keystore")

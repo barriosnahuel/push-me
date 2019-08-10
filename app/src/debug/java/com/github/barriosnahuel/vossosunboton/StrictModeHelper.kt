@@ -14,16 +14,14 @@ internal class StrictModeHelper {
     fun initializeWithDefaults(application: Application) {
         StrictModeNotifier.install(application)
 
-        Handler().post(::setupStrictMode)
+        Handler().post(::setupStrictModePolicies)
     }
 }
 
 /**
- * More info about the Android Strict Mode at [their documentation](https://developer.android.com/reference/android/os/StrictMode.html).
- *
- * Package-protected because method is used from an inner/anonymous class.
+ * https://developer.android.com/reference/android/os/StrictMode.html
  */
-private fun setupStrictMode() {
+private fun setupStrictModePolicies() {
     StrictMode.setThreadPolicy(getStrictModeThreadPolicy().build())
 
     StrictMode.setVmPolicy(getStrictModeVmPolicy().build())
@@ -47,15 +45,6 @@ private fun getStrictModeThreadPolicy(): StrictMode.ThreadPolicy.Builder {
 }
 
 /**
- * Create VmPolicy Builder basing on Android Version because StrictMode does not check properly that GB remove
- * activity before report an InstanceCountViolation when API version is 21 or older. To avoid this error, we don't
- * use [StrictMode.VmPolicy.Builder.detectActivityLeaks] (inside [ ][StrictMode.VmPolicy.Builder.detectAll]) and call all other methods where applicable.
- *
- * Note that [ ][StrictMode.VmPolicy.Builder.penaltyLog] is required for [StrictModeNotifier] to work.
- *
- * For more info
- * take a look at [this comment](https://github.com/mercadolibre/mobile-android_testing/pull/37#discussion_r72981823).
- *
  * @return `null` if you want to disable strict mode VM policy.
  */
 private fun getStrictModeVmPolicy(): StrictMode.VmPolicy.Builder {
@@ -64,6 +53,11 @@ private fun getStrictModeVmPolicy(): StrictMode.VmPolicy.Builder {
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
         builder.detectAll()
     } else {
+        // Create VmPolicy Builder basing on Android Version because StrictMode does not check properly that GB remove
+        // activity before report an InstanceCountViolation when API version is 21 or older. To avoid this error, we don't
+        // use [StrictMode.VmPolicy.Builder.detectActivityLeaks] (inside [ ][StrictMode.VmPolicy.Builder.detectAll]) and call all other methods
+        // where applicable. More info at: https://github.com/mercadolibre/mobile-android_testing/pull/37#discussion_r72981823
+
         builder.detectLeakedRegistrationObjects()
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
@@ -74,7 +68,7 @@ private fun getStrictModeVmPolicy(): StrictMode.VmPolicy.Builder {
                 .detectLeakedClosableObjects()
     }
 
-    // penaltyLog is required for StrictModeNotifier!
+    // #penaltyLog call is required for StrictModeNotifier
     builder.penaltyLog()
 
     return builder

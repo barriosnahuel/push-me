@@ -3,7 +3,7 @@ package com.github.barriosnahuel.vossosunboton
 import android.app.Application
 import timber.log.Timber
 
-abstract class CustomBuildTypeApplication : Application() {
+internal abstract class CustomBuildTypeApplication : Application() {
 
     override fun onCreate() {
         Timber.plant(Timber.DebugTree())

@@ -1,18 +1,18 @@
 <resources>
-    <string name="feature_addbutton_permission_required">Permiso obligatorio</string>
-    <string name="feature_addbutton_name">Elegí un nombre para el botón</string>
-    <string name="feature_addbutton_save">Guardar</string>
-    <string name="feature_addbutton_placeholder">Vos, yo, champagne… all the night</string>
-    <string name="feature_addbutton_missing_parameter_error">Falta indicar el audio</string>
-    <string name="feature_addbutton_name_is_required_error">El nombre es obligatorio</string>
-    <string name="feature_addbutton_feedback_saved_ok">Guardado</string>
-    <string name="feature_addbutton_activity_label">Crear nuevo botón</string>
-    <string name="feature_addbutton_activity_title">Nuevo botón</string>
-    <string name="feature_addbutton_permission_required_error">Necesitamos el permiso para no perder esos divertidos audios
+    <string name="feature_addbutton_permission_required">Permission required</string>
+    <string name="feature_addbutton_name">Choose a funny name for your new button</string>
+    <string name="feature_addbutton_save">Save</string>
+    <string name="feature_addbutton_placeholder">I\'m f**k!ng druuunk</string>
+    <string name="feature_addbutton_missing_parameter_error">Missing audio file</string>
+    <string name="feature_addbutton_name_is_required_error">Name is required</string>
+    <string name="feature_addbutton_feedback_saved_ok">Saved!</string>
+    <string name="feature_addbutton_activity_label">Save as button</string>
+    <string name="feature_addbutton_activity_title">New button</string>
+    <string name="feature_addbutton_permission_required_error">Permission is required to prevent missing these funny audio
+        messages
     </string>
-    <string name="feature_addbutton_permission_positive">OK, guardalo!</string>
-    <string name="feature_addbutton_permission_negative">No, gracias</string>
+    <string name="feature_addbutton_permission_positive">OK, save it!</string>
+    <string name="feature_addbutton_permission_negative">No, thanks</string>
 
-    <string name="feature_addbutton_youre_an_idiot_error">Ah, veo que estas perseguido…</string>
-
+    <string name="feature_addbutton_youre_an_idiot_error">Mmm I see, so you\'re hiding something…</string>
 </resources>

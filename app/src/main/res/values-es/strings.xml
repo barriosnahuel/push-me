@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">Sos Un Boton</string>
+
+    <string name="share_chooser_title">Compartir vía</string>
+    <string name="not_yet_implemented_error">Todavía no se puede compartir este audio</string>
+</resources>

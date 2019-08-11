@@ -23,6 +23,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - New ':model' module in Kotlin.
 - New ':commons_file' and ':commons_android' modules.
 - Changelog formatting.
+- Default language to English.
 
 ### Fixed
 - Many SCA suggestions applied.

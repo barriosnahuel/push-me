@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- Check https://developer.android.com/training/secure-file-sharing/setup-sharing#DefineMetaData for more info. -->
+    <external-files-path
+        name="buttons"
+        path="." />
+</paths>

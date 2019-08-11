@@ -13,6 +13,16 @@
         android:supportsRtl="true"
         android:theme="@style/feature_base_MyCustomTheme">
 
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths" />
+        </provider>
+
         <activity
             android:name=".ui.home.HomeActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

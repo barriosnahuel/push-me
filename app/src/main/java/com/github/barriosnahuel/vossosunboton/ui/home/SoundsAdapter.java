@@ -18,8 +18,10 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
+import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.github.barriosnahuel.vossosunboton.BuildConfig;
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.commons.android.ui.Feedback;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
@@ -36,6 +38,10 @@ import timber.log.Timber;
  */
 /* default */ class SoundsAdapter extends RecyclerView.Adapter<SoundViewHolder> {
 
+    /**
+     * Check https://developer.android.com/training/secure-file-sharing/setup-sharing for more info.
+     */
+    private static final String FILE_PROVIDER_AUTHORITY = BuildConfig.APPLICATION_ID + ".fileprovider";
     private final int marginPx;
 
     @NonNull
@@ -57,10 +63,11 @@ import timber.log.Timber;
         mediaPlayer = new MediaPlayer();
     }
 
+    @NonNull
     @Override
-    public SoundViewHolder onCreateViewHolder(final ViewGroup parent, final int viewType) {
+    public SoundViewHolder onCreateViewHolder(@NonNull final ViewGroup parent, final int viewType) {
         final ToggleButton button =
-            (ToggleButton) LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_button, parent, false);
+                (ToggleButton) LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_button, parent, false);
 
         final RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) button.getLayoutParams();
 
@@ -71,7 +78,7 @@ import timber.log.Timber;
     }
 
     @Override
-    public void onBindViewHolder(final SoundViewHolder holder, final int position) {
+    public void onBindViewHolder(@NonNull final SoundViewHolder holder, final int position) {
         final ToggleButton toggleButton = holder.toggleButton;
 
         final RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) toggleButton.getLayoutParams();
@@ -105,7 +112,8 @@ import timber.log.Timber;
 
             final Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
-            shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(sound.getFile()));
+            Uri uriForFile = FileProvider.getUriForFile(view.getContext(), FILE_PROVIDER_AUTHORITY, new File(sound.getFile()));
+            shareIntent.putExtra(Intent.EXTRA_STREAM, uriForFile);
             shareIntent.setType("audio/*");
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             view.getContext().startActivity(

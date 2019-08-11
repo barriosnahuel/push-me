@@ -26,6 +26,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 
 ### Fixed
 - Many SCA suggestions applied.
+- Sharing buttons issues due to a bad permissions setup.
 
 ## \[v1.1.0] - 2017-08-16
 

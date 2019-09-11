@@ -17,7 +17,8 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 
 ### Changed
 -Circle CI config migrated to v2.1 using Orbs.
-- Many dependencies to the latest versions including Gradle, Android Build Tools and static code analyzers too.
+- Many dependencies to the latest versions including Gradle, Android Build Tools, AppCompat,
+Firebase and static code analyzers too.
 - Migration to Android X.
 - Checkstyle turned on again.
 - New ':model' module in Kotlin.

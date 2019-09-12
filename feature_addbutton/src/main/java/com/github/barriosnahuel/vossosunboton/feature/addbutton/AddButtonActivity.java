@@ -107,8 +107,13 @@ public class AddButtonActivity extends AbstractActivity {
     /**
      * Check new button required data and saves the new sound for this user.
      *
+     * Warning <code>PMD.UnusedFormalParameter</code> suppressed because it's a false positive
+     * since it's required to let the method be called by the OS. More info at:
+     * <a href="https://github.com/pmd/pmd/issues/2011">github.com/pmd/pmd/issues/2011</a>
+     *
      * @param view The caller view.
      */
+    @SuppressWarnings("PMD.UnusedFormalParameter")
     public void saveButton(final View view) {
         if (TextUtils.isEmpty(name.getText())) {
             name.setError(getString(R.string.feature_addbutton_name_is_required_error));

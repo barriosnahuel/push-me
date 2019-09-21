@@ -2,7 +2,6 @@ package com.github.barriosnahuel.vossosunboton.ui.home;
 
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.Intent;
 import android.content.res.AssetFileDescriptor;
 import android.content.res.Resources;
 import android.database.Cursor;
@@ -18,12 +17,9 @@ import android.widget.ToggleButton;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RawRes;
-import androidx.core.content.FileProvider;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.github.barriosnahuel.vossosunboton.BuildConfig;
 import com.github.barriosnahuel.vossosunboton.R;
-import com.github.barriosnahuel.vossosunboton.commons.android.ui.Feedback;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
 
 import java.io.File;
@@ -38,10 +34,6 @@ import timber.log.Timber;
  */
 /* default */ class SoundsAdapter extends RecyclerView.Adapter<SoundViewHolder> {
 
-    /**
-     * Check https://developer.android.com/training/secure-file-sharing/setup-sharing for more info.
-     */
-    private static final String FILE_PROVIDER_AUTHORITY = BuildConfig.APPLICATION_ID + ".fileprovider";
     private final int marginPx;
 
     @NonNull
@@ -99,29 +91,7 @@ import timber.log.Timber;
         toggleButton.setTextOff(sound.getName());
 
         toggleButton.setOnClickListener(new PlaybackClickListener(sound));
-
-        toggleButton.setOnLongClickListener(view -> {
-            // TODO: 8/14/17 Decouple this!
-
-            if (sound.getFile() == null) {
-                Feedback.send(view.getContext(), R.string.not_yet_implemented_error);
-                return true;
-            }
-
-            Timber.d("Sharing... %s: %s", sound.getName(), sound.getFile());
-
-            final Intent shareIntent = new Intent();
-            shareIntent.setAction(Intent.ACTION_SEND);
-            final Uri uriForFile = FileProvider.getUriForFile(view.getContext(),
-                    FILE_PROVIDER_AUTHORITY, new File(sound.getFile()));
-            shareIntent.putExtra(Intent.EXTRA_STREAM, uriForFile);
-            shareIntent.setType("audio/*");
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-            view.getContext().startActivity(
-                Intent.createChooser(shareIntent, view.getContext().getString(R.string.share_chooser_title)));
-
-            return true;
-        });
+        toggleButton.setOnLongClickListener(new ShareClickListener(sound));
     }
 
     @Override

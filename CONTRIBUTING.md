@@ -4,7 +4,7 @@
 
 ## Local setup
 
-1. Download the `google-services.json` file from Firebase console to the `app/` directory.
+1. Download the `google-services.json` file from Firebase console to the `app/` directory (don't worry, it's ignored in [.gitignore](.gitignore)).
 2. Run:
     > ./gradlew check
 

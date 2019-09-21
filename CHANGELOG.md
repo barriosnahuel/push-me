@@ -26,6 +26,7 @@ Firebase and static code analyzers too.
 - New ':commons_file' and ':commons_android' modules.
 - Changelog formatting.
 - Default language to English.
+- Gradle version to [v5.6.2](https://docs.gradle.org/5.6.2/release-notes.html)
 
 ### Fixed
 - Many SCA suggestions applied.

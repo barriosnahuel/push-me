@@ -112,7 +112,8 @@ import timber.log.Timber;
 
             final Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
-            Uri uriForFile = FileProvider.getUriForFile(view.getContext(), FILE_PROVIDER_AUTHORITY, new File(sound.getFile()));
+            final Uri uriForFile = FileProvider.getUriForFile(view.getContext(),
+                    FILE_PROVIDER_AUTHORITY, new File(sound.getFile()));
             shareIntent.putExtra(Intent.EXTRA_STREAM, uriForFile);
             shareIntent.setType("audio/*");
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
@@ -253,20 +254,21 @@ import timber.log.Timber;
                 throws IOException {
 
             final File file = new File(fileInfo);
-            final FileInputStream inputStream = new FileInputStream(file);
-            mediaPlayer.reset();
-            mediaPlayer.setDataSource(inputStream.getFD());
-            inputStream.close();
+            try (FileInputStream inputStream = new FileInputStream(file)) {
+                mediaPlayer.reset();
+                mediaPlayer.setDataSource(inputStream.getFD());
+            }
         }
 
         private String getRingtoneUriFromPath(@NonNull final Context context, @NonNull final String path) {
             final Uri ringtonesUri = MediaStore.Audio.Media.getContentUriForPath(path);
-            final Cursor ringtoneCursor = context.getContentResolver()
-                .query(ringtonesUri, null, MediaStore.Audio.Media.DATA + "='" + path + "'", null, null);
-            ringtoneCursor.moveToFirst();
+            final long id;
+            try (Cursor ringtoneCursor = context.getContentResolver()
+                    .query(ringtonesUri, null, MediaStore.Audio.Media.DATA + "='" + path + "'", null, null)) {
+                ringtoneCursor.moveToFirst();
 
-            final long id = ringtoneCursor.getLong(ringtoneCursor.getColumnIndex(MediaStore.Audio.Media._ID));
-            ringtoneCursor.close();
+                id = ringtoneCursor.getLong(ringtoneCursor.getColumnIndex(MediaStore.Audio.Media._ID));
+            }
 
             if (!ringtonesUri.toString().endsWith(String.valueOf(id))) {
                 return ringtonesUri + "/" + id;
@@ -276,13 +278,12 @@ import timber.log.Timber;
 
         private String getRingtonePathFromContentUri(@NonNull final Context context, @NonNull final Uri contentUri) {
             final String[] projection = { MediaStore.Audio.Media.DATA };
-            final Cursor ringtoneCursor = context.getContentResolver().query(contentUri, projection, null, null, null);
-            ringtoneCursor.moveToFirst();
+            final String path;
+            try (Cursor ringtoneCursor = context.getContentResolver().query(contentUri, projection, null, null, null)) {
+                ringtoneCursor.moveToFirst();
 
-            final String path =
-                ringtoneCursor.getString(ringtoneCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
-
-            ringtoneCursor.close();
+                path = ringtoneCursor.getString(ringtoneCursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
+            }
             return path;
         }
     }

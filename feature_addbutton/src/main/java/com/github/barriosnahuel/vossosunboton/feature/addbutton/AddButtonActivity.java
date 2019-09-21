@@ -177,32 +177,26 @@ public class AddButtonActivity extends AbstractActivity {
      */
     @SuppressWarnings("PMD.AvoidFileStream")
     private void saveNewButton() {
-        final String targetPath =
-            getExternalFilesDir(Environment.DIRECTORY_MUSIC) + "Button-" + System.currentTimeMillis() + ".mp3";
-
-        FileOutputStream fileOutputStream;
-        try {
-            fileOutputStream = new FileOutputStream(targetPath);
-        } catch (final FileNotFoundException e) {
-            Timber.e("Can't create new button's path");
-            fileOutputStream = null;
-        }
+        final String targetPath = getExternalFilesDir(Environment.DIRECTORY_MUSIC) + "Button-" + System.currentTimeMillis() + ".mp3";
 
         int feedbackMessage = R.string.feature_base_general_error_contact_support;
-        if (fileOutputStream != null) {
-            try {
-                // TODO: 11/12/16 Run it on another thread
-                final InputStream inputStream = getContentResolver().openInputStream(Uri.parse(uri.toString()));
-                if (inputStream == null) {
-                    Timber.e("Input stream obtained from the specified content URI is null: %s", uri.toString());
-                } else {
-                    FileUtils.copy(inputStream, fileOutputStream);
-                    soundsDao.save(this, new Sound(name.getText().toString(), targetPath));
-                    feedbackMessage = R.string.feature_addbutton_feedback_saved_ok;
-                }
-            } catch (final IOException e) {
-                Timber.e("Can't copy original audio");
+
+        // TODO: 11/12/16 Run it on another thread
+        try (
+                FileOutputStream fileOutputStream = new FileOutputStream(targetPath);
+                InputStream inputStream = getContentResolver().openInputStream(Uri.parse(uri.toString()))
+        ) {
+            if (inputStream == null) {
+                Timber.e("Input stream obtained from the specified content URI is null: %s", uri.toString());
+            } else {
+                FileUtils.copy(inputStream, fileOutputStream);
+                soundsDao.save(this, new Sound(name.getText().toString(), targetPath));
+                feedbackMessage = R.string.feature_addbutton_feedback_saved_ok;
             }
+        } catch (final FileNotFoundException e) {
+            Timber.e("Can't create new button's path");
+        } catch (final IOException e) {
+            Timber.e("Can't copy original audio");
         }
 
         Feedback.send(this, feedbackMessage);

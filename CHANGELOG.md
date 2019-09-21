@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 
 ## \[unreleased]
 ### Added
-- Support for Android P (API Level 28).
+- Support for Android Q (API Level 29).
 - Pull Requests template for contributors.
 - Firebase Analytics. 
 - Firebase Crashlytics.
@@ -16,7 +16,8 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Codacy checks integration through GitHub.
 
 ### Changed
--Circle CI config migrated to v2.1 using Orbs.
+- Min Android version required is KitKat (API Level 19).
+- Circle CI config migrated to v2.1 using Orbs.
 - Many dependencies to the latest versions including Gradle, Android Build Tools, AppCompat,
 Firebase and static code analyzers too.
 - Migration to Android X.
@@ -29,6 +30,7 @@ Firebase and static code analyzers too.
 ### Fixed
 - Many SCA suggestions applied.
 - Sharing buttons issues due to a bad permissions setup.
+- Usage of resources like `InputStream`, `OutputStream` and `Cursor`
 
 ## \[v1.1.0] - 2017-08-16
 

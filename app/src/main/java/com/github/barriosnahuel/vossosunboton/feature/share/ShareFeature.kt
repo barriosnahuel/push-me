@@ -20,11 +20,11 @@ internal interface ShareFeature {
 
 private class ShareFeatureImpl : ShareFeature {
 
+    private val authority = BuildConfig.APPLICATION_ID + ".fileprovider"
+
     /**
      * Check https://developer.android.com/training/secure-file-sharing/setup-sharing for more info.
      */
-    private val authority = BuildConfig.APPLICATION_ID + ".fileprovider"
-
     override fun share(context: Context, sound: Sound) {
         checkNotNull(sound.file) { "File URI is mandatory" }
 

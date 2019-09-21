@@ -112,7 +112,8 @@ import timber.log.Timber;
 
             final Intent shareIntent = new Intent();
             shareIntent.setAction(Intent.ACTION_SEND);
-            Uri uriForFile = FileProvider.getUriForFile(view.getContext(), FILE_PROVIDER_AUTHORITY, new File(sound.getFile()));
+            final Uri uriForFile = FileProvider.getUriForFile(view.getContext(),
+                    FILE_PROVIDER_AUTHORITY, new File(sound.getFile()));
             shareIntent.putExtra(Intent.EXTRA_STREAM, uriForFile);
             shareIntent.setType("audio/*");
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);

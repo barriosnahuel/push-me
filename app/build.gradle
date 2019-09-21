@@ -12,13 +12,13 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    compileSdkVersion 28
+    compileSdkVersion 29
     buildToolsVersion '28.0.3'
 
     defaultConfig {
         applicationId "com.github.barriosnahuel.vossosunboton"
-        minSdkVersion 18
-        targetSdkVersion 28
+        minSdkVersion 19
+        targetSdkVersion 29
         versionCode 4
         versionName '2.0.0'
     }

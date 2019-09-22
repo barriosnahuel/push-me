@@ -4,8 +4,9 @@
 
 ## Local setup
 
-1. Download the `google-services.json` file from Firebase console to the `app/` directory (don't worry, it's ignored in [.gitignore](.gitignore)).
-2. Run:
+1. Clone/Fork this repo.
+2. Replace the `app/google-services.json` file with the one from Firebase console. You *won't* be able to commit changes on this file.
+3. Run:
     > ./gradlew check
 
     It must return **`BUILD SUCCESS`**.
@@ -15,6 +16,16 @@ We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.ym
 - https://circleci.com/docs/2.0/local-cli
 
 > circleci config validate
+
+## Firebase config file
+
+To prevent future modifications on `app/google-services.json` I run:
+
+    >  git update-index --skip-worktree app/google-services.json
+
+    To revert this just:
+
+    > git update-index --no-skip-worktree app/google-services.json
 
 ## Firebase Performance Monitoring
 

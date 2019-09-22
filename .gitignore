@@ -3,10 +3,6 @@ nahuelbarrios.keystore
 secure.properties
 
 
-### Firebase configuration files
-google-services.json
-
-
 ### Gradle files
 .gradle/
 build/

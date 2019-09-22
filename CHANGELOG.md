@@ -32,7 +32,8 @@ Firebase and static code analyzers too.
 ### Fixed
 - Many SCA suggestions applied.
 - Sharing buttons issues due to a bad permissions setup.
-- Usage of resources like `InputStream`, `OutputStream` and `Cursor`
+- Usage of resources like `InputStream`, `OutputStream` and `Cursor`.
+- Stop exposing Firebase API configuration file.
 
 ## \[v1.1.0] - 2017-08-16
 

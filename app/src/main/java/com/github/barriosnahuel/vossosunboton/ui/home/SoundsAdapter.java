@@ -21,6 +21,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
+import com.github.barriosnahuel.vossosunboton.model.data.manager.SoundDao;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -135,7 +136,7 @@ import timber.log.Timber;
                 mediaPlayer.reset();
 
                 try {
-                    setMediaPlayerDataSource(v.getContext(), mediaPlayer, sound.getFile(), sound.getRawRes());
+                    setMediaPlayerDataSource(v.getContext(), mediaPlayer, SoundDao.getFile(v.getContext(), sound.getFile()).toString(), sound.getRawRes());
                     mediaPlayer.prepare();
                 } catch (final IllegalStateException | IOException e) {
                     Timber.e("Oops, you did it again... xD: %s", e.getMessage());

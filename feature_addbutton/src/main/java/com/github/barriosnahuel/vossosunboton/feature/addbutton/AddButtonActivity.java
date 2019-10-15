@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
@@ -28,6 +27,7 @@ import com.github.barriosnahuel.vossosunboton.feature.base.PermissionsRequest;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
 import com.github.barriosnahuel.vossosunboton.model.data.manager.SoundDao;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -61,7 +61,7 @@ public class AddButtonActivity extends AbstractActivity {
             Feedback.send(this, R.string.feature_addbutton_missing_parameter_error);
         }
 
-        name = (EditText) findViewById(R.id.addbutton_name);
+        name = findViewById(R.id.addbutton_name);
         if (name == null) {
             Feedback.send(this, R.string.feature_base_general_error_contact_support);
         } else {
@@ -177,20 +177,21 @@ public class AddButtonActivity extends AbstractActivity {
      */
     @SuppressWarnings("PMD.AvoidFileStream")
     private void saveNewButton() {
-        final String targetPath = getExternalFilesDir(Environment.DIRECTORY_MUSIC) + "Button-" + System.currentTimeMillis() + ".mp3";
+        final String fileName = "Button-" + System.currentTimeMillis() + ".mp3";
+        File targetFile = SoundDao.getFile(this, fileName);
 
         int feedbackMessage = R.string.feature_base_general_error_contact_support;
 
         // TODO: 11/12/16 Run it on another thread
         try (
-                FileOutputStream fileOutputStream = new FileOutputStream(targetPath);
+                FileOutputStream fileOutputStream = new FileOutputStream(targetFile);
                 InputStream inputStream = getContentResolver().openInputStream(Uri.parse(uri.toString()))
         ) {
             if (inputStream == null) {
                 Timber.e("Input stream obtained from the specified content URI is null: %s", uri.toString());
             } else {
                 FileUtils.copy(inputStream, fileOutputStream);
-                soundsDao.save(this, new Sound(name.getText().toString(), targetPath));
+                soundsDao.save(this, new Sound(name.getText().toString(), fileName));
                 feedbackMessage = R.string.feature_addbutton_feedback_saved_ok;
             }
         } catch (final FileNotFoundException e) {
@@ -206,6 +207,7 @@ public class AddButtonActivity extends AbstractActivity {
         startActivity(intent);
     }
 
+    @NonNull
     @Override
     public String toString() {
         return "AddButtonActivity{"

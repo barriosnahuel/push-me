@@ -1,9 +1,9 @@
 package com.github.barriosnahuel.vossosunboton
 
-import android.app.Application
+import androidx.multidex.MultiDexApplication
 import timber.log.Timber
 
-internal abstract class CustomBuildTypeApplication : Application() {
+internal abstract class CustomBuildTypeApplication : MultiDexApplication() {
 
     override fun onCreate() {
         Timber.plant(Timber.DebugTree())

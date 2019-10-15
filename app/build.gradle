@@ -51,6 +51,7 @@ android {
         debug {
             applicationIdSuffix ".debug"
             versionNameSuffix '-DEBUG'
+            multiDexEnabled true
         }
 
         release {
@@ -89,6 +90,8 @@ dependencies {
     implementation 'com.google.firebase:firebase-perf:19.0.0'
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
+
+    debugImplementation 'androidx.multidex:multidex:2.0.1'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
 

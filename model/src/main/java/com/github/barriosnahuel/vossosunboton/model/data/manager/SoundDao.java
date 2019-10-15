@@ -1,11 +1,15 @@
 package com.github.barriosnahuel.vossosunboton.model.data.manager;
 
 import android.content.Context;
+import android.os.Environment;
+
+import androidx.annotation.NonNull;
 
 import com.github.barriosnahuel.vossosunboton.model.Sound;
 import com.github.barriosnahuel.vossosunboton.model.data.local.Storage;
 import com.github.barriosnahuel.vossosunboton.model.data.local.defaultaudios.PackagedAudios;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -26,6 +30,17 @@ public class SoundDao {
      */
     public SoundDao() {
         storage = new Storage();
+    }
+
+    /**
+     * Look for the given <code>fileName</code> at the {@link Environment#DIRECTORY_MUSIC} dir.
+     *
+     * @param context  The execution context.
+     * @param fileName The name of the file (<code>xxx.extension</code>).
+     * @return A real {@link File} object.
+     */
+    public static File getFile(@NonNull Context context, @NonNull String fileName) {
+        return new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), fileName);
     }
 
     /**

@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Added Detekt static code analysis tool, as well as Ktlint for code style conventions.
 - Setup [Stale GitHub app](https://github.com/apps/stale).
 - Codacy checks integration through GitHub.
+- Multidex support for debug builds.
 
 ### Changed
 - Min Android version required is KitKat (API Level 19).

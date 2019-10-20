@@ -3,7 +3,6 @@ package com.github.barriosnahuel.vossosunboton.ui.home;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.res.AssetFileDescriptor;
-import android.content.res.Resources;
 import android.database.Cursor;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -20,7 +19,9 @@ import androidx.annotation.RawRes;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.barriosnahuel.vossosunboton.R;
+import com.github.barriosnahuel.vossosunboton.commons.file.FileUtils;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
+import com.github.barriosnahuel.vossosunboton.model.data.manager.SoundDao;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -34,7 +35,8 @@ import timber.log.Timber;
  */
 /* default */ class SoundsAdapter extends RecyclerView.Adapter<SoundViewHolder> {
 
-    private final int marginPx;
+    @NonNull
+    private final HomeView homeView;
 
     @NonNull
     private final List<Sound> sounds;
@@ -44,14 +46,16 @@ import timber.log.Timber;
      */
     /* default */ final MediaPlayer mediaPlayer;
 
+    private int marginPx = -1;
+
     /**
      * The view that is currently playing a {@link Sound}.
      */
     /* default */ Checkable currentlyPlaying;
 
-    /* default */ SoundsAdapter(@NonNull final Resources resources, @NonNull final List<Sound> sounds) {
-        this.sounds = sounds;
-        marginPx = resources.getDimensionPixelSize(R.dimen.feature_base_material_horizontal_padding);
+    /* default */ SoundsAdapter(@NonNull final HomeView homeView) {
+        this.sounds = new SoundDao().find(homeView.currentView().getContext());
+        this.homeView = homeView;
         mediaPlayer = new MediaPlayer();
     }
 
@@ -62,6 +66,10 @@ import timber.log.Timber;
                 (ToggleButton) LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_button, parent, false);
 
         final RecyclerView.LayoutParams layoutParams = (RecyclerView.LayoutParams) button.getLayoutParams();
+
+        if (marginPx == -1) {
+            marginPx = parent.getResources().getDimensionPixelSize(R.dimen.feature_base_material_horizontal_padding);
+        }
 
         layoutParams.leftMargin = marginPx;
         layoutParams.rightMargin = marginPx;
@@ -105,6 +113,28 @@ import timber.log.Timber;
 
     private boolean isLast(final int position) {
         return getItemCount() - 1 == position;
+    }
+
+    /**
+     * @param position position in the adapter of the item to remove.
+     */
+    public void remove(final int position) {
+        final Sound soundToRemove = sounds.get(position);
+
+        sounds.remove(position);
+        notifyItemRemoved(position);
+
+        if (soundToRemove.isBundled()) {
+            Timber.w("Delete feature for bundled buttons is not yet released, button won't be deleted. Button: %s", soundToRemove.getName());
+            homeView.showFeatureNotImplementedFeedback();
+        } else {
+            homeView.showDeleteButtonFeedback(this, soundToRemove, position);
+        }
+    }
+
+    public void restore(@NonNull final Sound removedSound, final int originalPosition) {
+        sounds.add(originalPosition, removedSound);
+        notifyItemInserted(originalPosition);
     }
 
     /**
@@ -160,20 +190,24 @@ import timber.log.Timber;
          *
          * @param context
          * @param mediaPlayer
-         * @param fileInfo
+         * @param file
          * @throws Exception
          */
         @SuppressWarnings("PMD.AvoidReassigningParameters")
         private void setMediaPlayerDataSource(
                 @NonNull final Context context
-            , @NonNull final MediaPlayer mediaPlayer
-            , @Nullable String fileInfo
+                , @NonNull final MediaPlayer mediaPlayer
+                , @Nullable final String file
                 , @RawRes final int rawResId) throws IOException {
 
-            if (rawResId == 0) {
-                if (fileInfo == null) {
-                    throw new IllegalArgumentException("Either the sound Uri or the raw resource ID are required.");
+            if (file == null) {
+                if (rawResId == 0) {
+                    throw new IllegalStateException("Either the sound Uri or the raw resource ID are required.");
                 }
+
+                setMediaPlayerDataSourceRawRes(context, mediaPlayer, rawResId);
+            } else {
+                String fileInfo = FileUtils.getFile(context, file).toString();
 
                 if (fileInfo.startsWith(ContentResolver.SCHEME_CONTENT + "://")) {
                     final Uri uri = Uri.parse(fileInfo);
@@ -191,8 +225,6 @@ import timber.log.Timber;
                         mediaPlayer.setDataSource(uri);
                     }
                 }
-            } else {
-                setMediaPlayerDataSourceRawRes(context, mediaPlayer, rawResId);
             }
         }
 

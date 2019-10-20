@@ -1,15 +1,45 @@
-apply plugin: 'kotlin'
+apply plugin: 'com.android.library'
+apply plugin: 'com.monits.staticCodeAnalysis'
+apply plugin: 'kotlin-android'
 apply plugin: 'io.gitlab.arturbosch.detekt'
 apply from: '../ktlint.gradle'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        minSdkVersion 19
+        targetSdkVersion 29
+    }
+
+    resourcePrefix 'commons_file_'
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+staticCodeAnalysis {
+    findbugs = false
+    checkstyle = true
+    pmd = true
+    cpd = true
+    androidLint = true
+
+    ignoreErrors = false
+
+    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
+}
 
 dependencies {
     implementation 'org.jetbrains.kotlin:kotlin-stdlib-jdk8:1.3.50'
     implementation 'androidx.annotation:annotation:1.1.0'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
 
 detekt {
     config = files("../config/detekt/detekt-config.yml")
 }
-
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8

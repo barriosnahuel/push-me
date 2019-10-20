@@ -15,6 +15,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Setup [Stale GitHub app](https://github.com/apps/stale).
 - Codacy checks integration through GitHub.
 - Multidex support for debug builds.
+- Let users delete custom audios by swiping horizontally.
 
 ### Changed
 - Min Android version required is KitKat (API Level 19).

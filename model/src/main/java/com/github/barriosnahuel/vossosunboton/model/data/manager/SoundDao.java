@@ -1,18 +1,19 @@
 package com.github.barriosnahuel.vossosunboton.model.data.manager;
 
 import android.content.Context;
-import android.os.Environment;
 
 import androidx.annotation.NonNull;
 
+import com.github.barriosnahuel.vossosunboton.commons.file.FileUtils;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
 import com.github.barriosnahuel.vossosunboton.model.data.local.Storage;
 import com.github.barriosnahuel.vossosunboton.model.data.local.defaultaudios.PackagedAudios;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+
+import timber.log.Timber;
 
 /**
  * Currently it only handles local storage.
@@ -32,16 +33,7 @@ public class SoundDao {
         storage = new Storage();
     }
 
-    /**
-     * Look for the given <code>fileName</code> at the {@link Environment#DIRECTORY_MUSIC} dir.
-     *
-     * @param context  The execution context.
-     * @param fileName The name of the file (<code>xxx.extension</code>).
-     * @return A real {@link File} object.
-     */
-    public static File getFile(@NonNull Context context, @NonNull String fileName) {
-        return new File(context.getExternalFilesDir(Environment.DIRECTORY_MUSIC), fileName);
-    }
+
 
     /**
      * @param context The execution context.
@@ -71,5 +63,49 @@ public class SoundDao {
         sounds.addAll(PackagedAudios.get(context));
 
         return sounds;
+    }
+
+    /**
+     * @param context The execution context.
+     * @param sound   The sound to delete.
+     * @return <code>true</code> when the file was successfully deleted. Otherwise <code>false</code>.
+     * @throws IllegalStateException when trying to delete a user's custom button without a persisted file in file system.
+     */
+    public boolean delete(@NonNull Context context, @NonNull Sound sound) {
+        String file = sound.getFile();
+        Timber.i("Trying to delete button. Button: '%s'", sound.getName());
+
+        if (file == null) {
+            throw new IllegalStateException("Requested to delete a user's custom button without a persisted file in file system");
+        }
+
+        boolean deleted = FileUtils.deleteFile(context, file);
+        if (deleted) {
+            Timber.i("Button file successfully deleted. Button: %s", sound.getName());
+            deleteButtonKey(context, sound.getName());
+            deleteButtonKeyFileMapping(context, sound.getName());
+        } else {
+            Timber.e("Button could NOT be deleted. Button: %s", sound.getName());
+        }
+
+        return deleted;
+    }
+
+
+    private void deleteButtonKey(@NonNull Context context, @NonNull String name) {
+        final Set<String> names = storage.getAll(context, SOUNDS_NAME);
+
+        Timber.d("Total sounds before update: %s", names.size());
+        names.remove(name);
+        storage.save(context, SOUNDS_NAME, names);
+
+        Timber.d("Total sounds after update: %s", storage.getAll(context, SOUNDS_NAME).size());
+    }
+
+    private void deleteButtonKeyFileMapping(@NonNull Context context, @NonNull String name) {
+        String key = SOUNDS_FILE_NAME_PREFFIX + name;
+
+        storage.remove(context, key);
+        Timber.d("Button removed from app mappings: %s", key);
     }
 }

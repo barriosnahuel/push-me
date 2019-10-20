@@ -178,7 +178,7 @@ public class AddButtonActivity extends AbstractActivity {
     @SuppressWarnings("PMD.AvoidFileStream")
     private void saveNewButton() {
         final String fileName = "Button-" + System.currentTimeMillis() + ".mp3";
-        File targetFile = SoundDao.getFile(this, fileName);
+        File targetFile = FileUtils.getFile(this, fileName);
 
         int feedbackMessage = R.string.feature_base_general_error_contact_support;
 

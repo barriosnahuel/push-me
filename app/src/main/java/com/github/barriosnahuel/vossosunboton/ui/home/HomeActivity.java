@@ -3,13 +3,14 @@ package com.github.barriosnahuel.vossosunboton.ui.home;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity;
-import com.github.barriosnahuel.vossosunboton.model.data.manager.SoundDao;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with
@@ -36,7 +37,7 @@ public class HomeActivity extends AbstractActivity {
      * the home icon.
      */
     @Override
-    public boolean onOptionsItemSelected(final MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull final MenuItem item) {
         return true;
     }
 
@@ -50,10 +51,11 @@ public class HomeActivity extends AbstractActivity {
         // use a linear layout manager
         buttonsContainer.setLayoutManager(new LinearLayoutManager(this));
 
-        final SoundDao soundsDao = new SoundDao();
+        final HomeView homeView = new HomeViewImpl(buttonsContainer);
+        final SoundsAdapter soundsAdapter = new SoundsAdapter(homeView);
+        buttonsContainer.setAdapter(soundsAdapter);
 
-        // specify an adapter (see also next example)
-        buttonsContainer.setAdapter(new SoundsAdapter(getResources(), soundsDao.find(this)));
+        new ItemTouchHelper(new SwipeDismissListener(soundsAdapter)).attachToRecyclerView(buttonsContainer);
     }
 
 }

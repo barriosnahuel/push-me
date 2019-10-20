@@ -54,4 +54,12 @@ public class Storage {
     public void save(@NonNull final Context context, final String key, final String string) {
         getSharedPreferences(context).edit().putString(key, string).apply();
     }
+
+    /**
+     * @param context The execution context.
+     * @param key     The key used to remove the <code>string</code>
+     */
+    public void remove(@NonNull final Context context, final String key) {
+        getSharedPreferences(context).edit().remove(key).apply();
+    }
 }

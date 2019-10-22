@@ -2,16 +2,13 @@ package com.github.barriosnahuel.vossosunboton
 
 import android.app.Application
 import com.facebook.stetho.Stetho
-import com.squareup.leakcanary.LeakCanary
+import com.github.barriosnahuel.vossosunboton.commons.android.error.Tracker
 
-internal class DebugTools {
+internal object DebugTools {
 
-    companion object {
-        @JvmStatic
-        fun configure(application: Application) {
-            LeakCanary.install(application)
-            Stetho.initializeWithDefaults(application)
-            StrictModeHelper().initializeWithDefaults(application)
-        }
+    fun configure(application: Application) {
+        StrictModeConfigurator.initializeWithDefaults(Tracker)
+        LeakCanaryConfigurator.initializeWithDefaults(application, Tracker)
+        Stetho.initializeWithDefaults(application)
     }
 }

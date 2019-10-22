@@ -30,12 +30,18 @@ Firebase and static code analyzers too.
 - Default language to English.
 - Gradle version to [v5.6.2](https://docs.gradle.org/5.6.2/release-notes.html).
 - Better separation of responsibilities.
+- `StrictMode` warnings now are logged to Crashlytics instead of the debugging notifier.
+- `LeakCanary` warnings now are logged to Crashlytics.
 
 ### Fixed
 - Many SCA suggestions applied.
 - Sharing buttons issues due to a bad permissions setup.
 - Usage of resources like `InputStream`, `OutputStream` and `Cursor`.
 - Stop exposing Firebase API configuration file.
+- Crashes when debugging because of a bug in library StrictModeNotifier
+
+### Removed
+- Library StrictModeNotifier for debug builds.
 
 ## \[v1.1.0] - 2017-08-16
 

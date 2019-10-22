@@ -9,7 +9,7 @@ import com.squareup.leakcanary.LeakCanary
 import kotlin.reflect.KProperty
 
 
-object LeakCanaryConfigurator {
+internal object LeakCanaryConfigurator {
 
     private var tracker: Trackable? = null
 
@@ -22,6 +22,9 @@ object LeakCanaryConfigurator {
 }
 
 
+/**
+ * Custom service that reports memory leaks detected by LeakCanary to our error tracking tool.
+ */
 class MemoryLeakTrackerService : DisplayLeakService() {
 
     private val tracker: Trackable by LeakCanaryConfigurator

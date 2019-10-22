@@ -1,5 +1,7 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.monits.staticCodeAnalysis'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
@@ -33,4 +35,7 @@ staticCodeAnalysis {
 
 dependencies {
     implementation 'androidx.annotation:annotation:1.1.0'
+
+    implementation 'com.crashlytics.sdk.android:crashlytics:2.10.1'
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }

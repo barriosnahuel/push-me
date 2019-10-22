@@ -31,6 +31,7 @@ Firebase and static code analyzers too.
 - Gradle version to [v5.6.2](https://docs.gradle.org/5.6.2/release-notes.html).
 - Better separation of responsibilities.
 - `StrictMode` warnings now are logged to Crashlytics instead of the debugging notifier.
+- `LeakCanary` warnings now are logged to Crashlytics.
 
 ### Fixed
 - Many SCA suggestions applied.

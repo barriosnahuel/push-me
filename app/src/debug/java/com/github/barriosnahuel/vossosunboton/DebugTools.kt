@@ -11,7 +11,7 @@ internal class DebugTools {
         fun configure(application: Application) {
             LeakCanary.install(application)
             Stetho.initializeWithDefaults(application)
-            StrictModeHelper().initializeWithDefaults(application)
+            StrictModeHelper().initializeWithDefaults()
         }
     }
 }

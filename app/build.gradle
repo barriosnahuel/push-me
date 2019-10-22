@@ -98,8 +98,6 @@ dependencies {
 
     debugImplementation 'com.facebook.stetho:stetho:1.5.1'
 
-    debugImplementation 'com.nshmura:strictmode-notifier:0.9.3'
-
     testImplementation 'junit:junit:4.12'
 }
 

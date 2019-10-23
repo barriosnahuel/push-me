@@ -172,10 +172,6 @@ public class AddButtonActivity extends AbstractActivity {
             , PermissionsRequest.SAVE_NEW_AUDIO_FILE);
     }
 
-    /**
-     * TODO: Stop ignoring this! Currently ignored because I'm upgrading dependencies version.
-     */
-    @SuppressWarnings("PMD.AvoidFileStream")
     private void saveNewButton() {
         final String fileName = "Button-" + System.currentTimeMillis() + ".mp3";
         File targetFile = FileUtils.getFile(this, fileName);

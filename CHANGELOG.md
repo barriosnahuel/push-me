@@ -32,6 +32,7 @@ Firebase and static code analyzers too.
 - Better separation of responsibilities.
 - `StrictMode` warnings now are logged to Crashlytics instead of the debugging notifier.
 - `LeakCanary` warnings now are logged to Crashlytics.
+- Refactor of Media Player setup for clearness.
 
 ### Fixed
 - Many SCA suggestions applied.

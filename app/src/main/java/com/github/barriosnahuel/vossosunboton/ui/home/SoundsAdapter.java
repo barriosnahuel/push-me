@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.github.barriosnahuel.vossosunboton.R;
 import com.github.barriosnahuel.vossosunboton.commons.android.error.Tracker;
+import com.github.barriosnahuel.vossosunboton.feature.playback.MediaPlayerHelper;
 import com.github.barriosnahuel.vossosunboton.model.Sound;
 import com.github.barriosnahuel.vossosunboton.model.data.manager.SoundDao;
 
@@ -158,7 +159,7 @@ import timber.log.Timber;
                 if (sound.isBundled()) {
                     ready = MediaPlayerHelper.setupSoundSource(v.getContext(), mediaPlayer, sound.getRawRes());
                 } else {
-                    ready = MediaPlayerHelper.setupMediaPlayer(v.getContext(), mediaPlayer, sound.getFile());
+                    ready = MediaPlayerHelper.setupSoundSource(v.getContext(), mediaPlayer, sound.getFile());
                 }
 
                 if (ready) {

@@ -1,4 +1,4 @@
-package com.github.barriosnahuel.vossosunboton.ui.home;
+package com.github.barriosnahuel.vossosunboton.feature.playback;
 
 import android.content.ContentResolver;
 import android.content.Context;
@@ -14,19 +14,26 @@ import androidx.annotation.RawRes;
 import com.github.barriosnahuel.vossosunboton.commons.android.error.Tracker;
 import com.github.barriosnahuel.vossosunboton.commons.file.FileUtils;
 
+import java.io.FileDescriptor;
 import java.io.IOException;
 
 import timber.log.Timber;
 
-/* default */ final class MediaPlayerHelper {
+public final class MediaPlayerHelper {
 
     private MediaPlayerHelper() {
         // Do nothing.
     }
 
-    /* default */ static boolean setupMediaPlayer(@NonNull final Context context,
-                                    @NonNull final MediaPlayer mediaPlayer,
-                                    @NonNull final String file) {
+    /**
+     * @param context     The execution context.
+     * @param mediaPlayer The media player to setup.
+     * @param file        The path of the sound's file.
+     * @return <code>true</code> when call to {@link MediaPlayer#setDataSource(Context, Uri)} is ok.
+     */
+    public static boolean setupSoundSource(@NonNull final Context context,
+                                           @NonNull final MediaPlayer mediaPlayer,
+                                           @NonNull final String file) {
         String soundFilePath = FileUtils.getFile(context, file).toString();
 
         if (soundFilePath.startsWith(ContentResolver.SCHEME_CONTENT + "://")) {
@@ -46,7 +53,13 @@ import timber.log.Timber;
         return false;
     }
 
-    /* default */ static boolean setupSoundSource(@NonNull final Context context,
+    /**
+     * @param context     The execution context.
+     * @param mediaPlayer The media player to setup.
+     * @param rawResId    The ID of the raw resource to link to the media player.
+     * @return <code>true</code> when call to {@link MediaPlayer#setDataSource(FileDescriptor, long, long)} is ok.
+     */
+    public static boolean setupSoundSource(@NonNull final Context context,
                                     @NonNull final MediaPlayer mediaPlayer,
                                     @RawRes final int rawResId) {
 

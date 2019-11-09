@@ -47,6 +47,12 @@ android {
         }
     }
 
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
@@ -98,6 +104,8 @@ dependencies {
     debugImplementation 'com.facebook.stetho:stetho:1.5.1'
 
     testImplementation 'junit:junit:4.12'
+    testImplementation 'com.google.truth:truth:1.0'
+    testImplementation 'org.mockito:mockito-core:3.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

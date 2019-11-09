@@ -4,7 +4,7 @@ import android.app.Application
 import org.robolectric.shadows.ShadowLog
 import timber.log.Timber
 
-class TestApplication : Application() {
+internal class TestApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()

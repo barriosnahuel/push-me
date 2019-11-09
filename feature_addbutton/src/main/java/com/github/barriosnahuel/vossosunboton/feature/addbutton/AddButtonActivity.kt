@@ -25,9 +25,6 @@ import kotlinx.coroutines.withContext
  */
 class AddButtonActivity : AbstractActivity() {
 
-    /**
-     * file:///storage/emulated/0/WhatsApp/Media/WhatsApp%20Voice%20Notes/201615/PTT-20160407-WA0079.opus
-     */
     private var uri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,6 +33,9 @@ class AddButtonActivity : AbstractActivity() {
 
         supportActionBar?.setTitle(R.string.feature_addbutton_activity_title)
 
+        /**
+         * file:///storage/emulated/0/WhatsApp/Media/WhatsApp%20Voice%20Notes/201615/PTT-20160407-WA0079.opus
+         */
         uri = intent.getParcelableExtra(Intent.EXTRA_STREAM)
         if (uri == null) {
             Feedback.send(this, R.string.feature_addbutton_missing_parameter_error)
@@ -68,9 +68,6 @@ class AddButtonActivity : AbstractActivity() {
         }
     }
 
-    /**
-     * Check new button required data and saves the new sound for this user.
-     */
     private fun saveButton(context: Context) {
         if (name.text.isEmpty()) {
             name.error = getString(R.string.feature_addbutton_name_is_required_error)

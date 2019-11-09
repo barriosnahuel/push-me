@@ -16,7 +16,15 @@ import java.io.FileNotFoundException
 import java.io.FileOutputStream
 import java.io.IOException
 
+/**
+ * Actually persists the button into storage.
+ */
 interface AddButtonFeature {
+    /**
+     * @param context The execution context.
+     * @param name Name of the button.
+     * @param uri Sound's location.
+     */
     fun saveNewButtonAsync(context: @NotNull Context, name: String, uri: String): Deferred<Int>
 
     companion object {

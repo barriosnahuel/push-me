@@ -1,6 +1,7 @@
 version: 2.1
 orbs:
   android: circleci/android@0.2.0
+  codecov: codecov/codecov@1.0.5
 jobs:
   "test":
     executor: android/android
@@ -9,6 +10,10 @@ jobs:
       - run:
           name: "Run Tests"
           command: ./gradlew test
+      - codecov/upload:
+          file: "app/build/jacoco/testDebugUnitTest.exec"
+      - codecov/upload:
+          file: "app/build/jacoco/testReleaseUnitTest.exec"
   "code-analysis":
     executor: android/android
     steps:

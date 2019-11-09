@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'com.monits.staticCodeAnalysis'
+apply plugin: 'jacoco'
 
 android {
     compileOptions {
@@ -47,6 +48,12 @@ android {
         }
     }
 
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
@@ -60,6 +67,10 @@ android {
             signingConfig signingConfigs.release
         }
     }
+}
+
+jacoco {
+    toolVersion = '0.8.5'
 }
 
 staticCodeAnalysis {
@@ -98,6 +109,8 @@ dependencies {
     debugImplementation 'com.facebook.stetho:stetho:1.5.1'
 
     testImplementation 'junit:junit:4.12'
+    testImplementation 'com.google.truth:truth:1.0'
+    testImplementation 'org.mockito:mockito-core:3.1.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

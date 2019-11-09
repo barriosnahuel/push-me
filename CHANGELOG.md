@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Codacy checks integration through GitHub.
 - Multidex support for debug builds.
 - Let users delete custom audios by swiping horizontally.
+- Timestamp as suffix on `versionName` for debug builds.
 
 ### Changed
 - Min Android version required is KitKat (API Level 19).
@@ -39,7 +40,8 @@ Firebase and static code analyzers too.
 - Sharing buttons issues due to a bad permissions setup.
 - Usage of resources like `InputStream`, `OutputStream` and `Cursor`.
 - Stop exposing Firebase API configuration file.
-- Crashes when debugging because of a bug in library StrictModeNotifier
+- Crashes when debugging because of a bug in library `StrictModeNotifier`.
+- Performance issue when saving a new audio button.
 
 ### Removed
 - Library StrictModeNotifier for debug builds.

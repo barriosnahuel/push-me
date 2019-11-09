@@ -25,11 +25,10 @@ public enum DeepLinks {
     }
 
     /**
-     * @param context The execution context.
      * @return The deep-link that must be used to open a specific screen.
      */
     @NonNull
-    public String get(final Context context) {
+    public String get() {
         return String.format(
                 "%s://%s%s"
                 , "sosunboton"
@@ -44,6 +43,6 @@ public enum DeepLinks {
      */
     @NonNull
     public Intent getIntent(final Context context) {
-        return new SafeIntent(context, Uri.parse(get(context)));
+        return new SafeIntent(context, Uri.parse(get()));
     }
 }

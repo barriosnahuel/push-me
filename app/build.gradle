@@ -50,7 +50,7 @@ android {
     buildTypes {
         debug {
             applicationIdSuffix ".debug"
-            versionNameSuffix '-DEBUG'
+            versionNameSuffix "-DEBUG ${new Date().format("YYYY-MM-dd HH:mm:ss")}"
             multiDexEnabled true
         }
 

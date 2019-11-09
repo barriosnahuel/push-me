@@ -14,7 +14,7 @@ internal interface ShareFeature {
     fun share(context: Context, sound: Sound)
 
     companion object {
-        fun get(): ShareFeature = ShareFeatureImpl()
+        val instance: ShareFeature by lazy { ShareFeatureImpl() }
     }
 }
 
@@ -33,7 +33,7 @@ private class ShareFeatureImpl : ShareFeature {
         val shareIntent = Intent()
         shareIntent.action = Intent.ACTION_SEND
         shareIntent.type = "audio/*"
-        shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, authority, File(sound.file)))
+        shareIntent.putExtra(Intent.EXTRA_STREAM, FileProvider.getUriForFile(context, authority, File(sound.file!!)))
         shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share_chooser_title)))
     }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/addbutton_name_label"
+        android:id="@+id/label"
         style="@style/feature_addbutton_MyCustomTheme.Form.Label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -16,10 +16,10 @@
         android:text="@string/feature_addbutton_name" />
 
     <EditText
-        android:id="@+id/addbutton_name"
+        android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/addbutton_name_label"
+        android:layout_below="@id/label"
         android:hint="@string/feature_addbutton_placeholder"
         android:imeOptions="actionDone"
         android:importantForAutofill="no"
@@ -28,10 +28,10 @@
         tools:ignore="UnusedAttribute" />
 
     <Button
+        android:id="@+id/saveButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:onClick="saveButton"
         android:text="@string/feature_addbutton_save" />
 
 </RelativeLayout>

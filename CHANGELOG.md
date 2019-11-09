@@ -16,6 +16,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Codacy checks integration through GitHub.
 - Multidex support for debug builds.
 - Let users delete custom audios by swiping horizontally.
+- Timestamp as suffix on `versionName` for debug builds.
 
 ### Changed
 - Min Android version required is KitKat (API Level 19).

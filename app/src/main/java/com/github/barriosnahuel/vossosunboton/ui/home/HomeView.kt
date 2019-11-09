@@ -13,7 +13,7 @@ internal interface HomeView {
     fun showGenericErrorFeedback()
 }
 
-private class HomeViewImpl(private val parentView: ViewGroup) : HomeView {
+internal class HomeViewImpl(private val parentView: ViewGroup) : HomeView {
     override fun showFeatureNotImplementedFeedback() {
         Snackbar
                 .make(currentView(), R.string.feedback_custom_buttons_cant_be_deleted_yet, Snackbar.LENGTH_SHORT)
@@ -36,5 +36,4 @@ private class HomeViewImpl(private val parentView: ViewGroup) : HomeView {
     }
 
     override fun currentView(): ViewGroup = parentView
-
 }

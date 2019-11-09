@@ -11,8 +11,11 @@ import timber.log.Timber
 
 private const val DRAG_DIRECTIONS: Int = 0
 private const val SWIPE_DIRECTIONS: Int = ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
+private const val BACKGROUND_CORNER_OFFSET = 20
 
-internal class SwipeDismissListener constructor(private val adapter: SoundsAdapter) : ItemTouchHelper.SimpleCallback(DRAG_DIRECTIONS, SWIPE_DIRECTIONS) {
+internal class SwipeDismissListener constructor(private val adapter: SoundsAdapter) :
+        ItemTouchHelper.SimpleCallback(DRAG_DIRECTIONS, SWIPE_DIRECTIONS) {
+
     private val background: ColorDrawable = ColorDrawable(Color.RED)
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
@@ -26,12 +29,25 @@ internal class SwipeDismissListener constructor(private val adapter: SoundsAdapt
         adapter.remove(viewHolder.adapterPosition)
     }
 
-    override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
+    override fun onChildDraw(
+        c: Canvas,
+        recyclerView: RecyclerView,
+        viewHolder: RecyclerView.ViewHolder,
+        dX: Float,
+        dY: Float,
+        actionState: Int,
+        isCurrentlyActive: Boolean
+    ) {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         val itemView = viewHolder.itemView
-        val backgroundCornerOffset = 20
 
-        val icon: Drawable? = ContextCompat.getDrawable(recyclerView.context, com.github.barriosnahuel.vossosunboton.R.drawable.baseline_delete_white_36)
+        val backgroundCornerOffset = BACKGROUND_CORNER_OFFSET
+
+        val icon: Drawable? = ContextCompat.getDrawable(
+                recyclerView.context,
+                com.github.barriosnahuel.vossosunboton.R.drawable.baseline_delete_white_36
+        )
+
         if (icon == null) {
             Timber.e("Delete icon on swipe not shown to the user")
             return

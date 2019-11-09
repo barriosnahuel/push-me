@@ -12,9 +12,9 @@ internal class ShareClickListener(private val sound: Sound) : View.OnLongClickLi
     override fun onLongClick(view: View): Boolean {
         Timber.v("ShareClickListener#onLongClick")
 
-        val share = ShareFeature.get()
+        val shareFeature = ShareFeature.instance
         try {
-            share.share(view.context, sound)
+            shareFeature.share(view.context, sound)
         } catch (e: IllegalStateException) {
             Feedback.send(view.context, R.string.not_yet_implemented_error)
             return false
@@ -22,5 +22,4 @@ internal class ShareClickListener(private val sound: Sound) : View.OnLongClickLi
 
         return true
     }
-
 }

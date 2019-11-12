@@ -10,7 +10,7 @@ import io.mockk.mockkObject
 import io.mockk.verify
 import org.junit.Test
 
-class PlaybackClickListenerTest {
+internal class PlaybackClickListenerTest {
 
     @Test
     fun `onClick on a view that is not pressed should start an audio button`() {

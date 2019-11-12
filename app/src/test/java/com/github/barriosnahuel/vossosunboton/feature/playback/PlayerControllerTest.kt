@@ -7,7 +7,7 @@ import io.mockk.mockkObject
 import io.mockk.verifySequence
 import org.junit.Test
 
-class PlayerControllerTest {
+internal class PlayerControllerTest {
 
     @Test
     fun `on stopPlayingSound when media player is playing should stop it`() {

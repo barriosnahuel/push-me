@@ -54,7 +54,7 @@ android {
 
             all {
                 testLogging {
-                    events 'passed', 'failed'
+                    events 'PASSED', 'FAILED'
                 }
             }
         }

@@ -2,11 +2,12 @@ package com.github.barriosnahuel.vossosunboton.feature.playback
 
 import android.content.Context
 import android.media.MediaPlayer
+import androidx.annotation.VisibleForTesting
 import com.github.barriosnahuel.vossosunboton.commons.android.error.Tracker
 import com.github.barriosnahuel.vossosunboton.model.Sound
 import java.io.IOException
 
-interface PlayerController {
+internal interface PlayerController {
 
     fun startPlayingSound(
             context: Context,
@@ -18,19 +19,14 @@ interface PlayerController {
 
     fun stopPlayingSound()
 
-    companion object {
-        val instance: PlayerController = PlayerControllerImpl()
-    }
 }
 
-private class PlayerControllerImpl : PlayerController {
+internal object PlayerControllerFactory {
+    internal var instance: PlayerController = PlayerControllerImpl()
+}
 
-    init {
-        println("prueba entro al constructor!")
-    }
-
-    private val mediaPlayer: MediaPlayer = MediaPlayer()
-
+@VisibleForTesting
+internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = MediaPlayer()) : PlayerController {
 
     override fun startPlayingSound(
             context: Context,

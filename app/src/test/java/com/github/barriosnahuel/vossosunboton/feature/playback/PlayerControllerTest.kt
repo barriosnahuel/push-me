@@ -1,53 +1,42 @@
 package com.github.barriosnahuel.vossosunboton.feature.playback
 
 import android.media.MediaPlayer
-import io.mockk.*
-import org.junit.After
-import org.junit.Before
-import org.junit.Ignore
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkObject
+import io.mockk.verifySequence
 import org.junit.Test
 
 class PlayerControllerTest {
 
-    @Before
-    fun setup() {
-        println("prueba mock constructor")
-        mockkConstructor(MediaPlayer::class)
-        println("prueba post mock constructor")
-    }
-
-    @Ignore("Because it passes when running only this type but fails when running the whole project.")
     @Test
     fun `on stopPlayingSound when media player is playing should stop it`() {
-        givenAMediaPlayerCurrentlyPlayingASound()
+        val mockedMediaPlayer = givenAMediaPlayerCurrentlyPlayingASound()
 
-        whenCallingPlayerControllerStop()
+        whenCallingPlayerControllerStop(mockedMediaPlayer)
 
-        thenItShouldStopMediaPlayer()
+        thenItShouldStopMediaPlayer(mockedMediaPlayer)
     }
 
-    @After
-    fun cleanup() {
-        unmockkAll()
+    private fun givenAMediaPlayerCurrentlyPlayingASound(): MediaPlayer {
+        val mockedMediaPlayer = mockk<MediaPlayer>()
+        every { mockedMediaPlayer.isPlaying } returns true
+        every { mockedMediaPlayer.stop() } answers { nothing }
+
+        return mockedMediaPlayer
     }
 
-    private fun givenAMediaPlayerCurrentlyPlayingASound() {
-        println("prueba mock constructor")
-        mockkConstructor(MediaPlayer::class)
-        println("prueba post mock constructor")
-        every { anyConstructed<MediaPlayer>().isPlaying } returns true
-        every { anyConstructed<MediaPlayer>().stop() } answers { nothing }
+    private fun whenCallingPlayerControllerStop(mockedMediaPlayer: MediaPlayer) {
+        mockkObject(PlayerControllerFactory)
+
+        every { PlayerControllerFactory.instance } returns PlayerControllerImpl(mockedMediaPlayer)
+        PlayerControllerFactory.instance.stopPlayingSound()
     }
 
-    private fun whenCallingPlayerControllerStop() {
-        mockkObject(PlayerController.instance)
-        PlayerController.instance.stopPlayingSound()
-    }
-
-    private fun thenItShouldStopMediaPlayer() {
+    private fun thenItShouldStopMediaPlayer(mockedMediaPlayer: MediaPlayer) {
         verifySequence {
-            anyConstructed<MediaPlayer>().isPlaying
-            anyConstructed<MediaPlayer>().stop()
+            mockedMediaPlayer.isPlaying
+            mockedMediaPlayer.stop()
         }
     }
 }

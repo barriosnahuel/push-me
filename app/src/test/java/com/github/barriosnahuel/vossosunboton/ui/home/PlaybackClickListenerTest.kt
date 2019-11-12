@@ -2,10 +2,12 @@ package com.github.barriosnahuel.vossosunboton.ui.home
 
 import android.view.View
 import android.widget.ToggleButton
-import com.github.barriosnahuel.vossosunboton.feature.playback.PlayerController
+import com.github.barriosnahuel.vossosunboton.feature.playback.PlayerControllerFactory
 import com.github.barriosnahuel.vossosunboton.model.Sound
-import io.mockk.*
-import org.junit.After
+import io.mockk.every
+import io.mockk.mockk
+import io.mockk.mockkObject
+import io.mockk.verify
 import org.junit.Test
 
 class PlaybackClickListenerTest {
@@ -28,24 +30,18 @@ class PlaybackClickListenerTest {
         thenItShouldStopPlayingTheAudio()
     }
 
-    @After
-    fun cleanup() {
-        unmockkAll()
-    }
-
     private fun thenItShouldStartPlayingAnAudio() {
-        verify(exactly = 1) { PlayerController.instance.startPlayingSound(any(), any(), any(), any(), any()) }
+        verify(exactly = 1) { PlayerControllerFactory.instance.startPlayingSound(any(), any(), any(), any(), any()) }
     }
 
     private fun thenItShouldStopPlayingTheAudio() {
-        verify(exactly = 1) { PlayerController.instance.stopPlayingSound() }
+        verify(exactly = 1) { PlayerControllerFactory.instance.stopPlayingSound() }
     }
 
     private fun whenClickingOn(button: View) {
-        mockkObject(PlayerController.instance)
-
-        every { PlayerController.instance.startPlayingSound(any(), any(), any(), any(), any()) } answers { nothing }
-        every { PlayerController.instance.stopPlayingSound() } answers { nothing }
+        mockkObject(PlayerControllerFactory)
+        every { PlayerControllerFactory.instance.startPlayingSound(any(), any(), any(), any(), any()) } answers { nothing }
+        every { PlayerControllerFactory.instance.stopPlayingSound() } answers { nothing }
 
         PlaybackClickListener(mockk(), Sound("a name", null)).onClick(button)
     }

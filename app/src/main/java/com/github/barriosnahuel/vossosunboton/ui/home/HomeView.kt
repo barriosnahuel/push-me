@@ -1,6 +1,7 @@
 package com.github.barriosnahuel.vossosunboton.ui.home
 
 import android.view.ViewGroup
+import android.widget.Checkable
 import androidx.core.content.ContextCompat
 import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.model.Sound
@@ -11,9 +12,15 @@ internal interface HomeView {
     fun showDeleteButtonFeedback(soundsAdapter: SoundsAdapter, soundToRemove: Sound, position: Int)
     fun showFeatureNotImplementedFeedback()
     fun showGenericErrorFeedback()
+
+    /**
+     * The view that is currently playing a [Sound].
+     */
+    var currentPlayingButton: Checkable?
 }
 
-internal class HomeViewImpl(private val parentView: ViewGroup) : HomeView {
+internal class HomeViewImpl(private val parentView: ViewGroup, override var currentPlayingButton: Checkable? = null) : HomeView {
+
     override fun showFeatureNotImplementedFeedback() {
         Snackbar
                 .make(currentView(), R.string.feedback_custom_buttons_cant_be_deleted_yet, Snackbar.LENGTH_SHORT)

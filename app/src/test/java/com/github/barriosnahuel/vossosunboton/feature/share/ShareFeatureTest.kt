@@ -14,7 +14,7 @@ import io.mockk.slot
 import io.mockk.spyk
 import org.junit.Test
 
-internal class ShareFeatureImplTest : AbstractRobolectricTest() {
+internal class ShareFeatureTest : AbstractRobolectricTest() {
 
     @Test
     fun `share when sound Uri is null must throw an exception`() {

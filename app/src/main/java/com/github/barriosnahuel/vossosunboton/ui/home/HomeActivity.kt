@@ -4,13 +4,12 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity
+import kotlinx.android.synthetic.main.activity_main.*
 
 /**
- * An example full-screen activity that shows and hides the system UI (i.e. status bar and navigation/system bar) with
- * user interaction.
+ * Home screen of this app. Currently is has a default UI, it's still on backlog to get a new fresh UI!
  */
 class HomeActivity : AbstractActivity() {
 
@@ -34,8 +33,6 @@ class HomeActivity : AbstractActivity() {
     }
 
     private fun setupView() {
-        val buttonsContainer = findViewById<RecyclerView>(R.id.buttons_container)
-
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
         buttonsContainer.setHasFixedSize(true)

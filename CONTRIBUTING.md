@@ -36,3 +36,9 @@ You can filter logcat messages by:
 ## Resources
 - Icon generated using: [romannurik.github.io/AndroidAssetStudio/icons-launcher](http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)
 - In-App icons using: [Material Design resources](https://material.io/resources/icons/?style=baseline)
+
+## Signing
+
+The following files must be located into the root dir:
+- `nahuelbarrios.keystore`
+- `secure.properties`

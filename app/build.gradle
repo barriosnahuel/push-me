@@ -105,12 +105,14 @@ dependencies {
     implementation 'com.google.android.material:material:1.0.0'
 
     implementation 'com.google.firebase:firebase-core:17.2.1'
-    implementation 'com.google.firebase:firebase-perf:19.0.2'
+    implementation 'com.google.firebase:firebase-perf:19.0.4'
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     debugImplementation 'androidx.multidex:multidex:2.0.1'
 
+    // Skipped because it's a major change and I have to make changes to use v2.x. Task added to Trello.
+    // noinspection NewerVersionAvailable
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
 
     debugImplementation 'com.facebook.stetho:stetho:1.5.1'

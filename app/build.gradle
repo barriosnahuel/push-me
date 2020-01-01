@@ -113,7 +113,7 @@ dependencies {
 
     // Skipped because it's a major change and I have to make changes to use v2.x. Task added to Trello.
     // noinspection NewerVersionAvailable
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.1'
 
     debugImplementation 'com.facebook.stetho:stetho:1.5.1'
 

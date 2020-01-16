@@ -25,5 +25,5 @@ An Androiod app made, by the moment, only for fun. Currently it's aimed to be us
 - Famous packaged audios.
 - Record new audios.
 
-## Contributing
+## Contributing 🙌
 Please feel free to share any suggestion or make a pull request. Just check the [contributing cheatsheet](CONTRIBUTING.md) before 😉

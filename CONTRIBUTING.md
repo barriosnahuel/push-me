@@ -11,6 +11,16 @@
 
     It must return **`BUILD SUCCESS`**.
 
+## Directory Structure
+- [app/](/app) Android application module which depends on all other submodules to be the great app you're building.
+- [commons_android/](/commons_android) Android library module for Android-related foundation staff.
+- [commons_file/](/commons_file) Android library module for File handling staff.
+- [config/](/config) contains code analyzers configuration files.
+- [feature_addbutton/](/feature_addbutton) Android library module containing all code and resources required in order to let users add a new button.
+- [feature_base/](/feature_base) Android library module containing all cross app staff required for almost all other features.
+- [gradle/wrapper/](/gradle/wrapper) contains Gradle's binary in order to be able to run this project everywhere.
+- [model/](/model) Android library module containing our business logic.
+
 ## Continuous Integration
 We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.yml) file you can check the config using the local CLI.
 - https://circleci.com/docs/2.0/local-cli

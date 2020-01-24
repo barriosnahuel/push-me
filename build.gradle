@@ -10,6 +10,12 @@ buildscript {
         classpath 'com.android.tools.build:gradle:3.5.3'
         classpath 'com.google.gms:google-services:4.3.3'
         classpath 'io.fabric.tools:gradle:1.31.2'
+
+        /**
+         * https://github.com/arturdm/jacoco-android-gradle-plugin
+         */
+        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
+
         classpath 'com.google.firebase:perf-plugin:1.3.1'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.61'
 

@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'com.monits.staticCodeAnalysis'
-apply plugin: 'jacoco'
+apply plugin: 'jacoco-android'
 
 android {
     compileOptions {
@@ -56,6 +56,10 @@ android {
                 testLogging {
                     events 'PASSED', 'FAILED'
                 }
+
+                jacoco {
+                    includeNoLocationClasses = true
+                }
             }
         }
     }
@@ -78,6 +82,11 @@ android {
 
 jacoco {
     toolVersion = '0.8.5'
+}
+
+jacocoAndroidUnitTestReport {
+    xml.enabled = false
+    html.enabled = true
 }
 
 staticCodeAnalysis {

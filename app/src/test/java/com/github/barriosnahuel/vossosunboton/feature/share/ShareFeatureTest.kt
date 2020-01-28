@@ -3,6 +3,7 @@ package com.github.barriosnahuel.vossosunboton.feature.share
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.os.Environment
 import androidx.core.content.FileProvider
 import androidx.test.core.app.ApplicationProvider
 import com.github.barriosnahuel.vossosunboton.AbstractRobolectricTest
@@ -13,6 +14,7 @@ import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.spyk
 import org.junit.Test
+import java.io.File
 
 internal class ShareFeatureTest : AbstractRobolectricTest() {
 
@@ -45,9 +47,37 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
         thenWeSendAnAudio(generatedIntent)
     }
 
+    @Test
+    fun `share should generate a content Uri under Music directory as described in file_provider_paths resource`() {
+        val sound = givenASound()
+
+        val capturedFile = whenSharingTheSoundCapturingThePath(sound)
+
+        thenWeCheckSoundPathIsAtMusicDirectory(capturedFile)
+    }
+
+    private fun thenWeCheckSoundPathIsAtMusicDirectory(capturedFile: File) {
+        assertThat(capturedFile.absolutePath.split("/").contains(Environment.DIRECTORY_MUSIC)).isTrue()
+    }
+
     private fun givenASound() = Sound("my button name", "a/dummy/sound/uri")
 
     private fun givenASoundWithNullUri() = Sound("my button name")
+
+    private fun whenSharingTheSoundCapturingThePath(sound: Sound): File {
+        val mockedContext = spyk<Context>(ApplicationProvider.getApplicationContext<Context>())
+
+        val slotFile = slot<File>()
+        mockkStatic(FileProvider::class)
+        every { FileProvider.getUriForFile(mockedContext, any(), capture(slotFile)) } returns Uri.EMPTY
+
+        val slot = slot<Intent>()
+        every { mockedContext.startActivity(capture(slot)) } answers { nothing }
+
+        ShareFeature.instance.share(mockedContext, sound)
+
+        return slotFile.captured
+    }
 
     private fun whenSharingThe(sound: Sound): Intent {
         val mockedContext = spyk<Context>(ApplicationProvider.getApplicationContext<Context>())

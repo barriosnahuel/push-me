@@ -5,6 +5,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'com.monits.staticCodeAnalysis'
+apply plugin: 'io.gitlab.arturbosch.detekt'
 apply plugin: 'jacoco-android'
 
 android {
@@ -99,6 +100,10 @@ staticCodeAnalysis {
     ignoreErrors = false
 
     androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
+}
+
+detekt {
+    config = files("../config/detekt/detekt-config.yml")
 }
 
 dependencies {

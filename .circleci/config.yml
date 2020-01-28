@@ -17,9 +17,7 @@ jobs:
       - store_artifacts:
           path: "app/build/reports/tests/"
       - store_artifacts:
-          path: "app/build/reports/jacoco/jacocoTestDebugUnitTestReport/html/index.html"
-      - store_artifacts:
-          path: "app/build/reports/jacoco/jacocoTestReleaseUnitTestReport/html/index.html"
+          path: "app/build/reports/jacoco/"
   "code-analysis":
     executor: android/android
     steps:

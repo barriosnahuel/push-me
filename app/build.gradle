@@ -4,7 +4,7 @@ apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.getkeepsafe.dexcount'
-apply from: '../linters.gradle'
+apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
     compileOptions {

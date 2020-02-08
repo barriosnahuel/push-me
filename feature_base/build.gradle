@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-apply from: '../linters.gradle'
+apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
     compileSdkVersion 29

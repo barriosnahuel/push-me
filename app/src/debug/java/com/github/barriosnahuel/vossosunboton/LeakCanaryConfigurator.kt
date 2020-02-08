@@ -1,19 +1,18 @@
 package com.github.barriosnahuel.vossosunboton
 
-import android.app.Application
 import com.github.barriosnahuel.vossosunboton.commons.android.error.Trackable
-import com.squareup.leakcanary.AnalysisResult
-import com.squareup.leakcanary.DisplayLeakService
-import com.squareup.leakcanary.HeapDump
-import com.squareup.leakcanary.LeakCanary
+import leakcanary.DefaultOnHeapAnalyzedListener
+import leakcanary.OnHeapAnalyzedListener
+import shark.HeapAnalysis
+import shark.HeapAnalysisFailure
+import shark.HeapAnalysisSuccess
 import kotlin.reflect.KProperty
 
 internal object LeakCanaryConfigurator {
 
     private var tracker: Trackable? = null
 
-    fun initializeWithDefaults(application: Application, tracker: Trackable) {
-        LeakCanary.install(application)
+    fun initializeWithDefaults(tracker: Trackable) {
         this.tracker = tracker
     }
 
@@ -23,17 +22,32 @@ internal object LeakCanaryConfigurator {
 /**
  * Custom service that reports memory leaks detected by LeakCanary to our error tracking tool.
  */
-class MemoryLeakTrackerService : DisplayLeakService() {
+class MemoryLeakTrackerService : OnHeapAnalyzedListener {
 
     private val tracker: Trackable by LeakCanaryConfigurator
 
-    override fun afterDefaultHandling(heapDump: HeapDump, result: AnalysisResult, leakInfo: String) {
-        if (!result.leakFound || result.excludedLeak) {
-            return
+    private val defaultListener = DefaultOnHeapAnalyzedListener.create()
+
+    override fun onHeapAnalyzed(heapAnalysis: HeapAnalysis) {
+        when (heapAnalysis) {
+            is HeapAnalysisSuccess -> {
+                heapAnalysis
+                        .allLeaks
+                        .toList()
+                        .flatMap { leak ->
+                            leak.leakTraces.map { leakTrace -> leak to leakTrace }
+                        }.forEach { (leak, _) ->
+                            tracker.track(MemoryLeakException(leak.shortDescription))
+                        }
+            }
+            is HeapAnalysisFailure -> {
+                tracker.track(RuntimeException("Heap analysis failed"))
+            }
         }
 
-        tracker.track(MemoryLeakException(result.leakTraceAsFakeException()))
+        // Delegate to default behavior (notification and saving result)
+        defaultListener.onHeapAnalyzed(heapAnalysis)
     }
 }
 
-private class MemoryLeakException(e: Throwable) : RuntimeException(e)
+private class MemoryLeakException(message: String) : RuntimeException(message)

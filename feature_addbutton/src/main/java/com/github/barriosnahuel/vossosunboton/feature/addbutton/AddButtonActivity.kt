@@ -42,7 +42,7 @@ class AddButtonActivity : AbstractActivity() {
             finish()
         }
 
-        name.setOnEditorActionListener { v, actionId, event ->
+        name.setOnEditorActionListener { _, actionId, _ ->
             val consumedHere = if (actionId == EditorInfo.IME_ACTION_DONE) {
                 saveButton(this@AddButtonActivity)
                 true
@@ -112,8 +112,8 @@ class AddButtonActivity : AbstractActivity() {
         AlertDialog.Builder(context)
                 .setTitle(R.string.feature_addbutton_permission_required)
                 .setMessage(R.string.feature_addbutton_permission_required_error)
-                .setPositiveButton(R.string.feature_addbutton_permission_positive) { dialog, which -> requestStoragePermission() }
-                .setNegativeButton(R.string.feature_addbutton_permission_negative) { dialog, which ->
+                .setPositiveButton(R.string.feature_addbutton_permission_positive) { _, _ -> requestStoragePermission() }
+                .setNegativeButton(R.string.feature_addbutton_permission_negative) { _, _ ->
                     Feedback.send(context, R.string.feature_addbutton_youre_an_idiot_error)
                 }.show()
     }

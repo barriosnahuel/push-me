@@ -1,7 +1,7 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.monits.staticCodeAnalysis'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
     compileSdkVersion 29
@@ -19,18 +19,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-staticCodeAnalysis {
-    findbugs = false
-    checkstyle = true
-    pmd = true
-    cpd = true
-    androidLint = true
-
-    ignoreErrors = false
-
-    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
 }
 
 dependencies {

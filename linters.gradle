@@ -1,0 +1,41 @@
+apply plugin: 'jacoco-android'
+apply plugin: 'com.monits.staticCodeAnalysis'
+apply plugin: 'io.gitlab.arturbosch.detekt'
+apply from: "$project.rootProject.projectDir/ktlint.gradle"
+
+/**
+ * Configuration for pure jacoco plugin
+ */
+jacoco {
+    toolVersion = '0.8.5'
+}
+
+/**
+ * Configuration for `jacoco-android` plugin
+ */
+jacocoAndroidUnitTestReport {
+    xml.enabled = false
+    html.enabled = true
+}
+
+/**
+ * Configuration for `com.monits.staticCodeAnalysis` plugin
+ */
+staticCodeAnalysis {
+    findbugs = false
+    checkstyle = true
+    pmd = true
+    cpd = true
+    androidLint = true
+
+    ignoreErrors = false
+
+    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint.xml"
+}
+
+/**
+ * Configuration for `io.gitlab.arturbosch.detekt` plugin
+ */
+detekt {
+    config = files("$project.rootProject.projectDir/config/detekt/detekt-config.yml")
+}

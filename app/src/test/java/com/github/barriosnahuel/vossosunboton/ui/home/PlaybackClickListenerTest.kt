@@ -31,7 +31,7 @@ internal class PlaybackClickListenerTest {
     }
 
     private fun thenItShouldStartPlayingAnAudio() {
-        verify(exactly = 1) { PlayerControllerFactory.instance.startPlayingSound(any(), any(), any(), any(), any()) }
+        verify(exactly = 1) { PlayerControllerFactory.instance.startPlayingSound(any(), any(), any()) }
     }
 
     private fun thenItShouldStopPlayingTheAudio() {
@@ -40,7 +40,7 @@ internal class PlaybackClickListenerTest {
 
     private fun whenClickingOn(button: View) {
         mockkObject(PlayerControllerFactory)
-        every { PlayerControllerFactory.instance.startPlayingSound(any(), any(), any(), any(), any()) } answers { nothing }
+        every { PlayerControllerFactory.instance.startPlayingSound(any(), any(), any()) } answers { nothing }
         every { PlayerControllerFactory.instance.stopPlayingSound() } answers { nothing }
 
         PlaybackClickListener(mockk(), Sound("a name", null)).onClick(button)

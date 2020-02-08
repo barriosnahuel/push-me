@@ -1,74 +1,41 @@
 package com.github.barriosnahuel.vossosunboton.feature.playback
 
 import android.content.Context
-import android.media.MediaPlayer
-import androidx.annotation.VisibleForTesting
-import com.github.barriosnahuel.vossosunboton.commons.android.error.Tracker
 import com.github.barriosnahuel.vossosunboton.model.Sound
-import java.io.IOException
+
+internal object PlayerControllerFactory {
+    internal var instance: PlayerController = PlayerControllerImpl()
+}
 
 internal interface PlayerController {
 
     fun startPlayingSound(
         context: Context,
         sound: Sound,
-        updateRecentlyClickedButtonStatus: () -> Unit,
-        updateCurrentlyPlayingButtonStatus: () -> Unit,
-        setCurrentlyPlayingButton: () -> Unit
+        listener: PlayerControllerListener
     )
 
     fun stopPlayingSound()
 }
 
-internal object PlayerControllerFactory {
-    internal var instance: PlayerController = PlayerControllerImpl()
+internal interface PlayerControllerListener {
+    fun onPlayerStop(intercept: Reasons)
+    fun onPlayerStart()
 }
 
-@VisibleForTesting
-internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = MediaPlayer()) : PlayerController {
+/**
+ * Enumerates the different reasons that can cause a player to be stoped.
+ */
+internal enum class Reasons {
 
-    override fun startPlayingSound(
-        context: Context,
-        sound: Sound,
-        updateRecentlyClickedButtonStatus: () -> Unit,
-        updateCurrentlyPlayingButtonStatus: () -> Unit,
-        setCurrentlyPlayingButton: () -> Unit
-    ) {
-        if (mediaPlayer.isPlaying) {
-            // User clicked on a new button while still listening an audio, then we should toggle that running button.
-            updateCurrentlyPlayingButtonStatus()
+    /**
+     * Indicates that the player has been stoped because a new sound has to be started.
+     */
+    INTERCEPT,
 
-            mediaPlayer.stop()
-        }
-
-        mediaPlayer.reset()
-
-        val ready = if (sound.isBundled()) {
-            MediaPlayerHelper.setupSoundSource(context, mediaPlayer, sound.rawRes)
-        } else {
-            MediaPlayerHelper.setupSoundSource(context, mediaPlayer, sound.file!!)
-        }
-
-        if (ready) {
-            try {
-                mediaPlayer.prepare()
-            } catch (e: IOException) {
-                Tracker.track(RuntimeException("Media player can't be prepared for playback.", e))
-            }
-
-            mediaPlayer.setOnCompletionListener { updateRecentlyClickedButtonStatus() }
-            mediaPlayer.setOnSeekCompleteListener { it.pause() }
-
-            setCurrentlyPlayingButton()
-            mediaPlayer.start()
-        }
-    }
-
-    override fun stopPlayingSound() {
-        // Here sound is on so we have to stop it.
-
-        if (mediaPlayer.isPlaying) {
-            mediaPlayer.stop()
-        }
-    }
+    /**
+     * Indicates that the player stoped by itself after playing the full length of the sound.
+     * @see android.media.MediaPlayer.OnCompletionListener.onCompletion
+     */
+    SOUND_END
 }

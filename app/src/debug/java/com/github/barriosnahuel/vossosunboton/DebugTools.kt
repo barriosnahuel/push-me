@@ -8,7 +8,7 @@ internal object DebugTools {
 
     fun configure(application: Application) {
         StrictModeConfigurator.initializeWithDefaults(Tracker)
-        LeakCanaryConfigurator.initializeWithDefaults(application, Tracker)
+        LeakCanaryConfigurator.initializeWithDefaults(Tracker)
         Stetho.initializeWithDefaults(application)
     }
 }

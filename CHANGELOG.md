@@ -42,6 +42,7 @@ Firebase and static code analyzers too.
 - Stop exposing Firebase API configuration file.
 - Crashes when debugging because of a bug in library `StrictModeNotifier`.
 - Performance issue when saving a new audio button.
+- Memory leak at the `MediaPlayer` which causes an increment on memory usage.
 
 ### Removed
 - Library StrictModeNotifier for debug builds.

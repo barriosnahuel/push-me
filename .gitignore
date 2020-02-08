@@ -16,7 +16,7 @@ build/
 
 ### Static Code Analyzers
 config/*
-!config/android/android-lint-app.xml
+!config/android/android-lint.xml
 !config/detekt/detekt-config.yml
 
 

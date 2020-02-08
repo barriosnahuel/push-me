@@ -30,7 +30,7 @@ staticCodeAnalysis {
 
     ignoreErrors = false
 
-    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
+    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint.xml"
 }
 
 /**

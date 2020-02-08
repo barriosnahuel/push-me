@@ -19,7 +19,6 @@ internal class PlaybackClickListener(private val homeView: HomeView, private val
                     { homeView.currentPlayingButton?.toggle() },
                     { homeView.currentPlayingButton = button }
             )
-
         } else {
             // Here it should be playing
             PlayerControllerFactory.instance.stopPlayingSound()

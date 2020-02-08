@@ -4,9 +4,7 @@ apply plugin: 'com.google.firebase.firebase-perf'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.getkeepsafe.dexcount'
-apply plugin: 'com.monits.staticCodeAnalysis'
-apply plugin: 'io.gitlab.arturbosch.detekt'
-apply plugin: 'jacoco-android'
+apply from: '../linters.gradle'
 
 android {
     compileOptions {
@@ -79,31 +77,6 @@ android {
             signingConfig signingConfigs.release
         }
     }
-}
-
-jacoco {
-    toolVersion = '0.8.5'
-}
-
-jacocoAndroidUnitTestReport {
-    xml.enabled = false
-    html.enabled = true
-}
-
-staticCodeAnalysis {
-    findbugs = false
-    checkstyle = true
-    pmd = true
-    cpd = true
-    androidLint = true
-
-    ignoreErrors = false
-
-    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
-}
-
-detekt {
-    config = files("../config/detekt/detekt-config.yml")
 }
 
 dependencies {

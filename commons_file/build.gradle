@@ -1,8 +1,6 @@
 apply plugin: 'com.android.library'
-apply plugin: 'com.monits.staticCodeAnalysis'
 apply plugin: 'kotlin-android'
-apply plugin: 'io.gitlab.arturbosch.detekt'
-apply from: '../ktlint.gradle'
+apply from: '../linters.gradle'
 
 android {
     compileSdkVersion 29
@@ -20,22 +18,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-}
-
-staticCodeAnalysis {
-    findbugs = false
-    checkstyle = true
-    pmd = true
-    cpd = true
-    androidLint = true
-
-    ignoreErrors = false
-
-    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint-app.xml"
-}
-
-detekt {
-    config = files("../config/detekt/detekt-config.yml")
 }
 
 dependencies {

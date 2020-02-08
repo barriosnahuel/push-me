@@ -10,15 +10,14 @@ import java.io.IOException
 internal interface PlayerController {
 
     fun startPlayingSound(
-            context: Context,
-            sound: Sound,
-            updateRecentlyClickedButtonStatus: () -> Unit,
-            updateCurrentlyPlayingButtonStatus: () -> Unit,
-            setCurrentlyPlayingButton: () -> Unit
+        context: Context,
+        sound: Sound,
+        updateRecentlyClickedButtonStatus: () -> Unit,
+        updateCurrentlyPlayingButtonStatus: () -> Unit,
+        setCurrentlyPlayingButton: () -> Unit
     )
 
     fun stopPlayingSound()
-
 }
 
 internal object PlayerControllerFactory {
@@ -29,11 +28,11 @@ internal object PlayerControllerFactory {
 internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = MediaPlayer()) : PlayerController {
 
     override fun startPlayingSound(
-            context: Context,
-            sound: Sound,
-            updateRecentlyClickedButtonStatus: () -> Unit,
-            updateCurrentlyPlayingButtonStatus: () -> Unit,
-            setCurrentlyPlayingButton: () -> Unit
+        context: Context,
+        sound: Sound,
+        updateRecentlyClickedButtonStatus: () -> Unit,
+        updateCurrentlyPlayingButtonStatus: () -> Unit,
+        setCurrentlyPlayingButton: () -> Unit
     ) {
         if (mediaPlayer.isPlaying) {
             // User clicked on a new button while still listening an audio, then we should toggle that running button.

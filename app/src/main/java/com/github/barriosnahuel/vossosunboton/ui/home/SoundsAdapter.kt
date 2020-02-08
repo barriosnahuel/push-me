@@ -15,7 +15,6 @@ internal class SoundsAdapter(private val homeView: HomeView) : RecyclerView.Adap
 
     private var marginPx = -1
 
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoundViewHolder {
         val button = LayoutInflater.from(parent.context).inflate(R.layout.layout_button, parent, false) as ToggleButton
 
@@ -92,7 +91,6 @@ internal class SoundsAdapter(private val homeView: HomeView) : RecyclerView.Adap
         sounds.add(originalPosition, removedSound)
         notifyItemInserted(originalPosition)
     }
-
 }
 
 internal class SoundViewHolder(var toggleButton: ToggleButton) : RecyclerView.ViewHolder(toggleButton)

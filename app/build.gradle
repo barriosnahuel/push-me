@@ -6,7 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.getkeepsafe.dexcount'
 apply plugin: 'com.monits.staticCodeAnalysis'
 apply plugin: 'io.gitlab.arturbosch.detekt'
-apply plugin: 'jacoco-android'
+//apply plugin: 'jacoco-android'
+apply from: rootProject.file('jacoco.gradle')
 
 android {
     compileOptions {
@@ -81,14 +82,14 @@ android {
     }
 }
 
-jacoco {
-    toolVersion = '0.8.5'
-}
-
-jacocoAndroidUnitTestReport {
-    xml.enabled = false
-    html.enabled = true
-}
+//jacoco {
+//    toolVersion = '0.8.5'
+//}
+//
+//jacocoAndroidUnitTestReport {
+//    xml.enabled = false
+//    html.enabled = true
+//}
 
 staticCodeAnalysis {
     findbugs = false

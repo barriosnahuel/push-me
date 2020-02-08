@@ -14,7 +14,7 @@ buildscript {
         /**
          * https://github.com/arturdm/jacoco-android-gradle-plugin
          */
-        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
+//        classpath 'com.dicedmelon.gradle:jacoco-android:0.1.4'
 
         classpath 'com.google.firebase:perf-plugin:1.3.1'
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.3.61'

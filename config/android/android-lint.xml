@@ -59,6 +59,11 @@
     <issue id="UnusedNamespace" severity="error" />
     <issue id="UnusedResources" severity="error">
         <ignore regexp=".*_dynamic.*" />
+        <!--
+            Required because when using a Dynamic Feature we are forced to declare in the base module all resources used in the dynamic feature
+            module's AndroidManifest.xml
+         -->
+        <ignore regexp=".*_dynamic_feature.*" />
     </issue>
     <issue id="UseCompoundDrawables" severity="error" />
     <issue id="UselessLeaf" severity="error" />

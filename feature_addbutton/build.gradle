@@ -1,4 +1,4 @@
-apply plugin: 'com.android.library'
+apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply from: "$project.rootProject.projectDir/linters.gradle"
@@ -15,13 +15,15 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // You must use the following property to specify additional ProGuard rules for dynamic feature modules.
+            // https://developer.android.com/guide/app-bundle/at-install-delivery#dynamic_feature_proguard
+            proguardFiles 'proguard-rules-dynamic-features.pro'
         }
     }
 }
 
 dependencies {
+    implementation project(':app')
     implementation project(':feature_base')
     implementation project(':commons_android')
     implementation project(':commons_file')

@@ -39,7 +39,7 @@ private class AddButtonFeatureImpl : AddButtonFeature {
         val targetFile = getFile(context, fileName)
 
         return GlobalScope.async(Dispatchers.IO) {
-            var feedbackMessage = R.string.feature_base_general_error_contact_support
+            var feedbackMessage = com.github.barriosnahuel.vossosunboton.R.string.feature_base_general_error_contact_support
             try {
                 FileOutputStream(targetFile).use { fileOutputStream ->
                     context.contentResolver.openInputStream(Uri.parse(uri)).use { inputStream ->

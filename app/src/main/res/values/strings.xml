@@ -7,4 +7,6 @@
     <string name="button_deleted">Button deleted</string>
     <string name="feedback_custom_buttons_cant_be_deleted_yet">Custom buttons still can\'t be deleted</string>
     <string name="feedback_generic_error">Ooops! I did it again…</string>
+    <string name="app_feature_addbutton_feature_name_dynamic_feature" translatable="false">Save as button</string>
+    <string name="app_feature_addbutton_activity_label_dynamic_feature">Save as button</string>
 </resources>

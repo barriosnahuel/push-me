@@ -20,6 +20,7 @@
 - [feature_base/](/feature_base) Android library module containing all cross app staff required for almost all other features.
 - [gradle/wrapper/](/gradle/wrapper) contains Gradle's binary in order to be able to run this project everywhere.
 - [model/](/model) Android library module containing our business logic.
+- [store-listing/](/store-listing) contains all listing related files, like Gimp files to edit screenshots.
 
 ## Continuous Integration
 We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.yml) file you can check the config using the local CLI.
@@ -50,5 +51,10 @@ You can filter logcat messages by:
 ## Signing
 
 The following files must be located into the root dir:
-- `nahuelbarrios.keystore`
+- `nahuelbarrios.keystore-appbundle.pkcs12`
 - `secure.properties`
+
+## Store Listing
+
+As mentioned before under [store-listing/](/store-listing) there are the assets for the store listing as well as the original Gimp files to edit those
+ assets.

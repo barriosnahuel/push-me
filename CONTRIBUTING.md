@@ -50,5 +50,5 @@ You can filter logcat messages by:
 ## Signing
 
 The following files must be located into the root dir:
-- `nahuelbarrios.keystore`
+- `nahuelbarrios.keystore-appbundle.pkcs12`
 - `secure.properties`

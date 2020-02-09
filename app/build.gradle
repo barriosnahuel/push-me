@@ -29,7 +29,7 @@ android {
             File keystoreFile = file("$project.rootProject.projectDir/nahuelbarrios.keystore-appbundle.pkcs12")
             File propertiesFile = file("$project.rootProject.projectDir/secure.properties")
             if (keystoreFile.exists() && propertiesFile.exists()) {
-                logger.info('INFO: Release keystore is available for app signing')
+                logger.warn('WARNING: Release keystore is available for app signing')
                 Properties properties = new Properties()
                 properties.load(new FileInputStream(propertiesFile))
 

@@ -36,6 +36,9 @@ jobs:
       - run:
           name: "Run App Build"
           command: ./gradlew app:build -x check -x lintVitalRelease
+      - run:
+          name: "Run App Bundle"
+          command: ./gradlew app:bundle
 workflows:
   version: 2.1
   "Pull Requests Workflow":

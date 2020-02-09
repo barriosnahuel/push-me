@@ -12,6 +12,14 @@ android {
     }
 
     resourcePrefix 'feature_addbutton_'
+
+    buildTypes {
+        release {
+            // You must use the following property to specify additional ProGuard rules for dynamic feature modules.
+            // https://developer.android.com/guide/app-bundle/at-install-delivery#dynamic_feature_proguard
+            proguardFiles 'proguard-rules-dynamic-features.pro'
+        }
+    }
 }
 
 dependencies {

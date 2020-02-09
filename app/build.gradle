@@ -26,10 +26,10 @@ android {
     signingConfigs {
         release {
 
-            File keystoreFile = file('../nahuelbarrios.keystore-appbundle.pkcs12')
-            File propertiesFile = file("../secure.properties")
+            File keystoreFile = file("$project.rootProject.projectDir/nahuelbarrios.keystore-appbundle.pkcs12")
+            File propertiesFile = file("$project.rootProject.projectDir/secure.properties")
             if (keystoreFile.exists() && propertiesFile.exists()) {
-                logger.warn('WARNING: Release keystore will be used for this build.')
+                logger.info('INFO: Release keystore is available for app signing')
                 Properties properties = new Properties()
                 properties.load(new FileInputStream(propertiesFile))
 
@@ -38,10 +38,9 @@ android {
                 storeFile keystoreFile
                 storePassword properties.getProperty('store.password')
             } else {
-                logger.warn('WARNING: Neither release keystore nor the secure properties were found. Debug keystore will be used for this build.')
                 keyAlias "androiddebugkey"
                 keyPassword "android"
-                storeFile file("../debug_keystore.keystore")
+                storeFile file("$project.rootProject.projectDir/debug_keystore.keystore")
                 storePassword "android"
             }
         }
@@ -61,6 +60,7 @@ android {
 
     buildTypes {
         debug {
+            // Comment this suffix to use a debug build at Internal App Sharing: https://play.google.com/apps/publish/internalappsharing/
             applicationIdSuffix ".debug"
             versionNameSuffix "-DEBUG ${new Date().format("YYYY-MM-dd HH:mm:ss")}"
             multiDexEnabled true
@@ -73,6 +73,7 @@ android {
             signingConfig signingConfigs.release
         }
     }
+
     dynamicFeatures = [":feature_addbutton"]
 
 }

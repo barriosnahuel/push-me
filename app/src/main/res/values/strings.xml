@@ -9,4 +9,5 @@
     <string name="feedback_generic_error">Ooops! I did it again…</string>
     <string name="app_feature_addbutton_feature_name_dynamic_feature" translatable="false">Save as button</string>
     <string name="app_feature_addbutton_activity_label_dynamic_feature">Save as button</string>
+    <string name="feature_base_general_error_contact_support_dynamic_feature">Oops! Please contact support</string>
 </resources>

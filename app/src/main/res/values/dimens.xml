@@ -2,6 +2,6 @@
 <resources>
     <dimen name="feature_base_material_horizontal_padding">16dp</dimen>
 
-    <dimen name="feature_base_font_size_small">14sp</dimen>
+    <dimen name="feature_base_font_size_small_dynamic_feature">14sp</dimen>
     <dimen name="feature_base_font_size_default">16sp</dimen>
 </resources>

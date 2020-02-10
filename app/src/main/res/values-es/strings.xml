@@ -8,4 +8,5 @@
     <string name="feedback_custom_buttons_cant_be_deleted_yet">Los butones personalizados todavía no se pueden eliminar</string>
     <string name="feedback_generic_error">Uh! Ocurrio un error inesperado…</string>
     <string name="app_feature_addbutton_activity_label_dynamic_feature">Crear nuevo botón</string>
+    <string name="feature_base_general_error_contact_support_dynamic_feature">Ocurrio un error, contacta con soporte</string>
 </resources>

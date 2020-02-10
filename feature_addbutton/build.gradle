@@ -24,7 +24,6 @@ android {
 
 dependencies {
     implementation project(':app')
-    implementation project(':feature_base')
     implementation project(':commons_android')
     implementation project(':commons_file')
     implementation project(':model')

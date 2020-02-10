@@ -5,7 +5,7 @@
     <style name="feature_addbutton_MyCustomTheme.Form" />
 
     <style name="feature_addbutton_MyCustomTheme.Form.Label">
-        <item name="android:textSize">@dimen/feature_base_font_size_small</item>
+        <item name="android:textSize">@dimen/feature_base_font_size_small_dynamic_feature</item>
     </style>
 
     <style name="feature_addbutton_MyCustomTheme.DefaultLayout">

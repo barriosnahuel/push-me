@@ -16,8 +16,8 @@
 - [commons_android/](/commons_android) Android library module for Android-related foundation staff.
 - [commons_file/](/commons_file) Android library module for File handling staff.
 - [config/](/config) contains code analyzers configuration files.
-- [feature_addbutton/](/feature_addbutton) Android library module containing all code and resources required in order to let users add a new button.
-- [feature_base/](/feature_base) Android library module containing all cross app staff required for almost all other features.
+- [feature_addbutton/](/feature_addbutton) Android Feature module containing all code and resources required in order to let users add a new
+button.
 - [gradle/wrapper/](/gradle/wrapper) contains Gradle's binary in order to be able to run this project everywhere.
 - [model/](/model) Android library module containing our business logic.
 - [store-listing/](/store-listing) contains all listing related files, like Gimp files to edit screenshots.

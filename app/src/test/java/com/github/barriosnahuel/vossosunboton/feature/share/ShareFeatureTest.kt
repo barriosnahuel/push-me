@@ -48,7 +48,7 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
     }
 
     @Test
-    fun `share should generate a content Uri under Music directory as described in file_provider_paths resource`() {
+    fun `share should generate a content Uri under Music directory as described in app_file_provider_paths resource`() {
         val sound = givenASound()
 
         val capturedFile = whenSharingTheSoundCapturingThePath(sound)

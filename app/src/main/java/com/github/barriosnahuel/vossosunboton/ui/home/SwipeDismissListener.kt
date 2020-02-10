@@ -45,7 +45,7 @@ internal class SwipeDismissListener constructor(private val adapter: SoundsAdapt
 
         val icon: Drawable? = ContextCompat.getDrawable(
                 recyclerView.context,
-                com.github.barriosnahuel.vossosunboton.R.drawable.baseline_delete_white_36
+                com.github.barriosnahuel.vossosunboton.R.drawable.app_baseline_delete_white_36
         )
 
         if (icon == null) {

@@ -23,22 +23,22 @@ internal class HomeViewImpl(private val parentView: ViewGroup, override var curr
 
     override fun showFeatureNotImplementedFeedback() {
         Snackbar
-                .make(currentView(), R.string.feedback_custom_buttons_cant_be_deleted_yet, Snackbar.LENGTH_SHORT)
+                .make(currentView(), R.string.app_feedback_custom_buttons_cant_be_deleted_yet, Snackbar.LENGTH_SHORT)
                 .show()
     }
 
     override fun showDeleteButtonFeedback(soundsAdapter: SoundsAdapter, soundToRemove: Sound, position: Int) {
         Snackbar
-                .make(currentView(), R.string.button_deleted, Snackbar.LENGTH_LONG)
-                .setAction(R.string.undo, UndoSwipeDismissListener(soundsAdapter, soundToRemove, position))
-                .setActionTextColor(ContextCompat.getColor(currentView().context, R.color.white))
+                .make(currentView(), R.string.app_button_deleted, Snackbar.LENGTH_LONG)
+                .setAction(R.string.app_undo, UndoSwipeDismissListener(soundsAdapter, soundToRemove, position))
+                .setActionTextColor(ContextCompat.getColor(currentView().context, R.color.app_white))
                 .addCallback(OnSnackbarDismissedListener(this, soundToRemove))
                 .show()
     }
 
     override fun showGenericErrorFeedback() {
         Snackbar
-                .make(currentView(), R.string.feedback_generic_error, Snackbar.LENGTH_LONG)
+                .make(currentView(), R.string.app_feedback_generic_error_contact_support, Snackbar.LENGTH_LONG)
                 .show()
     }
 

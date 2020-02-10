@@ -19,9 +19,11 @@ android {
         applicationId "com.github.barriosnahuel.vossosunboton"
         minSdkVersion 19
         targetSdkVersion 29
-        versionCode 4
+        versionCode 5
         versionName '2.0.0'
     }
+
+    resourcePrefix 'app_'
 
     signingConfigs {
         release {
@@ -81,7 +83,6 @@ android {
 dependencies {
     implementation project(':commons_file')
     implementation project(':commons_android')
-    implementation project(':feature_base')
     implementation project(':model')
 
     implementation 'com.google.android.play:core:1.6.4'

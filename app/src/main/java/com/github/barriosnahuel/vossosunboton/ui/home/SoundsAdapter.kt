@@ -16,12 +16,12 @@ internal class SoundsAdapter(private val homeView: HomeView) : RecyclerView.Adap
     private var marginPx = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoundViewHolder {
-        val button = LayoutInflater.from(parent.context).inflate(R.layout.layout_button, parent, false) as ToggleButton
+        val button = LayoutInflater.from(parent.context).inflate(R.layout.app_layout_button, parent, false) as ToggleButton
 
         val layoutParams = button.layoutParams as RecyclerView.LayoutParams
 
         if (marginPx == -1) {
-            marginPx = parent.resources.getDimensionPixelSize(R.dimen.feature_base_material_horizontal_padding)
+            marginPx = parent.resources.getDimensionPixelSize(R.dimen.app_material_horizontal_padding)
         }
 
         layoutParams.leftMargin = marginPx

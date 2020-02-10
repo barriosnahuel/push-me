@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <lint>
-    <!-- The following are NOT the only checks that Lint runs, just severity overrides -->
+    <!--
+        The following are NOT the only checks that Lint runs, just severity overrides.
+        For a complete list of lints run ./gradlew lint -\-show or check http://tools.android.com/tips/lint-checks
+     -->
 
     <!-- Correctness -->
     <issue id="DefaultLocale" severity="warning" />
@@ -58,12 +61,12 @@
     <issue id="UnusedIds" severity="error" />
     <issue id="UnusedNamespace" severity="error" />
     <issue id="UnusedResources" severity="error">
-        <ignore regexp=".*_dynamic.*" />
         <!--
             Required because when using a Dynamic Feature we are forced to declare in the base module all resources used in the dynamic feature
             module's AndroidManifest.xml
+            We're waiting for https://issuetracker.google.com/issues/113198298 to be released on Android Studio v4.0 beta 2 and v4.1 canary 2
          -->
-        <ignore regexp=".*_dynamic_feature.*" />
+        <ignore regexp=".*_dynamic_feature" />
     </issue>
     <issue id="UseCompoundDrawables" severity="error" />
     <issue id="UselessLeaf" severity="error" />

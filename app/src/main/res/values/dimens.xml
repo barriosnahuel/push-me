@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="app_material_horizontal_padding">16dp</dimen>
+
+    <dimen name="app_font_size_small_dynamic_feature">14sp</dimen>
+    <dimen name="app_font_size_default">16sp</dimen>
+</resources>

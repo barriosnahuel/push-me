@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.app_activity_home.*
 
 /**
  * Home screen of this app. Currently is has a default UI, it's still on backlog to get a new fresh UI!
@@ -16,10 +16,10 @@ class HomeActivity : AbstractActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.app_activity_home)
 
         val supportActionBar = supportActionBar
-        supportActionBar?.setHomeAsUpIndicator(R.mipmap.ic_launcher)
+        supportActionBar?.setHomeAsUpIndicator(R.mipmap.app_ic_launcher)
 
         setupView()
     }

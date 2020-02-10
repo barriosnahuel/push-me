@@ -50,7 +50,7 @@ private class ShareFeatureImpl : ShareFeature {
         buttonFileContentUri.let {
             shareIntent.putExtra(Intent.EXTRA_STREAM, it)
             shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.share_chooser_title)))
+            context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.app_share_chooser_title)))
         }
     }
 }

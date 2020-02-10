@@ -1,20 +1,20 @@
 <resources>
 
-    <style name="feature_addbutton_MyCustomTheme" parent="feature_base_MyCustomTheme" />
+    <style name="feature_addbutton_MyCustomTheme" parent="app_MyCustomTheme" />
 
     <style name="feature_addbutton_MyCustomTheme.Form" />
 
     <style name="feature_addbutton_MyCustomTheme.Form.Label">
-        <item name="android:textSize">@dimen/feature_base_font_size_small_dynamic_feature</item>
+        <item name="android:textSize">@dimen/app_font_size_small_dynamic_feature</item>
     </style>
 
     <style name="feature_addbutton_MyCustomTheme.DefaultLayout">
-        <item name="android:paddingLeft">@dimen/feature_base_material_horizontal_padding</item>
-        <item name="android:paddingStart">@dimen/feature_base_material_horizontal_padding</item>
-        <item name="android:paddingEnd">@dimen/feature_base_material_horizontal_padding</item>
-        <item name="android:paddingRight">@dimen/feature_base_material_horizontal_padding</item>
-        <item name="android:paddingTop">@dimen/feature_base_material_horizontal_padding</item>
-        <item name="android:paddingBottom">@dimen/feature_base_material_horizontal_padding</item>
+        <item name="android:paddingLeft">@dimen/app_material_horizontal_padding</item>
+        <item name="android:paddingStart">@dimen/app_material_horizontal_padding</item>
+        <item name="android:paddingEnd">@dimen/app_material_horizontal_padding</item>
+        <item name="android:paddingRight">@dimen/app_material_horizontal_padding</item>
+        <item name="android:paddingTop">@dimen/app_material_horizontal_padding</item>
+        <item name="android:paddingBottom">@dimen/app_material_horizontal_padding</item>
     </style>
 
 </resources>

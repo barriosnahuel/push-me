@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">Sos Un Boton</string>
 
-    <string name="share_chooser_title">Compartir vía</string>
-    <string name="not_yet_implemented_error">Todavía no se puede compartir este audio</string>
-    <string name="undo">Deshacer!</string>
-    <string name="button_deleted">Botón borrado</string>
-    <string name="feedback_custom_buttons_cant_be_deleted_yet">Los butones personalizados todavía no se pueden eliminar</string>
-    <string name="feedback_generic_error">Uh! Ocurrio un error inesperado…</string>
-    <string name="app_feature_addbutton_activity_label_dynamic_feature">Crear nuevo botón</string>
-    <string name="feature_base_general_error_contact_support_dynamic_feature">Ocurrio un error, contacta con soporte</string>
+    <string name="app_share_chooser_title">Compartir vía</string>
+    <string name="app_not_yet_implemented_error">Todavía no se puede compartir este audio</string>
+    <string name="app_undo">Deshacer!</string>
+    <string name="app_button_deleted">Botón borrado</string>
+    <string name="app_feedback_custom_buttons_cant_be_deleted_yet">Los butones personalizados todavía no se pueden eliminar</string>
+    <string name="app_feedback_generic_error_contact_support">Uh! Por favor contactá con soporte</string>
 </resources>

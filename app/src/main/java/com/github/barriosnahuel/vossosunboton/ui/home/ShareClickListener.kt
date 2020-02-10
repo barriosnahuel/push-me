@@ -17,7 +17,7 @@ internal class ShareClickListener(private val sound: Sound) : View.OnLongClickLi
         try {
             shareFeature.share(view.context, sound)
         } catch (e: IllegalStateException) {
-            Feedback.send(view.context, R.string.not_yet_implemented_error)
+            Feedback.send(view.context, R.string.app_not_yet_implemented_error)
             Tracker.track(Throwable("Audio button couldn't be shared.", e))
             return false
         }

@@ -14,7 +14,7 @@ public abstract class AbstractActivity extends AppCompatActivity {
 
     @Override
     public void setContentView(@LayoutRes final int layoutResID) {
-        super.setContentView(R.layout.feature_base_activity_base);
+        super.setContentView(R.layout.app_activity_root);
         setSupportActionBar(findViewById(R.id.base_toolbar));
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 

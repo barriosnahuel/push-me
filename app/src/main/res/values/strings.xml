@@ -1,13 +1,10 @@
 <resources>
     <string name="app_name">Sos Un Boton</string>
 
-    <string name="share_chooser_title">Share vía</string>
-    <string name="not_yet_implemented_error">We can\'t share this audio yet</string>
-    <string name="undo">Undo!</string>
-    <string name="button_deleted">Button deleted</string>
-    <string name="feedback_custom_buttons_cant_be_deleted_yet">Custom buttons still can\'t be deleted</string>
-    <string name="feedback_generic_error">Ooops! I did it again…</string>
-    <string name="app_feature_addbutton_feature_name_dynamic_feature" translatable="false">Save as button</string>
-    <string name="app_feature_addbutton_activity_label_dynamic_feature">Save as button</string>
-    <string name="feature_base_general_error_contact_support_dynamic_feature">Oops! Please contact support</string>
+    <string name="app_share_chooser_title">Share vía</string>
+    <string name="app_not_yet_implemented_error">We can\'t share this audio yet</string>
+    <string name="app_undo">Undo!</string>
+    <string name="app_button_deleted">Button deleted</string>
+    <string name="app_feedback_custom_buttons_cant_be_deleted_yet">Custom buttons still can\'t be deleted</string>
+    <string name="app_feedback_generic_error_contact_support">Oops! I did it again, please contact support</string>
 </resources>

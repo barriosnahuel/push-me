@@ -2,8 +2,7 @@
 
 *Here are some useful notes when making changes on this project.*
 
-But, before going deeper I suggest you to take a look to the [opensource.guide]
-(https://opensource.guide/), there are many things to learn from there! 😃
+But, before going deeper I suggest you to take a look to the [opensource.guide](https://opensource.guide/), there are many things to learn from there! 😃
 
 ## Local setup ⚙
 

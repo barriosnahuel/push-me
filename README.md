@@ -29,6 +29,6 @@ Please feel free to share any suggestion or make a pull request, I'd be glad to 
 
 Before doing anything, just check the [contributing cheatsheet](CONTRIBUTING.md) there are some things that can help you. 😉
 
-Also, if you're interested in working on open source projects take a look at https://opensource.guide/
+Also, if you're interested in working on open source projects take a look at [opensource.guide](https://opensource.guide/)
 
 Thank you! 🤝

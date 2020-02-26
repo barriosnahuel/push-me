@@ -30,6 +30,11 @@ We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.ym
 
 > circleci config validate
 
+## Gradle upgrade
+As described at [Gradle docs#Adding wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:adding_wrapper) you must run:
+
+    > ./gradlew wrapper --gradle-version=${desiredVersion}
+
 ## Firebase config file ⚙️
 
 To prevent future modifications on `app/google-services.json` I run:

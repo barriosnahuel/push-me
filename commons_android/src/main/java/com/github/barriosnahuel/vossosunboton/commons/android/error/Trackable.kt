@@ -22,7 +22,7 @@ interface Trackable {
 
 /**
  * Current implementation of the [Trackable] interface.
- * This tracker should be used along the entire project whenever you want to track some error.
+ * This tracker should be used along the entire project whenever you want to track some error or log something to the error platform.
  */
 object Tracker : Trackable {
 
@@ -38,7 +38,10 @@ object Tracker : Trackable {
     }
 }
 
-internal class ErrorTrackerTree : Timber.Tree() {
+/**
+ * Tree to plant on Timber to be able to log messages to the error tracking platform.
+ */
+class ErrorTrackerTree : Timber.Tree() {
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
         Tracker.log(message)
     }

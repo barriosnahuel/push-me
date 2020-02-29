@@ -35,7 +35,7 @@ interface AddButtonFeature {
 private class AddButtonFeatureImpl : AddButtonFeature {
 
     override fun saveNewButtonAsync(context: Context, name: String, uri: String): Deferred<Int> {
-        val fileName = "Button-" + System.currentTimeMillis() + ".mp3"
+        val fileName = "Button-custom-" + System.currentTimeMillis() + ".mp3"
         val targetFile = getFile(context, fileName)
 
         return GlobalScope.async(Dispatchers.IO) {

@@ -5,16 +5,17 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 
 ## \[unreleased]
 ### Added
+- Let users share packaged buttons too.
+- Let users delete custom audios by swiping horizontally.
 - Support for Android Q (API Level 29).
 - Pull Requests template for contributors.
-- Firebase Analytics. 
+- Firebase Analytics.
 - Firebase Crashlytics.
 - Firebase Performance Monitoring.
 - Added Detekt static code analysis tool, as well as Ktlint for code style conventions.
 - Setup [Stale GitHub app](https://github.com/apps/stale).
 - Codacy checks integration through GitHub.
 - Multidex support for debug builds.
-- Let users delete custom audios by swiping horizontally.
 - Timestamp as suffix on `versionName` for debug builds.
 - Automatic code obfuscation and optimizations on release builds.
 
@@ -36,13 +37,13 @@ Firebase and static code analyzers too.
 - Refactor of Media Player setup for clearness.
 
 ### Fixed
-- Many SCA suggestions applied.
 - Sharing buttons issues due to a bad permissions setup.
-- Usage of resources like `InputStream`, `OutputStream` and `Cursor`.
-- Stop exposing Firebase API configuration file.
 - Crashes when debugging because of a bug in library `StrictModeNotifier`.
 - Performance issue when saving a new audio button.
 - Memory leak at the `MediaPlayer` which causes an increment on memory usage.
+- Many SCA suggestions applied.
+- Usage of resources like `InputStream`, `OutputStream` and `Cursor`.
+- Stop exposing Firebase API configuration file.
 
 ### Removed
 - Library StrictModeNotifier for debug builds.

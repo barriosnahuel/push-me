@@ -28,7 +28,7 @@ public enum DeepLinks {
      * @return The deep-link that must be used to open a specific screen.
      */
     @NonNull
-    public String get() {
+    private String get() {
         return String.format(
                 "%s://%s%s"
                 , "sosunboton"

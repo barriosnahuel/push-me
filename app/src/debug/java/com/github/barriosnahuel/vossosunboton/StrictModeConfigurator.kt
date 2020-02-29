@@ -15,10 +15,9 @@ internal object StrictModeConfigurator {
 
 private fun setupThreadPolicy(trackable: Trackable) {
     val threadPolicyBuilder = StrictMode.ThreadPolicy.Builder()
-            .detectCustomSlowCalls()
-            .detectNetwork()
-            .permitDiskReads()
-            .penaltyLog() // Required for StrictModeNotifier!
+        .detectCustomSlowCalls()
+        .detectNetwork()
+        .penaltyLog()
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
         threadPolicyBuilder.detectResourceMismatches()
@@ -50,7 +49,6 @@ private fun setupVirtualMachinePolicy(trackable: Trackable) {
                 .detectLeakedClosableObjects()
     }
 
-    // #penaltyLog call is required for StrictModeNotifier
     vmPolicyBuilder.penaltyLog()
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {

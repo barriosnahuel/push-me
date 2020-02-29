@@ -25,7 +25,7 @@ An Androiod app made, by the moment, only for fun. Currently it's aimed to be us
 - Record new audios.
 
 ## Contributing 🙌
-Please feel free to share any suggestion or make a pull request, I'd be glad to help you apply your changes on the project. 😃
+Please feel free to share any suggestion and/or make a pull request, I'd be really glad to help you applying your changes to the app. 😃
 
 Before doing anything, just check the [contributing cheatsheet](CONTRIBUTING.md) there are some things that can help you. 😉
 

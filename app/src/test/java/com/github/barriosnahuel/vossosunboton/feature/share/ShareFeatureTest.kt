@@ -19,6 +19,8 @@ import java.io.File
 
 internal class ShareFeatureTest : AbstractRobolectricTest() {
 
+    private val dummyButtonName= "my button name"
+
     @Test
     fun `share when sound Uri and resource are null must throw an exception`() {
         val sound = givenASoundWithNullUri()
@@ -70,11 +72,11 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
         assertThat(capturedFile.absolutePath.split("/").contains(Environment.DIRECTORY_MUSIC)).isTrue()
     }
 
-    private fun givenASoundWithUri() = Sound("my button name", "a/dummy/sound/uri")
+    private fun givenASoundWithUri() = Sound(dummyButtonName, "a/dummy/sound/uri")
 
-    private fun givenASoundWithResourceId() = Sound("my button name", rawRes = R.raw.model_sample_button_activar)
+    private fun givenASoundWithResourceId() = Sound(dummyButtonName, rawRes = R.raw.model_sample_button_activar)
 
-    private fun givenASoundWithNullUri() = Sound("my button name")
+    private fun givenASoundWithNullUri() = Sound(dummyButtonName)
 
     private fun whenSharingTheSoundCapturingThePath(sound: Sound): File {
         val mockedContext = spyk<Context>(ApplicationProvider.getApplicationContext<Context>())

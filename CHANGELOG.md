@@ -10,7 +10,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Support for Android Q (API Level 29).
 - Pull Requests template for contributors.
 - Firebase Analytics.
-- Firebase Crashlytics.
+- Firebase Crashlytics including last logs from each error.
 - Firebase Performance Monitoring.
 - Added Detekt static code analysis tool, as well as Ktlint for code style conventions.
 - Setup [Stale GitHub app](https://github.com/apps/stale).

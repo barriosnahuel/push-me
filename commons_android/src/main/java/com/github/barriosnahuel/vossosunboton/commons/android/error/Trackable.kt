@@ -12,6 +12,12 @@ interface Trackable {
      * Report the given `throwable` to our tracking tool.
      */
     fun track(throwable: Throwable)
+
+    /**
+     * Log the given `message` to our error tracking platform. Each log must be useful to give us more context when troubleshooting.
+     * @param message the message to upload.
+     */
+    fun log(message: String)
 }
 
 /**
@@ -22,6 +28,18 @@ object Tracker : Trackable {
 
     override fun track(throwable: Throwable) {
         Timber.e("Tracking error to Firebase Crashlytics: %s", throwable.message)
+        throwable.printStackTrace()
+
         Crashlytics.logException(throwable)
+    }
+
+    override fun log(message: String) {
+        Crashlytics.log(message)
+    }
+}
+
+class ErrorTrackerTree : Timber.Tree() {
+    override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
+        Tracker.log(message)
     }
 }

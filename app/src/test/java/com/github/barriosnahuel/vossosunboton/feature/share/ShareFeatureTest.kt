@@ -19,7 +19,7 @@ import java.io.File
 
 internal class ShareFeatureTest : AbstractRobolectricTest() {
 
-    private val dummyButtonName= "my button name"
+    private val dummyButtonName = "my button name"
 
     @Test
     fun `share when sound Uri and resource are null must throw an exception`() {

@@ -33,8 +33,6 @@ public class SoundDao {
         storage = new Storage();
     }
 
-
-
     /**
      * @param context The execution context.
      * @param sound   The sound to save for this user.

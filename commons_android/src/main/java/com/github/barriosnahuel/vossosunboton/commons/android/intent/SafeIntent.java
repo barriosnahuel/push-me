@@ -17,20 +17,10 @@ public class SafeIntent extends Intent {
      *
      * @param context The execution context. Required to get the application package to set it by calling {@link
      * #setPackage(String)}.
-     */
-    private SafeIntent(@NonNull final Context context) {
-        setPackage(context.getPackageName());
-    }
-
-    /**
-     * Build an instance of a SafeIntent
-     *
-     * @param context The execution context. Required to get the application package to set it by calling {@link
-     * #setPackage(String)}.
      * @param uri The Uri of the data this intent is now targeting. It is a shortcut to {@link #setData(Uri)}.
      */
     public SafeIntent(@NonNull final Context context, @Nullable final Uri uri) {
-        this(context);
+        setPackage(context.getPackageName());
         setData(uri);
     }
 }

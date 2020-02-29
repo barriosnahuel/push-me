@@ -6,9 +6,11 @@ import android.net.Uri
 import androidx.core.content.FileProvider
 import com.github.barriosnahuel.vossosunboton.BuildConfig
 import com.github.barriosnahuel.vossosunboton.R
+import com.github.barriosnahuel.vossosunboton.commons.file.copy
 import com.github.barriosnahuel.vossosunboton.commons.file.getFile
 import com.github.barriosnahuel.vossosunboton.model.Sound
 import timber.log.Timber
+import java.io.FileOutputStream
 
 internal interface ShareFeature {
 
@@ -27,30 +29,49 @@ private class ShareFeatureImpl : ShareFeature {
     private val authority = BuildConfig.APPLICATION_ID + ".fileprovider"
 
     /**
-     * Check https://developer.android.com/training/secure-file-sharing/setup-sharing for more info.
+     * For more info check
+     * [developer.android.com/training/secure-file-sharing/setup-sharing](https://developer.android.com/training/secure-file-sharing/setup-sharing)
      */
     override fun share(context: Context, sound: Sound) {
-        checkNotNull(sound.file) { "File URI is mandatory" }
+        Timber.d("Trying to share button: %s", sound.name)
 
-        Timber.d("Generating chooser Intent for button... %s: %s", sound.name, sound.file)
-
+        val buttonFileContentUri = getContentUriForSound(sound, context)
         val shareIntent = Intent()
         shareIntent.action = Intent.ACTION_SEND
         shareIntent.type = "audio/*"
+        shareIntent.putExtra(Intent.EXTRA_STREAM, buttonFileContentUri)
+        shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
 
-        val file = getFile(context, sound.file!!)
-        val buttonFileContentUri: Uri?
-        try {
-            buttonFileContentUri = FileProvider.getUriForFile(context, authority, file)
-        } catch (e: IllegalArgumentException) {
-            throw IllegalStateException("Button content uri couldn't be created.", e)
+        Timber.d("Starting disambiguation window for: %s: contentUri=%s; URI=%s; rawResId=%s;",
+            sound.name, buttonFileContentUri, sound.file, sound.rawRes)
+
+        context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.app_share_chooser_title)))
+    }
+
+    private fun getContentUriForSound(sound: Sound, context: Context): Uri? {
+        val fileForSharing = when (sound.file) {
+            null -> {
+                check(sound.rawRes != 0) { "Either file URI or raw resource ID must exist on a given sound" }
+
+                val rawResourceInputStream = context.resources.openRawResource(sound.rawRes)
+
+                val fileForSharing = getFile(context, "Button-packaged-" + sound.name + ".mp3")
+                if (fileForSharing.exists()) {
+                    Timber.d("Packaged audio already copied to share directory: %s", fileForSharing)
+                } else {
+                    Timber.d("Packaged audio is gonna be copied to share directory: %s", fileForSharing)
+                    copy(rawResourceInputStream, FileOutputStream(fileForSharing))
+                }
+
+                fileForSharing
+            }
+            else -> getFile(context, sound.file!!)
         }
 
-        Timber.d("Sharing... %s: %s", sound.name, sound.file)
-        buttonFileContentUri.let {
-            shareIntent.putExtra(Intent.EXTRA_STREAM, it)
-            shareIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-            context.startActivity(Intent.createChooser(shareIntent, context.getString(R.string.app_share_chooser_title)))
+        return try {
+            FileProvider.getUriForFile(context, authority, fileForSharing)
+        } catch (e: IllegalArgumentException) {
+            throw IllegalStateException("Button content uri couldn't be created.", e)
         }
     }
 }

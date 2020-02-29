@@ -7,6 +7,7 @@ import android.os.Environment
 import androidx.core.content.FileProvider
 import androidx.test.core.app.ApplicationProvider
 import com.github.barriosnahuel.vossosunboton.AbstractRobolectricTest
+import com.github.barriosnahuel.vossosunboton.model.R
 import com.github.barriosnahuel.vossosunboton.model.Sound
 import com.google.common.truth.Truth.assertThat
 import io.mockk.every
@@ -19,7 +20,7 @@ import java.io.File
 internal class ShareFeatureTest : AbstractRobolectricTest() {
 
     @Test
-    fun `share when sound Uri is null must throw an exception`() {
+    fun `share when sound Uri and resource are null must throw an exception`() {
         val sound = givenASoundWithNullUri()
 
         try {
@@ -31,7 +32,16 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
 
     @Test
     fun `share when sound URI is valid show disambiguation window`() {
-        val sound = givenASound()
+        val sound = givenASoundWithUri()
+
+        val generatedIntent = whenSharingThe(sound)
+
+        thenOSShowDisambiguationWindow(generatedIntent)
+    }
+
+    @Test
+    fun `share when sound raw resource ID is valid show disambiguation window`() {
+        val sound = givenASoundWithResourceId()
 
         val generatedIntent = whenSharingThe(sound)
 
@@ -40,7 +50,7 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
 
     @Test
     fun `share when sound URI is valid sends the audio file`() {
-        val sound = givenASound()
+        val sound = givenASoundWithUri()
 
         val generatedIntent = whenSharingThe(sound)
 
@@ -49,7 +59,7 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
 
     @Test
     fun `share should generate a content Uri under Music directory as described in app_file_provider_paths resource`() {
-        val sound = givenASound()
+        val sound = givenASoundWithUri()
 
         val capturedFile = whenSharingTheSoundCapturingThePath(sound)
 
@@ -60,7 +70,9 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
         assertThat(capturedFile.absolutePath.split("/").contains(Environment.DIRECTORY_MUSIC)).isTrue()
     }
 
-    private fun givenASound() = Sound("my button name", "a/dummy/sound/uri")
+    private fun givenASoundWithUri() = Sound("my button name", "a/dummy/sound/uri")
+
+    private fun givenASoundWithResourceId() = Sound("my button name", rawRes = R.raw.model_sample_button_activar)
 
     private fun givenASoundWithNullUri() = Sound("my button name")
 
@@ -94,7 +106,7 @@ internal class ShareFeatureTest : AbstractRobolectricTest() {
     }
 
     private fun thenWeThrowAnIllegalStateException(e: IllegalStateException) {
-        assertThat(e.message).isEqualTo("File URI is mandatory")
+        assertThat(e.message).isEqualTo("Either file URI or raw resource ID must exist on a given sound")
     }
 
     private fun thenOSShowDisambiguationWindow(intent: Intent) {

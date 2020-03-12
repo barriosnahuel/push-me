@@ -45,7 +45,16 @@ To prevent future modifications on `app/google-services.json` I run:
 
     > git update-index --no-skip-worktree app/google-services.json
 
-## Firebase Performance Monitoring 💯
+## Logcat
+
+### Android Studio: Remove all dev tools (*a.k.a. !Dev Tools*)
+
+| Field     | REGEXP |
+| --        | -- |
+| TAG       | `^(?!(?:FirebasePerformance|FA|FirebaseRemoteConfig|LeakCanary|zygote|Choreographer)$).*$` |
+| Package   | `com.github.barriosnahuel.vossosunboton` |
+
+### Terminal: Only Firebase Performance Monitoring 💯
 
 You can filter logcat messages by:
 

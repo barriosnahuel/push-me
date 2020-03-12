@@ -20,6 +20,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Automatic code obfuscation and optimizations on release builds.
 
 ### Changed
+- Brand NEW Look & Feel for the whole app.
 - Min Android version required is KitKat (API Level 19).
 - Circle CI config migrated to v2.1 using Orbs.
 - Many dependencies to the latest versions including Gradle, Android Build Tools, AppCompat,

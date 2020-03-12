@@ -4,4 +4,8 @@
 
     <dimen name="app_font_size_small_dynamic_feature">14sp</dimen>
     <dimen name="app_font_size_default">16sp</dimen>
+
+    <dimen name="app_material_appbar_bottom_height">84dp</dimen>
+    <dimen name="app_appbar_top_height">92dp</dimen>
+    <dimen name="app_appbar_top_title_margin_top">14dp</dimen>
 </resources>

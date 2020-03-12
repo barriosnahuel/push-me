@@ -7,4 +7,7 @@
     <string name="app_button_deleted">Botón borrado</string>
     <string name="app_feedback_custom_buttons_cant_be_deleted_yet">Los butones personalizados todavía no se pueden eliminar</string>
     <string name="app_feedback_generic_error_contact_support">Uh! Por favor contactá con soporte</string>
+    <string name="app_navigation_menu_item_home">Inicio</string>
+    <string name="app_navigation_menu_item_search">Buscar</string>
+    <string name="app_navigation_menu_item_favourites">Favoritos</string>
 </resources>

@@ -12,7 +12,7 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.github.barriosnahuel.vossosunboton.commons.android.ui.Feedback
 import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity
-import com.github.barriosnahuel.vossosunboton.feature.base.DeepLinks
+import com.github.barriosnahuel.vossosunboton.feature.base.NavigationSections
 import com.github.barriosnahuel.vossosunboton.feature.base.PermissionsRequest
 import kotlinx.android.synthetic.main.feature_addbutton_activity_add_button.*
 import kotlinx.coroutines.Dispatchers
@@ -29,9 +29,9 @@ class AddButtonActivity : AbstractActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.feature_addbutton_activity_add_button)
 
-        supportActionBar?.setTitle(R.string.feature_addbutton_activity_title)
+        setContentView(R.layout.feature_addbutton_activity_add_button)
+        bindToolbar()
 
         /**
          * file:///storage/emulated/0/WhatsApp/Media/WhatsApp%20Voice%20Notes/201615/PTT-20160407-WA0079.opus
@@ -54,6 +54,11 @@ class AddButtonActivity : AbstractActivity() {
         }
 
         saveButton.setOnClickListener { saveButton(this) }
+    }
+
+    override fun bindToolbar() {
+        super.bindToolbar()
+        supportActionBar?.setTitle(R.string.feature_addbutton_activity_title)
     }
 
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
@@ -103,7 +108,7 @@ class AddButtonActivity : AbstractActivity() {
             }
         }
 
-        val intent = DeepLinks.HOME.getIntent(context)
+        val intent = NavigationSections.HOME.getIntent(context)
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
         startActivity(intent)
     }

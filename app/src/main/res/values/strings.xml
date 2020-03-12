@@ -7,4 +7,7 @@
     <string name="app_button_deleted">Button deleted</string>
     <string name="app_feedback_custom_buttons_cant_be_deleted_yet">Custom buttons still can\'t be deleted</string>
     <string name="app_feedback_generic_error_contact_support">Oops! I did it again, please contact support</string>
+    <string name="app_navigation_menu_item_home">Home</string>
+    <string name="app_navigation_menu_item_search">Search</string>
+    <string name="app_navigation_menu_item_favourites">Favorites</string>
 </resources>

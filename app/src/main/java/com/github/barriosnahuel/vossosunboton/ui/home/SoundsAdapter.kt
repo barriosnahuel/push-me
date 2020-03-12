@@ -9,9 +9,22 @@ import com.github.barriosnahuel.vossosunboton.model.Sound
 import com.github.barriosnahuel.vossosunboton.model.data.manager.SoundDao
 import timber.log.Timber
 
-internal class SoundsAdapter(private val homeView: HomeView) : RecyclerView.Adapter<SoundViewHolder>() {
+/**
+ * Temp class useful for testing purposes only.
+ */
+enum class Query {
+    HOME, EXPLORE, FAVORITES
+}
 
-    private val sounds = SoundDao().find(homeView.currentView().context)
+internal class SoundsAdapter(private val homeView: HomeView, private val query: Query) : RecyclerView.Adapter<SoundViewHolder>() {
+
+    private val sounds = SoundDao().find(homeView.currentView().context).filter {
+        when (query) {
+            Query.HOME -> !it.isBundled() // Currently we show the same sounds on home as well as favorites. // TODO: Implement the NEW home!
+            Query.FAVORITES -> !it.isBundled()
+            Query.EXPLORE -> it.isBundled()
+        }
+    }.toMutableList()
 
     private var marginPx = -1
 

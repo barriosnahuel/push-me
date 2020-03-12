@@ -61,8 +61,9 @@ You can filter logcat messages by:
 > adb logcat -s FirebasePerformance
 
 ## Resources 🎨
+- Colors selected using: [Material Design palette generator](https://material.io/design/color/the-color-system.html#tools-for-picking-colors)
 - Icon generated using: [romannurik.github.io/AndroidAssetStudio/icons-launcher](http://romannurik.github.io/AndroidAssetStudio/icons-launcher.html)
-- In-App icons using: [Material Design resources](https://material.io/resources/icons/?style=baseline)
+- In-App icons using: [Material Design resources](https://material.io/resources/icons/?style=round)
 
 ## Signing 🔑
 

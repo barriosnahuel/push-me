@@ -17,7 +17,7 @@ android {
 
     defaultConfig {
         applicationId "com.github.barriosnahuel.vossosunboton"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 29
         versionCode 5
         versionName '2.0.0'

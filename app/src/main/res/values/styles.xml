@@ -8,6 +8,22 @@
         <item name="android:textColor">@color/app_font_color_default</item>
     </style>
 
+    <style name="app_MyCustomTheme.Toolbar">
+        <item name="titleTextColor">@color/app_white</item>
+    </style>
+
+    <style name="app_MyCustomTheme.Toolbar.Animated">
+        <item name="android:background">@drawable/app_toolbar_background</item>
+    </style>
+
     <style name="app_MyCustomTheme.ButtonListItem" />
 
+    <style name="app_MyCustomTheme.Button">
+        <item name="android:textColor">@color/app_font_color_buttons</item>
+    </style>
+
+    <style name="app_MyCustomTheme.Button.RecordFAB">
+        <item name="backgroundTint">@color/app_colorAccent</item>
+        <item name="tint">@color/app_white</item>
+    </style>
 </resources>

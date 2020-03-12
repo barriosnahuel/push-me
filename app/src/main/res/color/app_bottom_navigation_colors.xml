@@ -5,5 +5,5 @@
         android:color="@color/app_white" />
     <item
         android:state_checked="false"
-        android:color="@android:color/darker_gray" />
+        android:color="@color/app_white_disabled" />
 </selector>

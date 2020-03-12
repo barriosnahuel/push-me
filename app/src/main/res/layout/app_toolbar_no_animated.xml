@@ -3,11 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_toolbar"
+    style="@style/app_MyCustomTheme.Toolbar.Animated"
     android:layout_width="match_parent"
     android:layout_height="@dimen/app_appbar_top_height"
     android:layout_marginBottom="@dimen/app_material_horizontal_padding"
-    android:background="@drawable/app_toolbar_background"
     android:gravity="top"
     app:titleMarginTop="@dimen/app_appbar_top_title_margin_top"
-    tools:navigationIcon="@mipmap/app_ic_launcher"
+    tools:navigationIcon="@drawable/app_ic_favorite_black_24dp"
     tools:title="A screen title" />

@@ -13,4 +13,9 @@
         <item name="android:textSize">@dimen/app_font_size_small_dynamic_feature</item>
     </style>
 
+    <style name="feature_addbutton_MyCustomTheme.Form.Button">
+        <item name="android:textSize">@dimen/app_font_size_small_dynamic_feature</item>
+        <item name="android:textColor">@color/app_font_color_buttons</item>
+    </style>
+
 </resources>

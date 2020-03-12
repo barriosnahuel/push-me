@@ -30,7 +30,7 @@
 
     <Button
         android:id="@+id/saveButton"
-        style="@style/feature_addbutton_MyCustomTheme.Form"
+        style="@style/feature_addbutton_MyCustomTheme.Form.Button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"

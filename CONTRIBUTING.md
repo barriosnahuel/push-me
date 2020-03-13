@@ -72,7 +72,7 @@ To prevent future modifications on `app/google-services.json` I run:
 
 | Field     | REGEXP |
 | --        | -- |
-| TAG       | `^(?!(?:FirebasePerformance|FA|FirebaseRemoteConfig|LeakCanary|zygote|Choreographer)$).*$` |
+| TAG       | `^(?!(?:FirebasePerformance|FA|LeakCanary|FirebaseRemoteConfig|zygote|Choreographer|OpenGLRenderer|Adreno|vndksupport|SoLoader|ApkSoSource)$).*$` |
 | Package   | `com.github.barriosnahuel.vossosunboton` |
 
 ### Terminal: Only Firebase Performance Monitoring 💯

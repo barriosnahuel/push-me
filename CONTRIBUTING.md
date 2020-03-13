@@ -7,6 +7,7 @@ But, before going deeper I suggest you to take a look to the [opensource.guide](
 ## Table of contents 📋
 - [Local setup](#local-setup-)
 - [Directory structure](#directory-structure-)
+- [Debugging tools](#debugging-tools-)
 - [Continuous integration](#continuous-integration-)
 - [Gradle upgrade](#gradle-upgrade)
 - [Firebase config file](#firebase-config-file-)
@@ -34,6 +35,15 @@ button.
 - [gradle/wrapper/](/gradle/wrapper) contains Gradle's binary in order to be able to run this project everywhere.
 - [model/](/model) Android library module containing our business logic.
 - [store-listing/](/store-listing) contains all listing related files, like GIMP files to edit screenshots.
+
+## Debugging tools 🐛
+We use some really useful tools like:
+- [LeakCanary](https://square.github.io/leakcanary/)
+- [Flipper](https://fbflipper.com/)
+
+Please refer to their docs for setup & guidelines.
+
+Note: Flipper works on emulators and phisically connected devices, it doesn't work ok when device is connected over wifi. [(#880)](https://github.com/facebook/flipper/issues/880#issuecomment-598541744)
 
 ## Continuous Integration ➿
 We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.yml) file you can check the config using the local CLI.

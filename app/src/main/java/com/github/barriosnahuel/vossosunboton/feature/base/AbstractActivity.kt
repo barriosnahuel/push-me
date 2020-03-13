@@ -30,13 +30,13 @@ abstract class AbstractActivity : AppCompatActivity() {
     /**
      * Switch to the given [NavigationSections].
      */
-    protected fun switchFragment(section: NavigationSections): Boolean {
+    internal fun switchFragment(section: NavigationSections): Boolean {
         val nextSectionFragment = SectionFactory(supportFragmentManager).get(section)
         return if (nextSectionFragment.isAdded) {
             Timber.d("Current active menu item selected, nothing must change")
             false
         } else {
-            supportFragmentManager.attach(R.id.app_content_container, nextSectionFragment, section.tag)
+            supportFragmentManager.attach(R.id.app_content_container, nextSectionFragment)
             supportFragmentManager.executePendingTransactions()
         }
     }

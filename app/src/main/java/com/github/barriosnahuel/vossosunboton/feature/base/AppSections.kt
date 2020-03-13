@@ -9,7 +9,7 @@ import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.commons.android.intent.SafeIntent
 import com.github.barriosnahuel.vossosunboton.ui.home.DynamicFragment
 
-data class DeepLink(val host: String, val path: String) {
+internal data class DeepLink(val host: String, val path: String) {
 
     /**
      * @return The deep-link that must be used to open a specific screen.
@@ -27,8 +27,8 @@ data class DeepLink(val host: String, val path: String) {
 /**
  * Created by Nahuel Barrios on 11/12/16.
  */
-class SectionFactory(private val supportFragmentManager: FragmentManager) {
-    fun get(section: NavigationSections): Fragment {
+internal class SectionFactory(private val supportFragmentManager: FragmentManager) {
+    internal fun get(section: NavigationSections): Fragment {
         return supportFragmentManager.findFragmentByTag(section.tag) ?: section.createFragment()
     }
 }
@@ -45,8 +45,8 @@ enum class NavigationSections(val id: Int, private val deeplink: DeepLink) {
      * @param context The execution context.
      * @return A package-filtered intent to open this screen.
      */
-    fun getIntent(context: Context?): Intent {
-        return SafeIntent(context!!, Uri.parse(this.deeplink.get()))
+    fun getIntent(context: Context): Intent {
+        return SafeIntent(context, Uri.parse(this.deeplink.get()))
     }
 
     fun createFragment(): Fragment = DynamicFragment.newInstance(this.tag)

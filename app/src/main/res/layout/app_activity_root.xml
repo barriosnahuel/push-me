@@ -12,17 +12,17 @@
         android:layout_height="wrap_content"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/app_record_fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="24dp"
-        style="@style/app_MyCustomTheme.Button.RecordFAB"
-        android:layout_marginBottom="96dp"
-        android:src="@drawable/app_ic_mic_black_24dp"
-        app:layout_anchor="@+id/app_navigation"
-        app:layout_anchorGravity="end|bottom"
-        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />
+<!--    <com.google.android.material.floatingactionbutton.FloatingActionButton-->
+<!--        android:id="@+id/app_record_fab"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginEnd="24dp"-->
+<!--        style="@style/app_MyCustomTheme.Button.RecordFAB"-->
+<!--        android:layout_marginBottom="96dp"-->
+<!--        android:src="@drawable/app_ic_mic_black_24dp"-->
+<!--        app:layout_anchor="@+id/app_navigation"-->
+<!--        app:layout_anchorGravity="end|bottom"-->
+<!--        app:layout_behavior="com.google.android.material.behavior.HideBottomViewOnScrollBehavior" />-->
 
     <include layout="@layout/app_navigation" />
 

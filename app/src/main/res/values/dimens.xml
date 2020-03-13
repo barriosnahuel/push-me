@@ -8,4 +8,8 @@
     <dimen name="app_material_appbar_bottom_height">84dp</dimen>
     <dimen name="app_appbar_top_height">92dp</dimen>
     <dimen name="app_appbar_top_title_margin_top">14dp</dimen>
+
+    <!-- These 2 are required to emulate the superposition between the rounded app bar and the scrollable content -->
+    <dimen name="app_appbar_scrollable_content_overlap_margin">36dp</dimen>
+    <dimen name="app_appbar_scrollable_content_overlap_traslation_negative">-24dp</dimen>
 </resources>

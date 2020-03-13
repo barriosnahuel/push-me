@@ -9,6 +9,7 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/app_appbar_scrollable_content_overlap_traslation_negative"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
         <FrameLayout

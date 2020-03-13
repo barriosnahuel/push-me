@@ -26,19 +26,23 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
         }
     }.toMutableList()
 
-    private var marginPx = -1
+    private var marginTopPx = -1
+    private var marginBottomPx = -1
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoundViewHolder {
         val button = LayoutInflater.from(parent.context).inflate(R.layout.app_layout_button, parent, false) as ToggleButton
 
         val layoutParams = button.layoutParams as RecyclerView.LayoutParams
 
-        if (marginPx == -1) {
-            marginPx = parent.resources.getDimensionPixelSize(R.dimen.app_material_horizontal_padding)
+        if (marginTopPx == -1) {
+            marginTopPx = parent.resources.getDimensionPixelSize(R.dimen.app_appbar_scrollable_content_overlap_margin)
+        }
+        if (marginBottomPx == -1) {
+            marginBottomPx = parent.resources.getDimensionPixelSize(R.dimen.app_material_horizontal_padding)
         }
 
-        layoutParams.leftMargin = marginPx
-        layoutParams.rightMargin = marginPx
+        layoutParams.leftMargin = marginTopPx
+        layoutParams.rightMargin = marginTopPx
 
         return SoundViewHolder(button)
     }
@@ -49,12 +53,12 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
         val layoutParams = toggleButton.layoutParams as RecyclerView.LayoutParams
         when {
             isFirst(position) -> {
-                layoutParams.topMargin = marginPx
+                layoutParams.topMargin = marginTopPx
                 layoutParams.bottomMargin = 0
             }
             isLast(position) -> {
                 layoutParams.topMargin = 0
-                layoutParams.bottomMargin = marginPx
+                layoutParams.bottomMargin = marginBottomPx
             }
             else -> {
                 layoutParams.topMargin = 0

@@ -4,6 +4,17 @@
 
 But, before going deeper I suggest you to take a look to the [opensource.guide](https://opensource.guide/), there are many things to learn from there! 😃
 
+## Table of contents 📋
+- [Local setup](#local-setup-)
+- [Directory structure](#directory-structure-)
+- [Continuous integration](#continuous-integration-)
+- [Gradle upgrade](#gradle-upgrade)
+- [Firebase config file](#firebase-config-file-)
+- [Logcat](#logcat-)
+- [Resources](#resources-)
+- [Signing](#signing-)
+- [Store listing](#store-listing-)
+
 ## Local setup ⚙
 
 1. Clone/Fork this repo.
@@ -13,7 +24,7 @@ But, before going deeper I suggest you to take a look to the [opensource.guide](
 
     It must return **`BUILD SUCCESS`**.
 
-## Directory Structure 🎄
+## Directory structure 🎄
 - [app/](/app) Android application module which depends on all other submodules to be the great app you're building.
 - [commons_android/](/commons_android) Android library module for Android-related foundation staff.
 - [commons_file/](/commons_file) Android library module for File handling staff.
@@ -45,7 +56,7 @@ To prevent future modifications on `app/google-services.json` I run:
 
     > git update-index --no-skip-worktree app/google-services.json
 
-## Logcat
+## Logcat 😿
 
 ### Android Studio: Remove all dev tools (*a.k.a. !Dev Tools*)
 
@@ -71,7 +82,6 @@ The following files must be located into the root dir:
 - `nahuelbarrios.keystore-appbundle.pkcs12`
 - `secure.properties`
 
-## Store Listing 📄
+## Store listing 📄
 
-As mentioned before under [store-listing/](/store-listing) there are the assets for the store listing as well as the original GIMP files to edit those
- assets.
+As mentioned before, under [store-listing/](/store-listing) there are the assets for the store listing and the original GIMP files to edit those assets.

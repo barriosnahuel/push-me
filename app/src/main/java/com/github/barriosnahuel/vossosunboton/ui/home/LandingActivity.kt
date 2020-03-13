@@ -7,7 +7,7 @@ import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity
 import com.github.barriosnahuel.vossosunboton.feature.base.NavigationSections
 
 /**
- * Home screen of this app. Currently is has a default UI, it's still on backlog to get a new fresh UI!
+ * The landing screen of this app.
  */
 class LandingActivity : AbstractActivity() {
 
@@ -18,7 +18,7 @@ class LandingActivity : AbstractActivity() {
         bindToolbar()
         bindNavigation()
 
-        switchFragment(NavigationSections.HOME)
+        showFragment(NavigationSections.HOME)
     }
 
     override fun bindToolbar() {
@@ -27,8 +27,7 @@ class LandingActivity : AbstractActivity() {
     }
 
     /**
-     * We don't want to open this activity again (default behavior at [AbstractActivity]) when the user taps on
-     * the home icon.
+     * We don't want to open this activity again (default behavior at [AbstractActivity]) when the user taps on the home icon.
      */
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return true

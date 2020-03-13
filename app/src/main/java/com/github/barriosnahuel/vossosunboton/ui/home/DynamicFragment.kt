@@ -15,11 +15,9 @@ import timber.log.Timber
 private const val ARGUMENT_SECTION_NAME = "section"
 
 /**
- * A simple [Fragment] subclass.
- * Use the [DynamicFragment.newInstance] factory method to
- * create an instance of this fragment.
+ * Use the [DynamicFragment.newInstance] factory method to create an instance of this fragment.
  */
-class DynamicFragment : Fragment() {
+internal class DynamicFragment : Fragment() {
     private var sectionName: String? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -29,36 +27,27 @@ class DynamicFragment : Fragment() {
         }
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val inflate = inflater.inflate(R.layout.app_fragment_dynamic_fragment, container, false)
 
-        setupView(inflate.findViewById(R.id.app_buttons_container))
+        val recyclerView = inflate.findViewById<RecyclerView>(R.id.app_buttons_container)
+
+        recyclerView.layoutManager = LinearLayoutManager(context)
+
+        val homeView = HomeViewImpl(recyclerView)
+        val soundsAdapter = SoundsAdapter(homeView, findBestDataSetFor(sectionName))
+        recyclerView.adapter = soundsAdapter
+
+        ItemTouchHelper(SwipeDismissListener(soundsAdapter)).attachToRecyclerView(recyclerView)
 
         return inflate
-    }
-
-    private fun setupView(inflate: RecyclerView) {
-        // use this setting to improve performance if you know that changes
-        // in content do not change the layout size of the RecyclerView
-        inflate.setHasFixedSize(true)
-
-        // use a linear layout manager
-        inflate.layoutManager = LinearLayoutManager(context)
-
-        val homeView = HomeViewImpl(inflate)
-        val soundsAdapter = SoundsAdapter(homeView, findBestDataSetFor(sectionName))
-        inflate.adapter = soundsAdapter
-
-        ItemTouchHelper(SwipeDismissListener(soundsAdapter)).attachToRecyclerView(inflate)
     }
 
     private fun findBestDataSetFor(customView: String?): Query = when (customView) {
         NavigationSections.HOME.tag -> Query.HOME
         NavigationSections.FAVORITES.tag -> Query.FAVORITES
         NavigationSections.EXPLORE.tag -> Query.EXPLORE
-        else -> Query.HOME // TODO: Should be an error page?
+        else -> Query.HOME // TODO: Should it be an error page?
     }
 
     companion object {

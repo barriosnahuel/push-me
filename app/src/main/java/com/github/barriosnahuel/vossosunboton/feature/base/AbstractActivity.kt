@@ -20,7 +20,7 @@ abstract class AbstractActivity : AppCompatActivity() {
     protected fun bindNavigation() {
         findViewById<BottomNavigationView>(R.id.app_navigation)
             .setOnNavigationItemSelectedListener { item: MenuItem ->
-                if (switchFragment(NavigationSections.findSectionById(item.itemId))) {
+                if (showFragment(NavigationSections.findSectionById(item.itemId))) {
                     item.isChecked = true // Set selected menu item as the active one
                 }
                 false
@@ -28,9 +28,9 @@ abstract class AbstractActivity : AppCompatActivity() {
     }
 
     /**
-     * Switch to the given [NavigationSections].
+     * Show to the given [NavigationSections] by handling current/previous fragment actions.
      */
-    internal fun switchFragment(section: NavigationSections): Boolean {
+    internal fun showFragment(section: NavigationSections): Boolean {
         val nextSectionFragment = SectionFactory(supportFragmentManager).get(section)
         return if (nextSectionFragment.isAdded) {
             Timber.d("Current active menu item selected, nothing must change")

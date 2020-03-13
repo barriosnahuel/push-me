@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/app_toolbar"
-    style="@style/app_MyCustomTheme.Toolbar.Animated"
+    style="@style/app_MyCustomTheme.Toolbar.Animated_dynamic_feature"
     android:layout_width="match_parent"
     android:layout_height="@dimen/app_appbar_top_height"
     android:layout_marginBottom="@dimen/app_material_horizontal_padding"

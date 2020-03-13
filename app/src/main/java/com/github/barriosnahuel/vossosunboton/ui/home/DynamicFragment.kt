@@ -47,7 +47,7 @@ internal class DynamicFragment : Fragment() {
         NavigationSections.HOME.tag -> Query.HOME
         NavigationSections.FAVORITES.tag -> Query.FAVORITES
         NavigationSections.EXPLORE.tag -> Query.EXPLORE
-        else -> Query.HOME // TODO: Should it be an error page?
+        else -> Query.HOME
     }
 
     companion object {

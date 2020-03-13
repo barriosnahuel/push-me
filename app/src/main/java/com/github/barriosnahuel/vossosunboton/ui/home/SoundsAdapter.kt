@@ -20,7 +20,7 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
 
     private val sounds = SoundDao().find(homeView.currentView().context).filter {
         when (query) {
-            Query.HOME -> !it.isBundled() // Currently we show the same sounds on home as well as favorites. // TODO: Implement the NEW home!
+            Query.HOME -> !it.isBundled() // Currently we show the same sounds on home as well as favorites.
             Query.FAVORITES -> !it.isBundled()
             Query.EXPLORE -> it.isBundled()
         }

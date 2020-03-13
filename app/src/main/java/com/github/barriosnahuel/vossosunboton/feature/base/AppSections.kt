@@ -14,14 +14,12 @@ internal data class DeepLink(val host: String, val path: String) {
     /**
      * @return The deep-link that must be used to open a specific screen.
      */
-    internal fun get(): String {
-        return String.format(
-            "%s://%s%s"
-            , "sosunboton"
-            , host
-            , path
-        )
-    }
+    internal fun get(): String = String.format(
+        "%s://%s%s",
+        "sosunboton",
+        host,
+        path
+    )
 }
 
 /**
@@ -55,4 +53,3 @@ enum class NavigationSections(val id: Int, private val deeplink: DeepLink) {
         fun findSectionById(id: Int): NavigationSections = values().first { it.id == id }
     }
 }
-

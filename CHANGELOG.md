@@ -36,6 +36,7 @@ Firebase and static code analyzers too.
 - `StrictMode` warnings now are logged to Crashlytics instead of the debugging notifier.
 - `LeakCanary` warnings now are logged to Crashlytics.
 - Refactor of Media Player setup for clearness.
+- Replaced Stetho with [Flipper](https://fbflipper.com/).
 
 ### Fixed
 - Sharing buttons issues due to a bad permissions setup.

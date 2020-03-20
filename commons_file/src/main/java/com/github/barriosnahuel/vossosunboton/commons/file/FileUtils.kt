@@ -5,11 +5,11 @@ package com.github.barriosnahuel.vossosunboton.commons.file
 import android.content.Context
 import android.os.Environment
 import androidx.annotation.NonNull
-import timber.log.Timber
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.io.InputStream
+import timber.log.Timber
 
 private const val INPUT_STREAM_READ_BUFFER_SIZE = 1024
 

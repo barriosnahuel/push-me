@@ -1,12 +1,12 @@
 package com.github.barriosnahuel.vossosunboton
 
 import com.github.barriosnahuel.vossosunboton.commons.android.error.Trackable
+import kotlin.reflect.KProperty
 import leakcanary.DefaultOnHeapAnalyzedListener
 import leakcanary.OnHeapAnalyzedListener
 import shark.HeapAnalysis
 import shark.HeapAnalysisFailure
 import shark.HeapAnalysisSuccess
-import kotlin.reflect.KProperty
 
 internal object LeakCanaryConfigurator {
 

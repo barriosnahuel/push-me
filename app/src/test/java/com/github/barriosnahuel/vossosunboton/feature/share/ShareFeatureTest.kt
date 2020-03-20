@@ -14,8 +14,8 @@ import io.mockk.every
 import io.mockk.mockkStatic
 import io.mockk.slot
 import io.mockk.spyk
-import org.junit.Test
 import java.io.File
+import org.junit.Test
 
 internal class ShareFeatureTest : AbstractRobolectricTest() {
 

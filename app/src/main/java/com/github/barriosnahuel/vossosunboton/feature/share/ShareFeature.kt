@@ -9,8 +9,8 @@ import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.commons.file.copy
 import com.github.barriosnahuel.vossosunboton.commons.file.getFile
 import com.github.barriosnahuel.vossosunboton.model.Sound
-import timber.log.Timber
 import java.io.FileOutputStream
+import timber.log.Timber
 
 internal interface ShareFeature {
 

@@ -75,17 +75,11 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
         toggleButton.setOnLongClickListener(ShareClickListener(sound))
     }
 
-    override fun getItemCount(): Int {
-        return sounds.size
-    }
+    override fun getItemCount(): Int = sounds.size
 
-    private fun isFirst(position: Int): Boolean {
-        return position == 0
-    }
+    private fun isFirst(position: Int): Boolean = position == 0
 
-    private fun isLast(position: Int): Boolean {
-        return itemCount - 1 == position
-    }
+    private fun isLast(position: Int): Boolean = itemCount - 1 == position
 
     /**
      * @param position position in the adapter of the item to remove.

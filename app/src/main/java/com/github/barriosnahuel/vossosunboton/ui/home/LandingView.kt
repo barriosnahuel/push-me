@@ -12,7 +12,7 @@ internal interface LandingView {
 
     fun currentView(): ViewGroup
     fun showDeleteButtonFeedback(soundsAdapter: SoundsAdapter, soundToRemove: Sound, position: Int)
-    fun showFeatureNotImplementedFeedback()
+    fun showDeleteFeatureNotImplementedFeedback()
     fun showGenericErrorFeedback()
     fun updatePlayerButton(state: PlayerState, button: ImageView)
 }
@@ -21,9 +21,9 @@ internal class LandingViewImpl(private val parentView: ViewGroup) : LandingView 
 
     override val playbackClicksListener = PlaybackClicksListener(this)
 
-    override fun showFeatureNotImplementedFeedback() {
+    override fun showDeleteFeatureNotImplementedFeedback() {
         Snackbar
-                .make(currentView(), R.string.app_feedback_share_generic_error, Snackbar.LENGTH_SHORT)
+                .make(currentView(), R.string.app_feedback_bundled_buttons_cant_be_deleted_yet, Snackbar.LENGTH_SHORT)
                 .show()
     }
 

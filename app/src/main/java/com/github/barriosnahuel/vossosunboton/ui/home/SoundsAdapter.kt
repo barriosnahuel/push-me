@@ -56,7 +56,7 @@ internal class SoundsAdapter(private val landingView: LandingView, private val q
 
         if (soundToRemove.isBundled()) {
             Timber.w("Delete feature for bundled buttons is not yet released, button won't be deleted. Button: %s", soundToRemove.name)
-            landingView.showFeatureNotImplementedFeedback()
+            landingView.showDeleteFeatureNotImplementedFeedback()
         } else {
             landingView.showDeleteButtonFeedback(this, soundToRemove, position)
         }

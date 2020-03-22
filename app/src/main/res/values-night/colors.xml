@@ -5,6 +5,7 @@
     <color name="app_colorAccent">#d602ee</color>
     <color name="app_font_color_default">@color/app_black</color>
     <color name="app_font_color_buttons_dynamic_feature">@color/app_black</color>
+    <color name="app_icon_color_default">@color/app_black</color>
 
     <color name="app_white">#BCFFFFFF</color>
 </resources>

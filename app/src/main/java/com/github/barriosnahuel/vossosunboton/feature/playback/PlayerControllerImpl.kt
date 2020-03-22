@@ -8,16 +8,17 @@ import java.io.IOException
 
 internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = MediaPlayer()) : PlayerController {
 
+    private var listener: PlayerControllerListener? = null
+    private var currentSound: Sound? = null
+
     override fun startPlayingSound(
         context: Context,
-        sound: Sound,
-        listener: PlayerControllerListener
+        sound: Sound
     ) {
         if (mediaPlayer.isPlaying) {
-            // User clicked on a new button while still listening an audio, then we should toggle that running button.
-            listener.onPlayerStop(Reasons.INTERCEPT)
-
+            // User clicked on a new button while still listening an audio, then we should turn that running button off.
             mediaPlayer.stop()
+            listener?.onPlayerStop(currentSound!!)
         }
 
         mediaPlayer.reset()
@@ -35,10 +36,11 @@ internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = Media
                 Tracker.track(RuntimeException("Media player can't be prepared for playback.", e))
             }
 
-            mediaPlayer.setOnCompletionListener { listener.onPlayerStop(Reasons.SOUND_END) }
+            mediaPlayer.setOnCompletionListener { listener?.onPlayerStop(sound) }
             mediaPlayer.setOnSeekCompleteListener { it.pause() }
 
-            listener.onPlayerStart()
+            listener?.onPlayerStart(sound)
+            currentSound = sound
             mediaPlayer.start()
         }
     }
@@ -48,6 +50,11 @@ internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = Media
 
         if (mediaPlayer.isPlaying) {
             mediaPlayer.stop()
+            listener?.onPlayerStop(currentSound!!)
         }
+    }
+
+    override fun setOnStartStopListener(listener: PlayerControllerListener) {
+        this.listener = listener
     }
 }

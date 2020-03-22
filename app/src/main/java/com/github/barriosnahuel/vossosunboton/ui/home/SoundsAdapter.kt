@@ -1,8 +1,10 @@
 package com.github.barriosnahuel.vossosunboton.ui.home
 
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
-import android.widget.ToggleButton
+import androidx.appcompat.widget.AppCompatImageView
+import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.model.Sound
@@ -26,60 +28,22 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
         }
     }.toMutableList()
 
-    private var marginTopPx = -1
-    private var marginBottomPx = -1
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SoundViewHolder {
-        val button = LayoutInflater.from(parent.context).inflate(R.layout.app_layout_button, parent, false) as ToggleButton
-
-        val layoutParams = button.layoutParams as RecyclerView.LayoutParams
-
-        if (marginTopPx == -1) {
-            marginTopPx = parent.resources.getDimensionPixelSize(R.dimen.app_appbar_scrollable_content_overlap_margin)
-        }
-        if (marginBottomPx == -1) {
-            marginBottomPx = parent.resources.getDimensionPixelSize(R.dimen.app_material_horizontal_padding)
-        }
-
-        layoutParams.leftMargin = marginTopPx
-        layoutParams.rightMargin = marginTopPx
-
-        return SoundViewHolder(button)
+        return SoundViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.app_layout_button, parent, false))
     }
 
     override fun onBindViewHolder(holder: SoundViewHolder, position: Int) {
-        val toggleButton = holder.toggleButton
-
-        val layoutParams = toggleButton.layoutParams as RecyclerView.LayoutParams
-        when {
-            isFirst(position) -> {
-                layoutParams.topMargin = marginTopPx
-                layoutParams.bottomMargin = 0
-            }
-            isLast(position) -> {
-                layoutParams.topMargin = 0
-                layoutParams.bottomMargin = marginBottomPx
-            }
-            else -> {
-                layoutParams.topMargin = 0
-                layoutParams.bottomMargin = 0
-            }
-        }
-
         val sound = sounds[position]
 
-        toggleButton.text = sound.name
-        toggleButton.textOff = sound.name
+        holder.buttonLayout.findViewById<AppCompatTextView>(R.id.app_button_name).text = sound.name
+        holder.buttonLayout.findViewById<AppCompatImageView>(R.id.app_action_play_pause).let {
+            homeView.playbackClicksListener.addOnClickListener(it, sound)
+        }
 
-        toggleButton.setOnClickListener(PlaybackClickListener(homeView, sound))
-        toggleButton.setOnLongClickListener(ShareClickListener(sound))
+        holder.buttonLayout.findViewById<AppCompatImageView>(R.id.app_action_share).setOnClickListener(ShareClickListener(sound))
     }
 
     override fun getItemCount(): Int = sounds.size
-
-    private fun isFirst(position: Int): Boolean = position == 0
-
-    private fun isLast(position: Int): Boolean = itemCount - 1 == position
 
     /**
      * @param position position in the adapter of the item to remove.
@@ -94,7 +58,7 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
             Timber.w("Delete feature for bundled buttons is not yet released, button won't be deleted. Button: %s", soundToRemove.name)
             homeView.showFeatureNotImplementedFeedback()
         } else {
-            homeView.showDeleteButtonFeedback(this, soundToRemove, position)
+//            homeView.showDeleteButtonFeedback(this, soundToRemove, position)
         }
     }
 
@@ -104,4 +68,4 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
     }
 }
 
-internal class SoundViewHolder(var toggleButton: ToggleButton) : RecyclerView.ViewHolder(toggleButton)
+internal class SoundViewHolder(var buttonLayout: View) : RecyclerView.ViewHolder(buttonLayout)

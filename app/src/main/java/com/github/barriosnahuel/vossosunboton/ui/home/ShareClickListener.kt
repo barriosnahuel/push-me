@@ -8,9 +8,9 @@ import com.github.barriosnahuel.vossosunboton.feature.share.ShareFeature
 import com.github.barriosnahuel.vossosunboton.model.Sound
 import timber.log.Timber
 
-internal class ShareClickListener(private val sound: Sound) : View.OnLongClickListener {
+internal class ShareClickListener(private val sound: Sound) : View.OnClickListener {
 
-    override fun onLongClick(view: View): Boolean {
+    override fun onClick(view: View) {
         Timber.v("ShareClickListener#onLongClick")
 
         val shareFeature = ShareFeature.instance
@@ -19,9 +19,6 @@ internal class ShareClickListener(private val sound: Sound) : View.OnLongClickLi
         } catch (e: IllegalStateException) {
             Feedback.send(view.context, R.string.app_not_yet_implemented_error)
             Tracker.track(Throwable("Audio button couldn't be shared.", e))
-            return false
         }
-
-        return true
     }
 }

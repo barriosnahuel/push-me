@@ -3,10 +3,10 @@
     <style name="feature_addbutton_MyCustomTheme" parent="app_MyCustomTheme" />
 
     <style name="feature_addbutton_MyCustomTheme.Form">
-        <item name="android:layout_marginLeft">@dimen/app_material_horizontal_padding</item>
-        <item name="android:layout_marginStart">@dimen/app_material_horizontal_padding</item>
-        <item name="android:layout_marginEnd">@dimen/app_material_horizontal_padding</item>
-        <item name="android:layout_marginRight">@dimen/app_material_horizontal_padding</item>
+        <item name="android:layout_marginLeft">@dimen/app_default_view_spacing_2x</item>
+        <item name="android:layout_marginStart">@dimen/app_default_view_spacing_2x</item>
+        <item name="android:layout_marginEnd">@dimen/app_default_view_spacing_2x</item>
+        <item name="android:layout_marginRight">@dimen/app_default_view_spacing_2x</item>
     </style>
 
     <style name="feature_addbutton_MyCustomTheme.Form.Label">

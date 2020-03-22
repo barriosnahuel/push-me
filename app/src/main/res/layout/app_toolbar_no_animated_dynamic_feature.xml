@@ -6,7 +6,7 @@
     style="@style/app_MyCustomTheme.Toolbar.Animated_dynamic_feature"
     android:layout_width="match_parent"
     android:layout_height="@dimen/app_appbar_top_height"
-    android:layout_marginBottom="@dimen/app_material_horizontal_padding"
+    android:layout_marginBottom="@dimen/app_default_view_spacing_2x"
     android:gravity="top"
     app:titleMarginTop="@dimen/app_appbar_top_title_margin_top"
     tools:navigationIcon="@drawable/app_ic_favorite_black_24dp"

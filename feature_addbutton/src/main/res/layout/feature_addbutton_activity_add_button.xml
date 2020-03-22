@@ -34,7 +34,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/app_material_horizontal_padding"
+        android:layout_marginBottom="@dimen/app_default_view_spacing_2x"
         android:text="@string/feature_addbutton_save" />
 
 </RelativeLayout>

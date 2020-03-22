@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Material Design original values (they should NOT be used outside this file) -->
     <dimen name="app_material_horizontal_padding">16dp</dimen>
+
+    <!-- My default values (they must be used along the entire app -->
+    <dimen name="app_default_view_spacing_1x">8dp</dimen>
+    <dimen name="app_default_view_spacing_2x">@dimen/app_material_horizontal_padding</dimen>
+
+    <dimen name="app_default_icon_size">24dp</dimen>
 
     <dimen name="app_font_size_small_dynamic_feature">14sp</dimen>
     <dimen name="app_font_size_default">16sp</dimen>

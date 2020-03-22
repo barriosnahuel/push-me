@@ -5,10 +5,11 @@
     <color name="app_colorAccent">#021aee</color>
     <color name="app_font_color_default">@color/app_black</color>
     <color name="app_font_color_buttons_dynamic_feature">@color/app_white</color>
+    <color name="app_icon_color_default">@color/app_black</color>
 
     <!-- Actually the color palette -->
 <!--    <color name="app_transparent">#00FFFFFF</color>-->
     <color name="app_white">#FFFFFF</color>
     <color name="app_white_disabled">#9A9A9A</color>
-    <color name="app_black">#1C1C1C</color>
+    <color name="app_black">#FF1C1C1C</color>
 </resources>

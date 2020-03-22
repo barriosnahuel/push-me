@@ -34,8 +34,8 @@ internal class DynamicFragment : Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(context)
 
-        val homeView = HomeViewImpl(recyclerView)
-        val soundsAdapter = SoundsAdapter(homeView, findBestDataSetFor(sectionName))
+        val landingView = LandingViewImpl(recyclerView)
+        val soundsAdapter = SoundsAdapter(landingView, findBestDataSetFor(sectionName))
         recyclerView.adapter = soundsAdapter
         recyclerView.addItemDecoration(ButtonListItemDecoration())
 

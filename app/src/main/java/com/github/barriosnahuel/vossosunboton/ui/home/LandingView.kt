@@ -7,7 +7,7 @@ import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.model.Sound
 import com.google.android.material.snackbar.Snackbar
 
-internal interface HomeView {
+internal interface LandingView {
     val playbackClicksListener: PlaybackClicksListener
 
     fun currentView(): ViewGroup
@@ -17,7 +17,7 @@ internal interface HomeView {
     fun updatePlayerButton(state: PlayerState, button: ImageView)
 }
 
-internal class HomeViewImpl(private val parentView: ViewGroup) : HomeView {
+internal class LandingViewImpl(private val parentView: ViewGroup) : LandingView {
 
     override val playbackClicksListener = PlaybackClicksListener(this)
 

@@ -18,9 +18,9 @@ enum class Query {
     HOME, EXPLORE, FAVORITES
 }
 
-internal class SoundsAdapter(private val homeView: HomeView, private val query: Query) : RecyclerView.Adapter<SoundViewHolder>() {
+internal class SoundsAdapter(private val landingView: LandingView, private val query: Query) : RecyclerView.Adapter<SoundViewHolder>() {
 
-    private val sounds = SoundDao().find(homeView.currentView().context).filter {
+    private val sounds = SoundDao().find(landingView.currentView().context).filter {
         when (query) {
             Query.HOME -> !it.isBundled() // Currently we show the same sounds on home as well as favorites.
             Query.FAVORITES -> !it.isBundled()
@@ -37,7 +37,7 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
 
         holder.buttonLayout.findViewById<AppCompatTextView>(R.id.app_button_name).text = sound.name
         holder.buttonLayout.findViewById<AppCompatImageView>(R.id.app_action_play_pause).let {
-            homeView.playbackClicksListener.addOnClickListener(it, sound)
+            landingView.playbackClicksListener.addOnClickListener(it, sound)
         }
 
         holder.buttonLayout.findViewById<AppCompatImageView>(R.id.app_action_share).setOnClickListener(ShareClickListener(sound))
@@ -56,9 +56,9 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
 
         if (soundToRemove.isBundled()) {
             Timber.w("Delete feature for bundled buttons is not yet released, button won't be deleted. Button: %s", soundToRemove.name)
-            homeView.showFeatureNotImplementedFeedback()
+            landingView.showFeatureNotImplementedFeedback()
         } else {
-            homeView.showDeleteButtonFeedback(this, soundToRemove, position)
+            landingView.showDeleteButtonFeedback(this, soundToRemove, position)
         }
     }
 

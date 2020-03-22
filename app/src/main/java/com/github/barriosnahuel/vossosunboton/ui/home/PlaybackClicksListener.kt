@@ -19,9 +19,9 @@ internal enum class PlayerState {
 
 /**
  * Handles all click listeners for all buttons.
- * @property homeView the view where this listener is attached to.
+ * @property landingView the view where this listener is attached to.
  */
-internal class PlaybackClicksListener(private val homeView: HomeView) : View.OnClickListener, PlaybackHandler, PlayerControllerListener {
+internal class PlaybackClicksListener(private val landingView: LandingView) : View.OnClickListener, PlaybackHandler, PlayerControllerListener {
 
     init {
         PlayerControllerFactory.instance.setOnStartStopListener(this)
@@ -49,11 +49,11 @@ internal class PlaybackClicksListener(private val homeView: HomeView) : View.OnC
 
     override fun onPlayerStart(sound: Sound) {
         sound.isPlaying = true
-        homeView.updatePlayerButton(PlayerState.PAUSE, soundViewMapping[sound.name]!!.second)
+        landingView.updatePlayerButton(PlayerState.PAUSE, soundViewMapping[sound.name]!!.second)
     }
 
     override fun onPlayerStop(sound: Sound) {
         sound.isPlaying = false
-        homeView.updatePlayerButton(PlayerState.PLAY, soundViewMapping[sound.name]!!.second)
+        landingView.updatePlayerButton(PlayerState.PLAY, soundViewMapping[sound.name]!!.second)
     }
 }

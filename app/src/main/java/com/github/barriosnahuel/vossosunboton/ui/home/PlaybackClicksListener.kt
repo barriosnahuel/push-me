@@ -6,7 +6,13 @@ import com.github.barriosnahuel.vossosunboton.feature.playback.PlayerControllerF
 import com.github.barriosnahuel.vossosunboton.feature.playback.PlayerControllerListener
 import com.github.barriosnahuel.vossosunboton.model.Sound
 
-interface PlaybackHandler {
+internal interface PlaybackHandler {
+    /**
+     * Start handling a new [View.OnClickListener] for a pair of button-sound. It must also set the listener by calling [ImageView
+     * .setOnClickListener].
+     * @param button The view that will act as the player to play/pause the given sound.
+     * @param sound The sound to handle.
+     */
     fun addOnClickListener(button: ImageView, sound: Sound)
 }
 

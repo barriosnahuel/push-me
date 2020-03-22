@@ -31,6 +31,11 @@ internal class SectionFactory(private val supportFragmentManager: FragmentManage
     }
 }
 
+/**
+ * Enumerates the different L1 sections of this app.
+ * @property id the [androidx.annotation.IdRes] of each navigation menu section.
+ * @property deeplink the deep link that can be used to navigate to that section.
+ */
 enum class NavigationSections(val id: Int, private val deeplink: DeepLink) {
 
     HOME(R.id.app_navigation_menu_item_home, DeepLink("home", "/")),
@@ -47,9 +52,9 @@ enum class NavigationSections(val id: Int, private val deeplink: DeepLink) {
         return SafeIntent(context, Uri.parse(this.deeplink.get()))
     }
 
-    fun createFragment(): Fragment = DynamicFragment.newInstance(this.tag)
+    internal fun createFragment(): Fragment = DynamicFragment.newInstance(this.tag)
 
     companion object {
-        fun findSectionById(id: Int): NavigationSections = values().first { it.id == id }
+        internal fun findSectionById(id: Int): NavigationSections = values().first { it.id == id }
     }
 }

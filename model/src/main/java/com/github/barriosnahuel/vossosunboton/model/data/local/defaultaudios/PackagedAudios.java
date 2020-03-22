@@ -55,7 +55,7 @@ public final class PackagedAudios {
         files.add(new Sound(context.getString(R.string.model_sample_button_otrotema), R.raw.model_sample_button_otrotema));
         files.add(new Sound(context.getString(R.string.model_sample_button_pampayvinedos), R.raw.model_sample_button_pampayvinedos));
         files.add(new Sound(context.getString(R.string.model_sample_button_parademandarmsjs), R.raw.model_sample_button_parademandarmsjs));
-        files.add(new Sound(context.getString(R.string.model_sample_button_pasaloenverdeoamarillo), R.raw.model_sample_button_pasaloenverdeoamarillo));
+        files.add(new Sound(context.getString(R.string.model_sample_button_pasaloenverdeoamarillo), R.raw.model_sample_button_pasaloverdeoamarillo));
         files.add(new Sound(context.getString(R.string.model_sample_button_pelotudomarchaatras), R.raw.model_sample_button_pelotudomarchaatras));
         files.add(new Sound(context.getString(R.string.model_sample_button_pepa), R.raw.model_sample_button_pepa));
         files.add(new Sound(context.getString(R.string.model_sample_button_pickypicky), R.raw.model_sample_button_pickypicky));

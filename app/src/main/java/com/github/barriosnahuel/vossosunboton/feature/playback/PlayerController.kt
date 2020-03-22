@@ -16,10 +16,22 @@ internal interface PlayerController {
 
     fun stopPlayingSound()
 
+    /**
+     * @param listener the listener that will handle all play/stop callbacks for all buttons.
+     */
     fun setOnStartStopListener(listener: PlayerControllerListener)
 }
 
 internal interface PlayerControllerListener {
+    /**
+     * Perform any action you want after player has stopped.
+     * @param sound The sound that was playing before.
+     */
     fun onPlayerStop(sound: Sound)
+
+    /**
+     * Perform any action you want right after the given sound started to play.
+     * @param sound The sound that has started to play.
+     */
     fun onPlayerStart(sound: Sound)
 }

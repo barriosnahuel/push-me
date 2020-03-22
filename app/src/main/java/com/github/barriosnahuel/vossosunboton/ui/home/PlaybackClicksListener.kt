@@ -10,10 +10,17 @@ interface PlaybackHandler {
     fun addOnClickListener(button: ImageView, sound: Sound)
 }
 
+/**
+ * Enumerates the different UI state a button can transition.
+ */
 internal enum class PlayerState {
     PLAY, PAUSE
 }
 
+/**
+ * Handles all click listeners for all buttons.
+ * @property homeView the view where this listener is attached to.
+ */
 internal class PlaybackClicksListener(private val homeView: HomeView) : View.OnClickListener, PlaybackHandler, PlayerControllerListener {
 
     init {

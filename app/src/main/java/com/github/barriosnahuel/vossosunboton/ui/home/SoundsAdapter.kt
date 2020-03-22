@@ -58,7 +58,7 @@ internal class SoundsAdapter(private val homeView: HomeView, private val query: 
             Timber.w("Delete feature for bundled buttons is not yet released, button won't be deleted. Button: %s", soundToRemove.name)
             homeView.showFeatureNotImplementedFeedback()
         } else {
-//            homeView.showDeleteButtonFeedback(this, soundToRemove, position)
+            homeView.showDeleteButtonFeedback(this, soundToRemove, position)
         }
     }
 

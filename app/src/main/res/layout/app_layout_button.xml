@@ -2,12 +2,13 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    app:cardCornerRadius="@dimen/app_default_view_spacing_1x"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:contentPaddingBottom="@dimen/app_default_view_spacing_2x"
-    app:contentPaddingLeft="@dimen/app_default_view_spacing_1x"
-    app:contentPaddingRight="@dimen/app_default_view_spacing_1x"
-    app:contentPaddingTop="@dimen/app_default_view_spacing_1x">
+    app:contentPaddingLeft="@dimen/app_default_view_spacing_2x"
+    app:contentPaddingRight="@dimen/app_default_view_spacing_2x"
+    app:contentPaddingTop="@dimen/app_default_view_spacing_2x">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

@@ -11,31 +11,27 @@ internal interface PlayerController {
 
     fun startPlayingSound(
         context: Context,
-        sound: Sound,
-        listener: PlayerControllerListener
+        sound: Sound
     )
 
     fun stopPlayingSound()
+
+    /**
+     * @param listener the listener that will handle all play/stop callbacks for all buttons.
+     */
+    fun setOnStartStopListener(listener: PlayerControllerListener)
 }
 
 internal interface PlayerControllerListener {
-    fun onPlayerStop(intercept: Reasons)
-    fun onPlayerStart()
-}
-
-/**
- * Enumerates the different reasons that can cause a player to be stoped.
- */
-internal enum class Reasons {
+    /**
+     * Perform any action you want after player has stopped.
+     * @param sound The sound that was playing before.
+     */
+    fun onPlayerStop(sound: Sound)
 
     /**
-     * Indicates that the player has been stoped because a new sound has to be started.
+     * Perform any action you want right after the given sound started to play.
+     * @param sound The sound that has started to play.
      */
-    INTERCEPT,
-
-    /**
-     * Indicates that the player stoped by itself after playing the full length of the sound.
-     * @see android.media.MediaPlayer.OnCompletionListener.onCompletion
-     */
-    SOUND_END
+    fun onPlayerStart(sound: Sound)
 }

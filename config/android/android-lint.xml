@@ -90,7 +90,7 @@
     <issue id="AlwaysShowAction" severity="error" />
     <issue id="BackButton" severity="error" />
     <issue id="GoogleAppIndexingApiWarning" severity="warning" />
-    <issue id="NegativeMargin" severity="error" />
+    <issue id="NegativeMargin" severity="warning" />
     <issue id="SelectableText" severity="error" />
     <issue id="TextFields" severity="error" />
     <issue id="ViewConstructor" severity="error" />

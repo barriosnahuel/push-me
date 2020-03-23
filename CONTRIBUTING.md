@@ -4,6 +4,18 @@
 
 But, before going deeper I suggest you to take a look to the [opensource.guide](https://opensource.guide/), there are many things to learn from there! 😃
 
+## Table of contents 📋
+- [Local setup](#local-setup-)
+- [Directory structure](#directory-structure-)
+- [Debugging tools](#debugging-tools-)
+- [Continuous integration](#continuous-integration-)
+- [Gradle upgrade](#gradle-upgrade)
+- [Firebase config file](#firebase-config-file-)
+- [Logcat](#logcat-)
+- [Resources](#resources-)
+- [Signing](#signing-)
+- [Store listing](#store-listing-)
+
 ## Local setup ⚙
 
 1. Clone/Fork this repo.
@@ -13,7 +25,7 @@ But, before going deeper I suggest you to take a look to the [opensource.guide](
 
     It must return **`BUILD SUCCESS`**.
 
-## Directory Structure 🎄
+## Directory structure 🎄
 - [app/](/app) Android application module which depends on all other submodules to be the great app you're building.
 - [commons_android/](/commons_android) Android library module for Android-related foundation staff.
 - [commons_file/](/commons_file) Android library module for File handling staff.
@@ -23,6 +35,15 @@ button.
 - [gradle/wrapper/](/gradle/wrapper) contains Gradle's binary in order to be able to run this project everywhere.
 - [model/](/model) Android library module containing our business logic.
 - [store-listing/](/store-listing) contains all listing related files, like GIMP files to edit screenshots.
+
+## Debugging tools 🐛
+We use some really useful tools like:
+- [LeakCanary](https://square.github.io/leakcanary/)
+- [Flipper](https://fbflipper.com/)
+
+Please refer to their docs for setup & guidelines.
+
+Note: Flipper works on emulators and phisically connected devices, it doesn't work ok when device is connected over wifi. [(#880)](https://github.com/facebook/flipper/issues/880#issuecomment-598541744)
 
 ## Continuous Integration ➿
 We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.yml) file you can check the config using the local CLI.
@@ -45,7 +66,16 @@ To prevent future modifications on `app/google-services.json` I run:
 
     > git update-index --no-skip-worktree app/google-services.json
 
-## Firebase Performance Monitoring 💯
+## Logcat 😿
+
+### Android Studio: Remove all dev tools (*a.k.a. !Dev Tools*)
+
+| Field     | REGEXP |
+| --        | -- |
+| TAG       | `^(?!(?:FirebasePerformance|FA|LeakCanary|FirebaseRemoteConfig|zygote|Choreographer|OpenGLRenderer|Adreno|vndksupport|SoLoader|ApkSoSource)$).*$` |
+| Package   | `com.github.barriosnahuel.vossosunboton` |
+
+### Terminal: Only Firebase Performance Monitoring 💯
 
 You can filter logcat messages by:
 
@@ -62,7 +92,6 @@ The following files must be located into the root dir:
 - `nahuelbarrios.keystore-appbundle.pkcs12`
 - `secure.properties`
 
-## Store Listing 📄
+## Store listing 📄
 
-As mentioned before under [store-listing/](/store-listing) there are the assets for the store listing as well as the original GIMP files to edit those
- assets.
+As mentioned before, under [store-listing/](/store-listing) there are the assets for the store listing and the original GIMP files to edit those assets.

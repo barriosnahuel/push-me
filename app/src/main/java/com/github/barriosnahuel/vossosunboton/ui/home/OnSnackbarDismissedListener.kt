@@ -6,7 +6,7 @@ import com.google.android.material.snackbar.BaseTransientBottomBar
 import com.google.android.material.snackbar.Snackbar
 import timber.log.Timber
 
-internal class OnSnackbarDismissedListener(private val view: HomeView, private val soundToRemove: Sound) :
+internal class OnSnackbarDismissedListener(private val view: LandingView, private val soundToRemove: Sound) :
         BaseTransientBottomBar.BaseCallback<Snackbar>() {
 
     override fun onDismissed(transientBottomBar: Snackbar?, event: Int) {

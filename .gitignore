@@ -30,7 +30,7 @@ local.properties
 
 ### Android template
 # Built application files
-
+captures
 
 # Keystore files
 *.jks

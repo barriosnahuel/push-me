@@ -1,15 +1,15 @@
 <resources>
 
     <style name="app_MyCustomTheme" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="colorPrimary">@color/app_colorPrimary</item>
-        <item name="colorPrimaryDark">@color/app_colorPrimaryDark</item>
-        <item name="colorAccent">@color/app_colorAccent</item>
-        <item name="android:textSize">@dimen/app_font_size_default</item>
-        <item name="android:textColor">@color/app_font_color_default</item>
+        <item name="colorPrimary">@color/app_primary_color</item>
+        <item name="colorPrimaryDark">@color/app_primary_color_dark</item>
+        <item name="colorAccent">@color/app_accent_color</item>
+        <item name="android:textSize">@dimen/app_font_size_medium_default</item>
+        <item name="android:textColor">@color/app_default_font_color</item>
     </style>
 
     <style name="app_MyCustomTheme.Toolbar">
-        <item name="titleTextColor">@color/app_white</item>
+        <item name="titleTextColor">@color/app_default_font_color_on_primary</item>
     </style>
 
     <style name="app_MyCustomTheme.Toolbar.Animated_dynamic_feature">

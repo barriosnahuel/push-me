@@ -7,6 +7,7 @@ import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
+import com.github.barriosnahuel.vossosunboton.R
 import timber.log.Timber
 
 private const val DRAG_DIRECTIONS: Int = 0
@@ -43,10 +44,7 @@ internal class SwipeDismissListener constructor(private val adapter: SoundsAdapt
 
         val backgroundCornerOffset = BACKGROUND_CORNER_OFFSET
 
-        val icon: Drawable? = ContextCompat.getDrawable(
-                recyclerView.context,
-                com.github.barriosnahuel.vossosunboton.R.drawable.app_ic_delete_white_36dp
-        )
+        val icon: Drawable? = ContextCompat.getDrawable(recyclerView.context, R.drawable.app_ic_delete_white_36dp)
 
         if (icon == null) {
             Timber.e("Delete icon on swipe not shown to the user")
@@ -63,20 +61,18 @@ internal class SwipeDismissListener constructor(private val adapter: SoundsAdapt
                 val iconRight = itemView.left + iconMargin
                 icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
-                background.setBounds(itemView.left, itemView.top,
-                        itemView.left + dX.toInt() + backgroundCornerOffset,
-                        itemView.bottom)
+                background.setBounds(itemView.left, itemView.top, itemView.left + dX.toInt() + backgroundCornerOffset, itemView.bottom)
             }
             dX < 0 -> { // Swiping to the left
                 val iconLeft = itemView.right - iconMargin - icon.intrinsicWidth
                 val iconRight = itemView.right - iconMargin
                 icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
 
-                background.setBounds(itemView.right + dX.toInt() - backgroundCornerOffset,
-                        itemView.top, itemView.right, itemView.bottom)
+                background.setBounds(itemView.right + dX.toInt() - backgroundCornerOffset, itemView.top, itemView.right, itemView.bottom)
             }
-            else -> // view is unSwiped
+            else -> { // view is unSwiped
                 background.setBounds(0, 0, 0, 0)
+            }
         }
 
         background.draw(c)

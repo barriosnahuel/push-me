@@ -1,8 +1,6 @@
 package com.github.barriosnahuel.vossosunboton.ui.home
 
 import android.graphics.Canvas
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.graphics.drawable.Drawable
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -12,12 +10,9 @@ import timber.log.Timber
 
 private const val DRAG_DIRECTIONS: Int = 0
 private const val SWIPE_DIRECTIONS: Int = ItemTouchHelper.LEFT or ItemTouchHelper.RIGHT
-private const val BACKGROUND_CORNER_OFFSET = 20
 
 internal class SwipeDismissListener constructor(private val adapter: SoundsAdapter) :
         ItemTouchHelper.SimpleCallback(DRAG_DIRECTIONS, SWIPE_DIRECTIONS) {
-
-    private val background: ColorDrawable = ColorDrawable(Color.RED)
 
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
         Timber.v("Moved view at ${viewHolder.oldPosition} to ${viewHolder.layoutPosition}")
@@ -27,7 +22,7 @@ internal class SwipeDismissListener constructor(private val adapter: SoundsAdapt
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         Timber.v("Swiped view at ${viewHolder.layoutPosition} to ${parse(direction)}")
 
-        adapter.remove(viewHolder.adapterPosition)
+//        adapter.remove(viewHolder.adapterPosition)
     }
 
     override fun onChildDraw(
@@ -40,42 +35,42 @@ internal class SwipeDismissListener constructor(private val adapter: SoundsAdapt
         isCurrentlyActive: Boolean
     ) {
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
-        val itemView = viewHolder.itemView
 
-        val backgroundCornerOffset = BACKGROUND_CORNER_OFFSET
-
-        val icon: Drawable? = ContextCompat.getDrawable(recyclerView.context, R.drawable.app_ic_delete_white_36dp)
-
+        val icon: Drawable? = ContextCompat.getDrawable(recyclerView.context, R.drawable.app_ic_delete_primary_color_36dp)
         if (icon == null) {
             Timber.e("Delete icon on swipe not shown to the user")
             return
         }
 
-        val iconMargin = (itemView.height - icon.intrinsicHeight) / 2
-        val iconTop = itemView.top + (itemView.height - icon.intrinsicHeight) / 2
-        val iconBottom = iconTop + icon.intrinsicHeight
+        val itemView = viewHolder.itemView
+        val viewPadding = recyclerView.resources.getDimensionPixelSize(R.dimen.app_default_view_spacing_2x)
+        val halfIcon = icon.intrinsicHeight / 2
+        val top = itemView.top + ((itemView.bottom - itemView.top) / 2 - halfIcon)
+        val bottom = top + icon.intrinsicHeight
+
+        var left = 0
+        var right = 0
 
         when {
-            dX > 0 -> { // Swiping to the right
-                val iconLeft = itemView.left + iconMargin + icon.intrinsicWidth
-                val iconRight = itemView.left + iconMargin
-                icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+            dX > 0 -> {
+                Timber.v("onChildDraw when swiping right...")
 
-                background.setBounds(itemView.left, itemView.top, itemView.left + dX.toInt() + backgroundCornerOffset, itemView.bottom)
+                if (dX > viewPadding) {
+                    left = itemView.left + viewPadding
+                    right = itemView.left + viewPadding + icon.intrinsicWidth
+                }
             }
-            dX < 0 -> { // Swiping to the left
-                val iconLeft = itemView.right - iconMargin - icon.intrinsicWidth
-                val iconRight = itemView.right - iconMargin
-                icon.setBounds(iconLeft, iconTop, iconRight, iconBottom)
+            dX < 0 -> {
+                Timber.v("onChildDraw when swiping left...")
 
-                background.setBounds(itemView.right + dX.toInt() - backgroundCornerOffset, itemView.top, itemView.right, itemView.bottom)
-            }
-            else -> { // view is unSwiped
-                background.setBounds(0, 0, 0, 0)
+                if (dX < -viewPadding) {
+                    left = itemView.right - viewPadding - halfIcon * 2
+                    right = itemView.right - viewPadding
+                }
             }
         }
 
-        background.draw(c)
+        icon.setBounds(left, top, right, bottom)
         icon.draw(c)
     }
 

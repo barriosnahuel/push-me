@@ -22,7 +22,7 @@ internal class SwipeDismissListener constructor(private val adapter: SoundsAdapt
     override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
         Timber.v("Swiped view at ${viewHolder.layoutPosition} to ${parse(direction)}")
 
-        adapter.remove(viewHolder.adapterPosition)
+//        adapter.remove(viewHolder.adapterPosition)
     }
 
     override fun onChildDraw(

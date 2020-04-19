@@ -53,7 +53,7 @@ class AddButtonActivity : AbstractActivity() {
             consumedHere
         }
 
-        saveButton.setOnClickListener { saveButton(this) }
+        feature_addbutton_saveButton.setOnClickListener { saveButton(this) }
     }
 
     override fun bindToolbar() {

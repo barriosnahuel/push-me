@@ -18,7 +18,6 @@ An Androiod app made, by the moment, only for fun. Currently it's aimed to be us
 - Share non-packaged audios to other apps.
 
 ## What's next 📅
-- Delete audios.
 - Store listing.
 - UI redesign.
 - Famous packaged audios.
@@ -29,6 +28,6 @@ Please feel free to share any suggestion and/or make a pull request, I'd be real
 
 Before doing anything, just check the [contributing cheatsheet](CONTRIBUTING.md) there are some things that can help you. 😉
 
-Also, if you're interested in working on open source projects take a look at [opensource.guide](https://opensource.guide/)
+Also, if you're interested in working on open source projects take a look at [opensource.guide](https://opensource.guide/).
 
 Thank you! 🤝

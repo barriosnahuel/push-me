@@ -109,7 +109,7 @@ dependencies {
     }
 
     testImplementation 'com.google.truth:truth:1.0.1'
-    testImplementation 'io.mockk:mockk:1.9.3'
+    testImplementation 'io.mockk:mockk:1.10.0'
 }
 
 apply plugin: 'com.google.gms.google-services'

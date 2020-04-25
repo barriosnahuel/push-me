@@ -9,7 +9,10 @@
     <!-- Correctness -->
     <issue id="DefaultLocale" severity="warning" />
     <issue id="DuplicateIncludedIds" severity="error" />
-    <issue id="GradleDependency" severity="error" />
+
+    <!-- We want to be just a warning because Dependabot bumps them for us -->
+    <issue id="GradleDependency" severity="warning" />
+
     <issue id="InflateParams" severity="error" />
     <issue id="InlinedApi" severity="error" />
     <issue id="InvalidPackage" severity="warning" />

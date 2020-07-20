@@ -91,7 +91,7 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     implementation 'com.google.firebase:firebase-core:17.4.4'
-    implementation 'com.google.firebase:firebase-perf:19.0.7'
+    implementation 'com.google.firebase:firebase-perf:19.0.8'
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
 

@@ -76,6 +76,10 @@ android {
         }
     }
 
+    lintOptions {
+        checkDependencies true
+    }
+
     dynamicFeatures = [":feature_addbutton"]
 
 }

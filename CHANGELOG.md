@@ -32,7 +32,7 @@ Firebase and static code analyzers too.
 - New ':commons_file' and ':commons_android' modules.
 - Changelog formatting.
 - Default language to English.
-- Gradle version to [v5.6.2](https://docs.gradle.org/5.6.2/release-notes.html).
+- Gradle version to [v6.5.1](https://docs.gradle.org/6.5.1/release-notes.html).
 - Better separation of responsibilities.
 - `StrictMode` warnings now are logged to Crashlytics instead of the debugging notifier.
 - `LeakCanary` warnings now are logged to Crashlytics.

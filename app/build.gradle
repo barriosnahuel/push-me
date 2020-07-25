@@ -76,6 +76,10 @@ android {
         }
     }
 
+    lintOptions {
+        checkDependencies true
+    }
+
     dynamicFeatures = [":feature_addbutton"]
 
 }
@@ -91,13 +95,13 @@ dependencies {
     implementation 'com.google.android.material:material:1.1.0'
 
     implementation 'com.google.firebase:firebase-core:17.4.4'
-    implementation 'com.google.firebase:firebase-perf:19.0.7'
+    implementation 'com.google.firebase:firebase-perf:19.0.8'
 
     implementation 'com.jakewharton.timber:timber:4.7.1'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
 
-    debugImplementation 'com.facebook.flipper:flipper:0.49.0'
+    debugImplementation 'com.facebook.flipper:flipper:0.50.0'
     debugImplementation 'com.facebook.soloader:soloader:0.9.0'
 
     testImplementation 'junit:junit:4.13'

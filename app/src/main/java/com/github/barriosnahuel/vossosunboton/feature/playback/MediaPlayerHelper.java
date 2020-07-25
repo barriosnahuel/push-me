@@ -17,6 +17,7 @@ import com.github.barriosnahuel.vossosunboton.commons.file.FileUtils;
 import java.io.FileDescriptor;
 import java.io.IOException;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import timber.log.Timber;
 
 public final class MediaPlayerHelper {
@@ -33,24 +34,18 @@ public final class MediaPlayerHelper {
      */
     public static boolean setupSoundSource(@NonNull final Context context,
                                            @NonNull final MediaPlayer mediaPlayer,
-                                           @NonNull final String file) {
-        String soundFilePath = FileUtils.getFile(context, file).toString();
+                                           @NonNull final String file) throws IOException {
 
-        if (soundFilePath.startsWith(ContentResolver.SCHEME_CONTENT + "://")) {
+        Uri soundFileUri = Uri.fromFile(FileUtils.getFile(context, file));
+        if (ContentResolver.SCHEME_CONTENT.equals(soundFileUri.getScheme())) {
             Timber.d("Sound uri is a content uri");
 
-            soundFilePath = getSoundPath(context, Uri.parse(soundFilePath));
+            soundFileUri = getSoundPath(context, soundFileUri);
         }
 
         mediaPlayer.reset();
-        try {
-            mediaPlayer.setDataSource(context, Uri.parse(soundFilePath));
-            return true;
-        } catch (final IOException e) {
-            Tracker.INSTANCE.track(new RuntimeException("User custom button is not playable", e));
-        }
-
-        return false;
+        mediaPlayer.setDataSource(context, soundFileUri);
+        return true;
     }
 
     /**
@@ -59,9 +54,10 @@ public final class MediaPlayerHelper {
      * @param rawResId    The ID of the raw resource to link to the media player.
      * @return <code>true</code> when call to {@link MediaPlayer#setDataSource(FileDescriptor, long, long)} is ok.
      */
+    @SuppressFBWarnings(value = "RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE", justification = "It throws false-positives when using try-with-resources https://github.com/spotbugs/spotbugs/issues/756")
     public static boolean setupSoundSource(@NonNull final Context context,
-                                    @NonNull final MediaPlayer mediaPlayer,
-                                    @RawRes final int rawResId) {
+                                           @NonNull final MediaPlayer mediaPlayer,
+                                           @RawRes final int rawResId) throws IOException {
 
         if (rawResId == 0) {
             Tracker.INSTANCE.track(new RuntimeException("Bundled sound identified but no raw resource ID provided. Value can't be 0."));
@@ -71,14 +67,11 @@ public final class MediaPlayerHelper {
         try (AssetFileDescriptor fileDescriptor = context.getResources().openRawResourceFd(rawResId)) {
             mediaPlayer.setDataSource(fileDescriptor.getFileDescriptor(), fileDescriptor.getStartOffset(), fileDescriptor.getLength());
             return true;
-        } catch (final IOException e) {
-            Tracker.INSTANCE.track(new RuntimeException("Bundled button is not playable", e));
         }
-
-        return false;
     }
 
-    private static String getSoundPath(@NonNull final Context context, @NonNull final Uri contentUriSource) {
+    @SuppressFBWarnings(value = "RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE", justification = "It throws false-positives when using try-with-resources https://github.com/spotbugs/spotbugs/issues/756")
+    private static Uri getSoundPath(@NonNull final Context context, @NonNull final Uri contentUriSource) {
         final String[] projection = {MediaStore.Audio.Media.DATA};
         final String path;
         try (Cursor cursor = context.getContentResolver().query(contentUriSource, projection, null, null, null)) {
@@ -86,6 +79,7 @@ public final class MediaPlayerHelper {
 
             path = cursor.getString(cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA));
         }
-        return path;
+
+        return Uri.parse(path);
     }
 }

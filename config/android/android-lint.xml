@@ -24,6 +24,9 @@
     <issue id="ScrollViewSize" severity="warning" />
     <issue id="UnusedAttribute" severity="error" />
 
+    <!-- Turned off only for feature modules because of a false positive. Bug reported: https://issuetracker.google.com/issues/157783066 -->
+    <issue id="ResourceName" severity="warning" />
+
     <!-- Correctness:Messages -->
     <issue id="Typos" severity="error" />
     <issue id="PluralsCandidate" severity="error" />

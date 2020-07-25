@@ -35,7 +35,7 @@ jobs:
       - checkout
       - run:
           name: "Run App Build"
-          command: ./gradlew app:build -x check -x lintVitalRelease
+          command: ./gradlew app:build -x check -x lintVitalRelease -x uploadCrashlyticsMappingFileRelease
       - run:
           name: "Run App Bundle"
           command: ./gradlew app:bundle

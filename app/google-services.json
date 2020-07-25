@@ -1,69 +1,34 @@
 {
   "project_info": {
     "project_number": "103845390903",
-    "firebase_url": "https://push-me-044.firebaseio.com",
-    "project_id": "push-me-044",
-    "storage_bucket": "push-me-044.appspot.com"
+    "project_id": "push-me-044"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:103845390903:android:fb571ecf2ebb1552b7edb2",
-        "android_client_info": {
-          "package_name": "com.github.barriosnahuel.vossosunboton"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "103845390903-m8es4nbmrcqkds9kqcg9tn0tspels9ln.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyD4BVICNKBSe7ms6bmHni0vgXQzVjnuJFw"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "103845390903-m8es4nbmrcqkds9kqcg9tn0tspels9ln.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:103845390903:android:193f8a620d0cab38b7edb2",
+        "mobilesdk_app_id": "1:999999999:android:dummydummydummy",
         "android_client_info": {
           "package_name": "com.github.barriosnahuel.vossosunboton.debug"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "103845390903-m8es4nbmrcqkds9kqcg9tn0tspels9ln.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
       "api_key": [
         {
-          "current_key": "AIzaSyD4BVICNKBSe7ms6bmHni0vgXQzVjnuJFw"
+          "current_key": "a-really-dummy-value"
         }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "103845390903-m8es4nbmrcqkds9kqcg9tn0tspels9ln.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+      ]
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:999999999:android:dummydummydummy",
+        "android_client_info": {
+          "package_name": "com.github.barriosnahuel.vossosunboton"
         }
-      }
+      },
+      "api_key": [
+        {
+          "current_key": "a-really-dummy-value"
+        }
+      ]
     }
-  ],
-  "configuration_version": "1"
+  ]
 }

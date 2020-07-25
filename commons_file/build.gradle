@@ -3,11 +3,16 @@ apply plugin: 'kotlin-android'
 apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
-    compileSdkVersion 29
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    compileSdkVersion 30
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
     }
 
     resourcePrefix 'commons_file_'

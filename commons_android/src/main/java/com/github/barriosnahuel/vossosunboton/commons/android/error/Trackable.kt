@@ -1,6 +1,6 @@
 package com.github.barriosnahuel.vossosunboton.commons.android.error
 
-import com.crashlytics.android.Crashlytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import timber.log.Timber
 
 /**
@@ -30,11 +30,11 @@ object Tracker : Trackable {
         Timber.e("Tracking error to Firebase Crashlytics: %s", throwable.message)
         throwable.printStackTrace()
 
-        Crashlytics.logException(throwable)
+        FirebaseCrashlytics.getInstance().recordException(throwable)
     }
 
     override fun log(message: String) {
-        Crashlytics.log(message)
+        FirebaseCrashlytics.getInstance().log(message)
     }
 }
 

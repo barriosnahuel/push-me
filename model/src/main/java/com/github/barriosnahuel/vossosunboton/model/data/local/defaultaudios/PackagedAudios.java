@@ -25,7 +25,7 @@ public final class PackagedAudios {
      * @return a list of sample audios packaged within the app.
      */
     public static List<Sound> get(@NonNull final Context context) {
-        final List<Sound> files = new ArrayList<>();
+        final List<Sound> files = new ArrayList<>(40);
 
         files.add(new Sound(context.getString(R.string.model_sample_button_activar_edited), R.raw.model_sample_button_podemosactivar));
         files.add(new Sound(context.getString(R.string.model_sample_button_activar), R.raw.model_sample_button_activar));

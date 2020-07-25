@@ -27,6 +27,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 Firebase and static code analyzers too.
 - Migration to Android X.
 - Checkstyle turned on again.
+- Findbugs replaced with Spotbugs starting with `static-code-analysis` v3.x.
 - New ':model' module in Kotlin.
 - New ':commons_file' and ':commons_android' modules.
 - Changelog formatting.

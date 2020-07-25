@@ -23,13 +23,7 @@ internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = Media
 
         mediaPlayer.reset()
 
-        val ready = if (sound.isBundled()) {
-            MediaPlayerHelper.setupSoundSource(context, mediaPlayer, sound.rawRes)
-        } else {
-            MediaPlayerHelper.setupSoundSource(context, mediaPlayer, sound.file!!)
-        }
-
-        if (ready) {
+        if (setupSoundSource(context, sound)) {
             try {
                 mediaPlayer.prepare()
             } catch (e: IOException) {
@@ -42,6 +36,24 @@ internal class PlayerControllerImpl(private val mediaPlayer: MediaPlayer = Media
             listener?.onPlayerStart(sound)
             currentSound = sound
             mediaPlayer.start()
+        }
+    }
+
+    private fun setupSoundSource(context: Context, sound: Sound): Boolean {
+        return if (sound.isBundled()) {
+            try {
+                MediaPlayerHelper.setupSoundSource(context, mediaPlayer, sound.rawRes)
+            } catch (e: IOException) {
+                Tracker.track(java.lang.RuntimeException("User custom button is not playable", e))
+                false
+            }
+        } else {
+            try {
+                MediaPlayerHelper.setupSoundSource(context, mediaPlayer, sound.file!!)
+            } catch (e: IOException) {
+                Tracker.track(java.lang.RuntimeException("Bundled button is not playable", e))
+                false
+            }
         }
     }
 

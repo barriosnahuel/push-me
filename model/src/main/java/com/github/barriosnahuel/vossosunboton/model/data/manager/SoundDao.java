@@ -49,7 +49,7 @@ public class SoundDao {
      * @return The list of sounds currently stored for this user.
      */
     public List<Sound> find(final Context context) {
-        final List<Sound> sounds = new ArrayList<>();
+        final List<Sound> sounds = new ArrayList<>(0);
 
         final Set<String> names = storage.getAll(context, SOUNDS_NAME);
 

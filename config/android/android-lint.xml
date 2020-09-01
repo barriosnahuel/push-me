@@ -17,7 +17,7 @@
     <issue id="InlinedApi" severity="error" />
     <issue id="InvalidPackage" severity="warning" />
     <issue id="MissingId" severity="error" />
-    <issue id="NewerVersionAvailable" severity="error" />
+    <issue id="NewerVersionAvailable" severity="warning" />
     <issue id="OldTargetApi" severity="error" />
     <issue id="PrivateResource" severity="error" />
     <issue id="Registered" severity="error" />

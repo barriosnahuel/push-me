@@ -1,8 +1,6 @@
 name: Build & Upload Release Candidate
 
 on: [push]
-  branches:
-    - feature/deploy-rc
 
 jobs:
   build:

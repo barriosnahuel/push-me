@@ -10,9 +10,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.feature.base.NavigationSections
+import com.github.barriosnahuel.vossosunboton.ui.extensions.putTagInArguments
 import timber.log.Timber
-
-private const val ARGUMENT_SECTION_NAME = "section"
 
 /**
  * Use the [DynamicFragment.newInstance] factory method to create an instance of this fragment.
@@ -23,7 +22,7 @@ internal class DynamicFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
-            sectionName = it.getString(ARGUMENT_SECTION_NAME)
+            sectionName = tag
         }
     }
 
@@ -61,9 +60,7 @@ internal class DynamicFragment : Fragment() {
         fun newInstance(sectionName: String): DynamicFragment {
             Timber.d("Creating fragment instance for %s", sectionName)
             return DynamicFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARGUMENT_SECTION_NAME, sectionName)
-                }
+                putTagInArguments(sectionName)
             }
         }
     }

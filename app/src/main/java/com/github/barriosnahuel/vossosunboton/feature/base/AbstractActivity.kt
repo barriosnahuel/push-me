@@ -65,7 +65,6 @@ abstract class AbstractActivity : AppCompatActivity() {
         if (existentFragment == null) {
             Timber.d("Desired section \"$tag\" isn't loaded yet, attaching...")
             transaction.add(R.id.app_content_container, nextFragment, tag)
-
         } else {
             Timber.d("Desired section \"$tag\" already loaded, moving...")
             transaction.show(existentFragment)
@@ -74,5 +73,4 @@ abstract class AbstractActivity : AppCompatActivity() {
         transaction.commit()
         supportFragmentManager.executePendingTransactions()
     }
-
 }

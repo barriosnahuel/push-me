@@ -6,34 +6,31 @@ import androidx.fragment.app.FragmentManager
 import timber.log.Timber
 
 /**
- * Attaches (previously dettaching when necessary) the given fragment.
- *
- * @param fragmentContainer the parent view for the given [nextFragment] .
+ * @param containerViewId the parent view for the given [nextFragment] .
+ * @param currentFragmentTag the tag of the active fragment (if any). It should be used to hide the active one before showing the next.
  * @param nextFragment the fragment to add/attach and display to the user.
  */
-internal fun FragmentManager.attach(@IdRes fragmentContainer: Int, nextFragment: Fragment) {
+internal fun FragmentManager.change(@IdRes containerViewId: Int, currentFragmentTag: String?, nextFragment: Fragment) {
+    // TODO: 11/22/20 Animations should be moved outside the extension function because they are app's specific behaviour
+    val transaction = beginTransaction().setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
 
-    val transaction = beginTransaction()
-        .setCustomAnimations(android.R.animator.fade_in, android.R.animator.fade_out)
-
-    when (val currentFragment = findFragmentByTag(nextFragment.tag)) {
-        null -> {
-            Timber.d("Add 1st fragment in the whole app for this activity")
-            transaction.add(fragmentContainer, nextFragment, nextFragment.tag)
-        }
-        else -> {
-            Timber.d("Detaching current visible fragment maintaining its state")
-            transaction.detach(currentFragment)
-
-            if (nextFragment.isDetached) {
-                Timber.d("Attach next fragment restoring previously detached one' state")
-                transaction.attach(nextFragment)
-            } else {
-                Timber.d("Add next fragment since it's the first time it is requested")
-                transaction.add(fragmentContainer, nextFragment, nextFragment.tag)
-            }
+    currentFragmentTag?.let { currentTag ->
+        findFragmentByTag(currentTag)?.let { fragment ->
+            transaction.hide(fragment)
         }
     }
 
+    val tag = nextFragment.getTagFromArguments()
+    val existentFragment = findFragmentByTag(tag)
+    if (existentFragment == null) {
+        Timber.d("Desired section \"$tag\" isn't loaded yet, attaching...")
+        transaction.add(containerViewId, nextFragment, tag)
+
+    } else {
+        Timber.d("Desired section \"$tag\" already loaded, moving...")
+        transaction.show(existentFragment)
+    }
+
     transaction.commit()
+    executePendingTransactions()
 }

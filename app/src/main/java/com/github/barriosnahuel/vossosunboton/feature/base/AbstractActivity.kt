@@ -3,7 +3,7 @@ package com.github.barriosnahuel.vossosunboton.feature.base
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.github.barriosnahuel.vossosunboton.R
-import com.github.barriosnahuel.vossosunboton.ui.extensions.attach
+import com.github.barriosnahuel.vossosunboton.ui.extensions.change
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import timber.log.Timber
 
@@ -11,6 +11,8 @@ import timber.log.Timber
  * @author Nahuel Barrios, on 9/4/16.
  */
 abstract class AbstractActivity : AppCompatActivity() {
+
+    private var activeSection: NavigationSections? = null
 
     protected open fun bindToolbar() {
         setSupportActionBar(findViewById(R.id.app_toolbar))
@@ -30,14 +32,17 @@ abstract class AbstractActivity : AppCompatActivity() {
     /**
      * Show to the given [NavigationSections] by handling current/previous fragment actions.
      */
-    internal fun showFragment(section: NavigationSections): Boolean {
-        val nextSectionFragment = SectionFactory(supportFragmentManager).get(section)
-        return if (nextSectionFragment.isAdded) {
-            Timber.d("Current active menu item selected, nothing must change")
-            false
-        } else {
-            supportFragmentManager.attach(R.id.app_content_container, nextSectionFragment)
-            supportFragmentManager.executePendingTransactions()
+    internal fun showFragment(nextSection: NavigationSections): Boolean {
+        val nextFragment = SectionFactory(supportFragmentManager).get(nextSection)
+
+        if (activeSection == nextSection) {
+            Timber.d("Desired section \"${nextSection.tag}\" is currently active. Nothing will change.")
+            return false
         }
+
+        supportFragmentManager.change(R.id.app_content_container, activeSection?.tag, nextFragment)
+        activeSection = nextSection
+
+        return true
     }
 }

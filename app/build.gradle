@@ -104,7 +104,7 @@ dependencies {
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.7'
 
-    debugImplementation 'com.facebook.flipper:flipper:0.116.0'
+    debugImplementation 'com.facebook.flipper:flipper:0.121.0'
     debugImplementation 'com.facebook.soloader:soloader:0.10.1'
 
     testImplementation 'junit:junit:4.13.2'

@@ -22,7 +22,7 @@ abstract class AbstractActivity : AppCompatActivity() {
 
     protected fun bindNavigation() {
         findViewById<BottomNavigationView>(R.id.app_navigation)
-            .setOnNavigationItemSelectedListener { item: MenuItem ->
+            .setOnItemSelectedListener { item: MenuItem ->
                 if (showFragment(NavigationSections.findSectionById(item.itemId))) {
                     item.isChecked = true // Set selected menu item as the active one
                 }

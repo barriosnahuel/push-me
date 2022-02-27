@@ -7,3 +7,10 @@ apply from: "$project.rootProject.projectDir/ktlint.gradle"
 detekt {
     config = files("$project.rootProject.projectDir/config/detekt/detekt-config.yml")
 }
+
+android {
+    lintOptions {
+        checkDependencies true
+        lintConfig = file("$project.rootProject.projectDir/config/android/android-lint.xml")
+    }
+}

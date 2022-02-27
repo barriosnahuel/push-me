@@ -52,7 +52,6 @@
     <issue id="DisableBaselineAlignment" severity="error" />
     <issue id="DrawAllocation" severity="error" />
     <issue id="FieldGetter" severity="error" />
-    <issue id="FloatMath" severity="error" />
     <issue id="HandlerLeak" severity="error" />
     <issue id="InefficientWeight" severity="error" />
     <issue id="LogConditional" severity="error" />

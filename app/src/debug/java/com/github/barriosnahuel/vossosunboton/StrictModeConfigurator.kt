@@ -24,9 +24,9 @@ private fun setupThreadPolicy(trackable: Trackable) {
     }
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-        threadPolicyBuilder.penaltyListener(Executors.newSingleThreadExecutor(), StrictMode.OnThreadViolationListener {
+        threadPolicyBuilder.penaltyListener(Executors.newSingleThreadExecutor()) {
             trackable.track(StrictModeException(it))
-        })
+        }
     }
 
     StrictMode.setThreadPolicy(threadPolicyBuilder.build())
@@ -34,27 +34,13 @@ private fun setupThreadPolicy(trackable: Trackable) {
 
 private fun setupVirtualMachinePolicy(trackable: Trackable) {
     val vmPolicyBuilder = StrictMode.VmPolicy.Builder()
-
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-        vmPolicyBuilder.detectAll()
-    } else {
-        // Create VmPolicy Builder basing on Android Version because StrictMode does not check properly that GB remove activity before report an
-        // InstanceCountViolation when API version is 21 or older. To avoid this error, we don't use [StrictMode.VmPolicy.Builder
-        // .detectActivityLeaks] (inside [ ][StrictMode.VmPolicy.Builder.detectAll]) and call all other methods where applicable.
-        // More info at: https://github.com/mercadolibre/mobile-android_testing/pull/37#discussion_r72981823
-
-        vmPolicyBuilder.detectLeakedRegistrationObjects()
-                .detectFileUriExposure()
-                .detectLeakedSqlLiteObjects()
-                .detectLeakedClosableObjects()
-    }
-
-    vmPolicyBuilder.penaltyLog()
+        .detectAll()
+        .penaltyLog()
 
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-        vmPolicyBuilder.penaltyListener(Executors.newSingleThreadExecutor(), StrictMode.OnVmViolationListener {
+        vmPolicyBuilder.penaltyListener(Executors.newSingleThreadExecutor()) {
             trackable.track(StrictModeException(it))
-        })
+        }
     }
 
     StrictMode.setVmPolicy(vmPolicyBuilder.build())

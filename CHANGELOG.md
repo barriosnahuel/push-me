@@ -32,7 +32,8 @@ Firebase and static code analyzers too.
 - New ':commons_file' and ':commons_android' modules.
 - Changelog formatting.
 - Default language to English.
-- Gradle version to [v6.5.1](https://docs.gradle.org/6.5.1/release-notes.html).
+- Gradle version to [v7.2](https://docs.gradle.org/7.2/release-notes.html).
+- Java compile version to v11.
 - Better separation of responsibilities.
 - `StrictMode` warnings now are logged to Crashlytics instead of the debugging notifier.
 - `LeakCanary` warnings now are logged to Crashlytics.
@@ -44,12 +45,13 @@ Firebase and static code analyzers too.
 - Crashes when debugging because of a bug in library `StrictModeNotifier`.
 - Performance issue when saving a new audio button.
 - Memory leak at the `MediaPlayer` which causes an increment on memory usage.
-- Many SCA suggestions applied.
+- Many static code checks suggestions applied.
 - Usage of resources like `InputStream`, `OutputStream` and `Cursor`.
 - Stop exposing Firebase API configuration file.
 
 ### Removed
 - Library StrictModeNotifier for debug builds.
+- Library [Static Code Analysis](https://github.com/Monits/static-code-analysis-plugin) because it's no longer actively maintained.
 
 ## \[v1.1.0] - 2017-08-16
 

@@ -44,8 +44,6 @@ We use some really useful tools like:
 
 Please refer to their docs for setup & guidelines.
 
-Note: Flipper works on emulators and phisically connected devices, it doesn't work ok when device is connected over wifi. [(#880)](https://github.com/facebook/flipper/issues/880#issuecomment-598541744)
-
 ## Continuous Integration ➿
 We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.yml) file you can check the config using the local CLI.
 - https://circleci.com/docs/2.0/local-cli

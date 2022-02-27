@@ -20,7 +20,8 @@ But, before going deeper I suggest you to take a look to the [opensource.guide](
 
 1. Clone/Fork this repo.
 2. Replace the `app/google-services.json` file with the one from Firebase console. You *won't* be able to commit changes on this file.
-3. Run:
+3. Check how to prevent modifications at #Firebase config file
+4. Run:
     > ./gradlew check
 
     It must return **`BUILD SUCCESS`**.

@@ -9,7 +9,7 @@ import com.facebook.flipper.plugins.inspector.InspectorFlipperPlugin
 import com.facebook.flipper.plugins.leakcanary2.LeakCanary2FlipperPlugin
 import com.facebook.flipper.plugins.navigation.NavigationFlipperPlugin
 import com.facebook.soloader.SoLoader
-import java.util.*
+import java.util.Calendar
 
 internal object FlipperConfigurator {
 
@@ -21,7 +21,7 @@ internal object FlipperConfigurator {
         flipperClient.addPlugin(LeakCanary2FlipperPlugin())
 
         application.registerActivityLifecycleCallbacks(FlipperLifecycleCallbacks())
-        flipperClient.addPlugin(NavigationFlipperPlugin.getInstance());
+        flipperClient.addPlugin(NavigationFlipperPlugin.getInstance())
 
         flipperClient.start()
     }
@@ -29,7 +29,7 @@ internal object FlipperConfigurator {
     class FlipperLifecycleCallbacks : Application.ActivityLifecycleCallbacks {
         override fun onActivityCreated(activity: Activity, bundle: Bundle?) {
             NavigationFlipperPlugin.getInstance()
-                .sendNavigationEvent(activity.intent.dataString, activity.localClassName, Calendar.getInstance().time);
+                .sendNavigationEvent(activity.intent.dataString, activity.localClassName, Calendar.getInstance().time)
         }
 
         override fun onActivityStarted(activity: Activity) {

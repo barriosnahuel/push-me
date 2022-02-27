@@ -1,21 +1,5 @@
-apply plugin: 'com.monits.staticCodeAnalysis'
 apply plugin: 'io.gitlab.arturbosch.detekt'
 apply from: "$project.rootProject.projectDir/ktlint.gradle"
-
-/**
- * Configuration for `com.monits.staticCodeAnalysis` plugin
- */
-staticCodeAnalysis {
-    spotbugs = true
-    checkstyle = true
-    pmd = true
-    cpd = true
-    androidLint = true
-
-    ignoreErrors = false
-
-    androidLintConfig = "$project.rootProject.projectDir/config/android/android-lint.xml"
-}
 
 /**
  * Configuration for `io.gitlab.arturbosch.detekt` plugin

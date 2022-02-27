@@ -9,12 +9,15 @@ apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
+    kotlinOptions {
+        jvmTarget = "11"
     }
 
     compileSdkVersion 30
-    buildToolsVersion '30.0.2'
 
     defaultConfig {
         applicationId "com.github.barriosnahuel.vossosunboton"

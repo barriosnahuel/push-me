@@ -17,7 +17,6 @@ import com.github.barriosnahuel.vossosunboton.commons.file.FileUtils;
 import java.io.FileDescriptor;
 import java.io.IOException;
 
-import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import timber.log.Timber;
 
 public final class MediaPlayerHelper {
@@ -54,7 +53,6 @@ public final class MediaPlayerHelper {
      * @param rawResId    The ID of the raw resource to link to the media player.
      * @return <code>true</code> when call to {@link MediaPlayer#setDataSource(FileDescriptor, long, long)} is ok.
      */
-    @SuppressFBWarnings(value = "RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE", justification = "It throws false-positives when using try-with-resources https://github.com/spotbugs/spotbugs/issues/756")
     public static boolean setupSoundSource(@NonNull final Context context,
                                            @NonNull final MediaPlayer mediaPlayer,
                                            @RawRes final int rawResId) throws IOException {
@@ -70,7 +68,6 @@ public final class MediaPlayerHelper {
         }
     }
 
-    @SuppressFBWarnings(value = "RCN_REDUNDANT_NULLCHECK_WOULD_HAVE_BEEN_A_NPE", justification = "It throws false-positives when using try-with-resources https://github.com/spotbugs/spotbugs/issues/756")
     private static Uri getSoundPath(@NonNull final Context context, @NonNull final Uri contentUriSource) {
         final String[] projection = {MediaStore.Audio.Media.DATA};
         final String path;

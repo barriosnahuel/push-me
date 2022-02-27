@@ -1,12 +1,14 @@
 package com.github.barriosnahuel.vossosunboton
 
+import com.facebook.flipper.plugins.leakcanary2.FlipperLeakListener
 import com.github.barriosnahuel.vossosunboton.commons.android.error.Trackable
-import kotlin.reflect.KProperty
 import leakcanary.DefaultOnHeapAnalyzedListener
+import leakcanary.LeakCanary
 import leakcanary.OnHeapAnalyzedListener
 import shark.HeapAnalysis
 import shark.HeapAnalysisFailure
 import shark.HeapAnalysisSuccess
+import kotlin.reflect.KProperty
 
 internal object LeakCanaryConfigurator {
 
@@ -14,6 +16,10 @@ internal object LeakCanaryConfigurator {
 
     fun initializeWithDefaults(tracker: Trackable) {
         this.tracker = tracker
+
+        LeakCanary.config = LeakCanary.config.copy(
+            onHeapAnalyzedListener = FlipperLeakListener()
+        )
     }
 
     operator fun getValue(thisRef: MemoryLeakTrackerService, property: KProperty<*>): Trackable = tracker!!

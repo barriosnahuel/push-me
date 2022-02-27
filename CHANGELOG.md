@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 ### Added
 - Let users share packaged buttons too.
 - Let users delete custom audios by swiping horizontally.
-- Support for Android 11 (API Level 30).
+- Support for Android 12L (API Level 32).
 - Pull Requests template for contributors.
 - Firebase Analytics.
 - Firebase Crashlytics including last logs from each error.

@@ -17,12 +17,12 @@ android {
         jvmTarget = "11"
     }
 
-    compileSdkVersion 30
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "com.github.barriosnahuel.vossosunboton"
         minSdkVersion 21
-        targetSdkVersion 30
+        targetSdkVersion 32
         versionCode 5
         versionName '2.0.0'
     }

@@ -50,7 +50,11 @@ We use Circle CI, so if you're gonna change the [config.yml](.circleci/config.ym
 
 > circleci config validate
 
-## Gradle upgrade
+## Platform upgrades
+### API Level
+⚠️ Remember to change not only the compile/target API levels but the tests config too. Check [`AbstractRobolectricTest`](/app/src/test/java/com/github/barriosnahuel/vossosunboton/AbstractRobolectricTest.kt).
+
+### Gradle upgrade
 As described at [Gradle docs#Adding wrapper](https://docs.gradle.org/current/userguide/gradle_wrapper.html#sec:adding_wrapper) you must run:
 
     > ./gradlew wrapper --gradle-version ${desiredVersion}

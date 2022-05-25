@@ -9,7 +9,7 @@ detekt {
 }
 
 android {
-    lintOptions {
+    lint {
         checkDependencies true
         lintConfig = file("$project.rootProject.projectDir/config/android/android-lint.xml")
     }

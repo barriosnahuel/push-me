@@ -32,7 +32,7 @@ Firebase and static code analyzers too.
 - New ':commons_file' and ':commons_android' modules.
 - Changelog formatting.
 - Default language to English.
-- Gradle version to [v7.3.3](https://docs.gradle.org/7.2/release-notes.html).
+- Gradle version to [v7.4.2](https://docs.gradle.org/7.4.2/release-notes.html).
 - Java compile version to v11.
 - Better separation of responsibilities.
 - `StrictMode` warnings now are logged to Crashlytics instead of the debugging notifier.

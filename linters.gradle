@@ -6,6 +6,7 @@ apply from: "$project.rootProject.projectDir/ktlint.gradle"
  */
 detekt {
     config = files("$project.rootProject.projectDir/config/detekt/detekt-config.yml")
+    buildUponDefaultConfig = true
 }
 
 android {

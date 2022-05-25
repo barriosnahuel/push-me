@@ -8,6 +8,7 @@ import androidx.fragment.app.FragmentManager
 import com.github.barriosnahuel.vossosunboton.R
 import com.github.barriosnahuel.vossosunboton.commons.android.intent.SafeIntent
 import com.github.barriosnahuel.vossosunboton.ui.home.DynamicFragment
+import java.util.Locale
 
 internal data class DeepLink(val host: String, val path: String) {
 
@@ -15,6 +16,7 @@ internal data class DeepLink(val host: String, val path: String) {
      * @return The deep-link that must be used to open a specific screen.
      */
     internal fun get(): String = String.format(
+        Locale.getDefault(),
         "%s://%s%s",
         "sosunboton",
         host,

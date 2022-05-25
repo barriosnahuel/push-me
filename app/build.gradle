@@ -8,6 +8,8 @@ apply plugin: 'com.getkeepsafe.dexcount'
 apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
+    namespace 'com.github.barriosnahuel.vossosunboton'
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11

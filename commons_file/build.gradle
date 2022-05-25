@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
+    namespace 'com.github.barriosnahuel.vossosunboton.commons.file'
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8

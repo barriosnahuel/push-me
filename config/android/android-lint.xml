@@ -63,7 +63,10 @@
     <issue id="Recycle" severity="error" />
     <issue id="TooDeepLayout" severity="error" />
     <issue id="TooManyViews" severity="error" />
-    <issue id="UnusedIds" severity="error" />
+
+    <!-- Muted till https://issuetracker.google.com/issues/233912817 is fixed -->
+    <issue id="UnusedIds" severity="warning" />
+
     <issue id="UnusedNamespace" severity="error" />
     <issue id="UnusedResources" severity="error">
         <!--

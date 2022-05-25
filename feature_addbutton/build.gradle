@@ -1,6 +1,5 @@
 apply plugin: 'com.android.dynamic-feature'
 apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
 apply from: "$project.rootProject.projectDir/linters.gradle"
 
 android {
@@ -25,6 +24,9 @@ android {
             // https://developer.android.com/guide/app-bundle/at-install-delivery#dynamic_feature_proguard
             proguardFiles 'proguard-rules-dynamic-features.pro'
         }
+    }
+    buildFeatures {
+        viewBinding true
     }
 }
 

@@ -39,6 +39,7 @@ Firebase and static code analyzers too.
 - `LeakCanary` warnings now are logged to Crashlytics.
 - Refactor of Media Player setup for clearness.
 - Replaced Stetho with [Flipper](https://fbflipper.com/).
+- Replace usages of synthetic accessors for views in layouts to native view binding.
 
 ### Fixed
 - Sharing buttons issues due to a bad permissions setup.
@@ -52,6 +53,7 @@ Firebase and static code analyzers too.
 ### Removed
 - Library StrictModeNotifier for debug builds.
 - Library [Static Code Analysis](https://github.com/Monits/static-code-analysis-plugin) because it's no longer actively maintained.
+- `kotlin-android-extensions` plugin because it's no longer necessary.
 
 ## \[v1.1.0] - 2017-08-16
 

@@ -14,7 +14,8 @@ import com.github.barriosnahuel.vossosunboton.commons.android.ui.Feedback
 import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity
 import com.github.barriosnahuel.vossosunboton.feature.base.NavigationSections
 import com.github.barriosnahuel.vossosunboton.feature.base.PermissionsRequest
-import kotlinx.android.synthetic.main.feature_addbutton_activity_add_button.*
+import kotlinx.android.synthetic.main.feature_addbutton_activity_add_button.feature_addbutton_saveButton
+import kotlinx.android.synthetic.main.feature_addbutton_activity_add_button.name
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch

@@ -11,11 +11,10 @@ import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.github.barriosnahuel.vossosunboton.commons.android.ui.Feedback
+import com.github.barriosnahuel.vossosunboton.feature.addbutton.databinding.FeatureAddbuttonActivityAddButtonBinding
 import com.github.barriosnahuel.vossosunboton.feature.base.AbstractActivity
 import com.github.barriosnahuel.vossosunboton.feature.base.NavigationSections
 import com.github.barriosnahuel.vossosunboton.feature.base.PermissionsRequest
-import kotlinx.android.synthetic.main.feature_addbutton_activity_add_button.feature_addbutton_saveButton
-import kotlinx.android.synthetic.main.feature_addbutton_activity_add_button.name
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -26,12 +25,15 @@ import kotlinx.coroutines.withContext
  */
 class AddButtonActivity : AbstractActivity() {
 
+    private lateinit var binding: FeatureAddbuttonActivityAddButtonBinding
     private var uri: Uri? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.feature_addbutton_activity_add_button)
+        binding = FeatureAddbuttonActivityAddButtonBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
         bindToolbar()
 
         /**
@@ -43,7 +45,7 @@ class AddButtonActivity : AbstractActivity() {
             finish()
         }
 
-        name.setOnEditorActionListener { _, actionId, _ ->
+        binding.name.setOnEditorActionListener { _, actionId, _ ->
             val consumedHere = if (actionId == EditorInfo.IME_ACTION_DONE) {
                 saveButton(this@AddButtonActivity)
                 true
@@ -54,7 +56,7 @@ class AddButtonActivity : AbstractActivity() {
             consumedHere
         }
 
-        feature_addbutton_saveButton.setOnClickListener { saveButton(this) }
+        binding.saveButton.setOnClickListener { saveButton(this) }
     }
 
     override fun bindToolbar() {
@@ -75,8 +77,8 @@ class AddButtonActivity : AbstractActivity() {
     }
 
     private fun saveButton(context: Context) {
-        if (name.text.isEmpty()) {
-            name.error = getString(R.string.feature_addbutton_name_is_required_error)
+        if (binding.name.text.isEmpty()) {
+            binding.name.error = getString(R.string.feature_addbutton_name_is_required_error)
         } else {
             checkRequiredPermissions(context)
         }
@@ -101,7 +103,7 @@ class AddButtonActivity : AbstractActivity() {
     }
 
     private fun saveNewButton(context: Context) {
-        val deferredFeedbackMessage = AddButtonFeature.instance.saveNewButtonAsync(context, name.text.toString(), uri!!.toString())
+        val deferredFeedbackMessage = AddButtonFeature.instance.saveNewButtonAsync(context, binding.name.text.toString(), uri!!.toString())
 
         GlobalScope.launch {
             withContext(Dispatchers.Main) {

@@ -102,7 +102,7 @@ dependencies {
 
     implementation 'com.jakewharton.timber:timber:5.0.1'
 
-    debugImplementation 'com.facebook.flipper:flipper:0.161.0'
+    debugImplementation 'com.facebook.flipper:flipper:0.162.0'
     debugImplementation 'com.facebook.soloader:soloader:0.10.4'
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.9.1'

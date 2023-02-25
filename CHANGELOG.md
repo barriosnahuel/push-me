@@ -7,7 +7,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 ### Added
 - Let users share packaged buttons too.
 - Let users delete custom audios by swiping horizontally.
-- Target Android 12L (API Level 32); Tests also run for that API level.
+- Target Android 13 (API Level 33); Tests also run for that API level.
 - Pull Requests template for contributors.
 - Firebase Analytics.
 - Firebase Crashlytics including last logs from each error.

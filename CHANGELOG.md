@@ -18,6 +18,7 @@ The format is based on [Keep a Changelog][], and this project adheres to [Semant
 - Multidex support for debug builds.
 - Timestamp as suffix on `versionName` for debug builds.
 - Automatic code obfuscation and optimizations on release builds.
+- Automated stack files integration by stackshare.io to easily communicate what's under the hood. Check `techstack.md` and see the magic.
 
 ### Changed
 - Brand NEW Look & Feel for the whole app.

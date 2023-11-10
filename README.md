@@ -11,6 +11,8 @@ An Android app made, by the moment, only for fun. Currently it's aimed to be use
 [![CircleCI](https://circleci.com/gh/barriosnahuel/push-me.svg?style=svg)](https://circleci.com/gh/barriosnahuel/push-me)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/50c7ef07a05e47419c084c64dd460c9a)](https://www.codacy.com/app/barrios.nahuel/push-me?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=barriosnahuel/push-me&amp;utm_campaign=Badge_Grade)
 
+Wanna know about the entire tech stack? Check it at [techstack.md](stackfile.md).
+
 ## Features 🏁
 - Play packaged audios.
 - Save audios from WhatsApp.

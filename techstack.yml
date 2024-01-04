@@ -1,7 +1,8 @@
 repo_name: barriosnahuel/push-me
-report_id: 2776c22974dc79f3276e593b91e208fa
+report_id: 78fc94941be7d96660181a415a0027b3
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T10:03:50+00:00'
+timestamp: '2024-01-04T15:17:22+00:00'
 requested_by: barriosnahuel
 provider: github
 branch: develop
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/995/K85ZWV2F.png
+  detection_source_url: https://github.com/barriosnahuel/push-me
   detection_source: Repo Metadata
 - name: Kotlin
   description: Statically typed Programming Language targeting JVM and JavaScript
@@ -25,6 +27,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/3750/pCfEzr6L.png
+  detection_source_url: https://github.com/barriosnahuel/push-me
   detection_source: Repo Metadata
 - name: Android SDK
   description: An SDK that provides you the API libraries and developer tools necessary
@@ -48,6 +51,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/190/CvqrSSFs_400x400.jpg
+  detection_source_url: https://github.com/barriosnahuel/push-me/blob/develop/.circleci/config.yml
   detection_source: ".circleci/config.yml"
   last_updated_by: Nahuel Barrios
   last_updated_on: 2019-07-13 13:58:24.000000000 Z
@@ -59,6 +63,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/barriosnahuel/push-me
   detection_source: Repo Metadata
 - name: Gradle
   description: A powerful build system for the JVM
@@ -69,6 +74,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Java Build Tools
   image_url: https://img.stackshare.io/service/975/gradlephant-social-black-bg.png
+  detection_source_url: https://github.com/barriosnahuel/push-me/blob/develop/app/build.gradle
   detection_source: app/build.gradle
   last_updated_by: Nahuel Barrios
   last_updated_on: 2020-02-08 21:11:56.000000000 Z
@@ -94,6 +100,7 @@ tools:
   category: Monitoring
   sub_category: Log Management
   image_url: https://img.stackshare.io/service/7634/xBNoTqvy_400x400.jpg
+  detection_source_url: https://github.com/barriosnahuel/push-me/blob/develop/app/build.gradle
   detection_source: app/build.gradle
   last_updated_by: dependabot[bot]
   last_updated_on: 2021-09-03 09:22:53.000000000 Z
